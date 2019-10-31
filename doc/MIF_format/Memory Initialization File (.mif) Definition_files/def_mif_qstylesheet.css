@@ -1,0 +1,258 @@
+BODY {
+	font-family: Arial, sans-serif;
+	font-size: 9pt;
+	background-color: #ffffff;
+}
+H1 {
+	font-weight: bold;
+	background-color: Transparent;
+	font-size: 13pt;
+	font-family: Arial, Helvetica, Sans-serif;
+	margin-top: 14pt;
+	margin-bottom: 14pt;
+}
+LI.H1 {
+	font-weight: bold;
+	font-size: 13pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+H2 {
+	font-weight: bold;
+	background-color: Transparent;
+	font-family: Arial, Helvetica, Sans-serif;
+	margin-top: 12pt;
+	margin-bottom: 12pt;
+	font-size: 11pt;
+}
+LI.H2 {
+	font-weight: bold;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 11pt;
+}
+H3 {
+	background-color: Transparent;
+	font-size: 9pt;
+	margin-bottom: 5pt;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-weight: bold;
+	font-style: italic;
+	margin-top: 9pt;
+}
+LI.H3 {
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-weight: bold;
+	font-style: italic;
+}
+H4 {
+	font-weight: bold;
+	background-color: Transparent;
+	font-size: 9pt;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+LI.H4 {
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+H5 {
+	font-weight: bold;
+	font-size: 9pt;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+LI.H5 {
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+H6 {
+	font-weight: bold;
+	font-size: 9pt;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+LI.H6 {
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+p {
+	font-style: normal;
+	font-family: Arial, Helvetica, Sans-serif;
+	line-height: Normal;
+	margin-top: 5.0pt;
+	margin-bottom: 5.0pt;
+	font-size: 9pt;
+	margin-left: 0px;
+}
+LI.p {
+	font-style: normal;
+	font-family: Arial, Helvetica, Sans-serif;
+	line-height: Normal;
+	font-size: 9pt;
+}
+A.expandspot {
+	color: #008000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+}
+SPAN.expandtext {
+	font-weight: normal;
+	font-style: normal;
+	background-color: Transparent;
+}
+A.dropspot {
+	cursor: hand;
+	font-weight: normal;
+	font-style: normal;
+	x-on-hover: fontchange(color=#ff8000);
+	color: #0066cc;
+	text-decoration: none;
+}
+A.glossterm {
+	color: #800000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+}
+SPAN.glosstext {
+	font-style: italic;
+	font-weight: normal;
+	color: #0000ff;
+}
+OL,
+UL {
+}
+P.TableText {
+	font-weight: normal;
+	font-style: normal;
+	font-family: Arial, Helvetica, Sans-serif;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+	font-size: 9pt;
+}
+LI.P-TableText {
+	font-weight: normal;
+	font-style: normal;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 9pt;
+}
+DIV.droptext {
+	margin-top: 18px;
+	margin-bottom: 32px;
+	margin-left: 0.25in;
+}
+P.Breadcrumb {
+	background-color: Transparent;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+	color: #808080;
+	text-align: Left;
+}
+LI.P-Breadcrumb {
+	color: #808080;
+	text-align: Left;
+}
+A.popupspot {
+	x-on-hover: fontchange(color=#ff0000);
+	color: #0066cc;
+	text-decoration: none;
+}
+SPAN.popup {
+	text-decoration: none;
+}
+A:hover {
+	color: #0066cc;
+}
+P.footer {
+	font-size: 7.5pt;
+}
+LI.P-footer {
+	font-size: 7.5pt;
+}
+SPAN.Code {
+	font-family: "Courier New", Courier, Monotype;
+}
+H1.H1 {
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+LI.H1-H1 {
+}
+H2.H2 {
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+LI.H2-H2 {
+}
+A:link {
+	color: #0066cc;
+}
+rh-list.SDG_numbers {
+	x-lvl-2-type: lower-alpha;
+	x-lvl-3-type: lower-roman;
+	x-lvl-5-format: "&o<x>&c";
+	x-lvl-5-margin: 80px;
+	x-lvl-6-type: lower-roman;
+	x-lvl-6-format: "&o<x>&c";
+	x-lvl-6-margin: 100px;
+	x-lvl-8-type: lower-alpha;
+	x-lvl-8-margin: 140px;
+	x-lvl-7-format: "<x>.";
+	x-lvl-7-margin: 120px;
+	x-lvl-9-type: lower-roman;
+	x-lvl-9-margin: 160px;
+	x-lvl-4-type: upper-alpha;
+	x-lvl-4-format: "<x>";
+	x-lvl-4-margin: 60px;
+	x-lvl-1-format: "<x>.";
+	x-lvl-2-format: "<x>.";
+	x-lvl-3-format: "<x>.";
+	x-lvl-1-margin: 30px;
+	x-lvl-1-text-indent: -20px;
+	x-lvl-1-p-tag: p;
+	x-lvl-2-margin: 50px;
+	x-lvl-2-text-indent: -20px;
+	x-lvl-2-p-tag: p;
+	x-level-count: 9;
+	x-lvl-3-margin: 70px;
+	x-lvl-3-text-indent: -20px;
+	x-lvl-3-p-tag: p;
+}
+rh-list.SDG_bullets {
+	x-lvl-4-type: decimal;
+	x-lvl-4-format: "&o<x>&c";
+	x-lvl-4-margin: 60px;
+	x-lvl-5-format: "&o<x>&c";
+	x-lvl-5-margin: 80px;
+	x-lvl-6-type: lower-roman;
+	x-lvl-6-format: "&o<x>&c";
+	x-lvl-6-margin: 100px;
+	x-lvl-8-type: lower-alpha;
+	x-lvl-8-margin: 140px;
+	x-lvl-7-format: "<x>.";
+	x-lvl-7-margin: 120px;
+	x-lvl-9-type: lower-roman;
+	x-lvl-9-margin: 160px;
+	x-lvl-2-type: circle;
+	x-lvl-2-format: "<x>";
+	x-lvl-3-type: square;
+	x-lvl-3-format: "<x>";
+	x-lvl-1-type: disc;
+	x-lvl-1-format: "<x>";
+	x-lvl-2-margin: 30px;
+	x-lvl-2-text-indent: -10px;
+	x-lvl-2-p-tag: p;
+	x-lvl-1-margin: 20px;
+	x-lvl-1-text-indent: -10px;
+	x-lvl-1-p-tag: p;
+	x-level-count: 9;
+	x-lvl-3-margin: 50px;
+	x-lvl-3-text-indent: -10px;
+}

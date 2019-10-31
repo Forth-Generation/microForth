@@ -1,0 +1,18 @@
+verilator -cc \
+  +libext+.v \
+  +libext+.sv \
+  \
+  ../tb/tb.v \
+  +incdir+../../../src \
+  +incdir+../../../inc \
+  +incdir+../tb \
+  -y ../../../src \
+  -y ../../../src/uart_tx \
+  -y ../../../src/uart_rx \
+  -y ../tb \
+  +define+SIMULATION=1 \
+  +define+VERILATOR=1 \
+  --trace \
+  --exe verilator_top.cpp
+
+make -j -C obj_dir -f Vtb.mk Vtb

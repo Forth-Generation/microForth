@@ -1,0 +1,5 @@
+
+vsim tb             \
+  -novopt           \
+  +nowarnTFMPC
+

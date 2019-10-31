@@ -1,0 +1,122 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2019  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+# Date created = 23:25:38  October 27, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		forth_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SAU169C8G
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 19.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:25:38  OCTOBER 27, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
+
+set_global_assignment -name SEARCH_PATH ../src
+set_global_assignment -name SEARCH_PATH ../src/uart_tx
+set_global_assignment -name SEARCH_PATH ../src/uart_rx
+set_global_assignment -name SEARCH_PATH ../inc
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_global_assignment -name SDC_FILE forth.sdc
+
+# general i/o
+
+set_location_assignment PIN_H6 -to clk
+set_location_assignment PIN_B7 -to rst_n
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to rst_n
+
+# uart
+
+set_location_assignment PIN_M4 -to uart_txd
+set_location_assignment PIN_M5 -to uart_rxd
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rxd
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_txd
+
+# gpio
+
+set_location_assignment PIN_N4 -to gpio[0]
+set_location_assignment PIN_N5 -to gpio[1]
+set_location_assignment PIN_N6 -to gpio[2]
+set_location_assignment PIN_M7 -to gpio[3]
+set_location_assignment PIN_N8 -to gpio[4]
+set_location_assignment PIN_N7 -to gpio[5]
+set_location_assignment PIN_M8 -to gpio[6]
+set_location_assignment PIN_M9 -to gpio[7]
+set_location_assignment PIN_K10 -to led
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
+
+
+
+
+set_global_assignment -name ENABLE_OCT_DONE ON
+set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name FORCE_CONFIGURATION_VCCIO OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+
+
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,0 +1,21 @@
+forth -+
+       |
+       +- doc                        Specs, datasheets, papers
+       |
+       +- hw  -+                     Hardware
+       |       |
+       |       +- board                Board related files
+       |       |
+       |       +- fpga  -+             FPGA related files
+       |                 |
+       |                 +- build        Build/implementation 
+       |                 |
+       |                 +- inc          Include files
+       |                 |
+       |                 +- sim          Simulation
+       |                 |
+       |                 +- src          Verilog source files
+       |
+       +- sw                         Software
+       |
+       +- tools                      Development tools
