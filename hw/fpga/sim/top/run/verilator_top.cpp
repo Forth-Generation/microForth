@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv, char** env) {
 
-  vluint64_t main_time = 0;
+  float main_time = 0;
 
   // Initialize verilators variables
   Verilated::commandArgs(argc, argv);
@@ -18,13 +18,13 @@ int main(int argc, char** argv, char** env) {
   top->trace(tfp, 99); // Trace 99 levels of hierarchy
   tfp->open("wave.vcd");
 
-  while (!Verilated::gotFinish()) {
-    main_time += 1;
-    top->verilator_clk = 1;
-    top->eval();
-    top->verilator_clk = 0;
+  top->verilator_clk = 1;
+
+  while (main_time < 100000 && !Verilated::gotFinish()) {
+    top->verilator_clk = ~top->verilator_clk;
     top->eval();
     tfp->dump(main_time);
+    main_time += 31.25;
   }
 
   tfp->close();
