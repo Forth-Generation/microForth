@@ -65,7 +65,7 @@ clean :
 	rm -rf top.cr.mti transcript work vsim_stacktrace* obj_dir
 
 veryclean distclean : clean
-	rm -f ca a c r w vsim.wlf
+	rm -f ca a c r w vsim.wlf wave.vcd
 
 #----------------------------------------------------------------------
 # create sim work dir and compile altera libs
