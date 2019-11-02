@@ -1,0 +1,22 @@
+//  write AA then 55 to GPIO output reg
+
+80AA               // 00 Push UART_TX_DATA data    [AA]
+8000               // 01 Push UART_TX_DATA address [0000]
+6043               // 02 IO_WR [AA] to UART_TX_DATA reg, Pop stack (address)
+6003               // 03 Pop stack (data)
+8020               // 04 Push delay (32) on stack
+400D               // 05 Call DELAY
+80CC               // 06 Push UART_TX_DATA data    [CC]
+8000               // 07 Push UART_TX_DATA address [0000]
+6043               // 08 IO_WR [55] to UART_TX_DATA reg, Pop stack
+6003               // 09 Pop stack
+8020               // 0A Push delay (32) on stack
+400D               // 0B Call DELAY
+0000               // 0C unconditional branch (ubranch) to 0000
+8000               // 0D DELAY subroutine Push 0000
+6600               // 0E ~T
+6203               // 0F  +
+6011               // 10 dup
+2013               // 11 obranch to SKIP
+000D               // 12 ubranch to DELAY
+618F               // 13 pexit  -  return from sub with stack pop
