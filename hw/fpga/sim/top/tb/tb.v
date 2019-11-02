@@ -22,13 +22,14 @@ reg         clk_16;
 // dut inputs
 wire        clk;
 reg         rst_n;
-reg         uart_rxd;
+wire         uart_rxd;
 // dut outputs
 wire        uart_txd;
 wire  [7:0] gpio;
 wire        led;
 reg   [7:0] gpio_drive;
 
+assign uart_rxd = uart_txd;
 //----------------------------------------------------------------------
 // Task to do something
 //----------------------------------------------------------------------
