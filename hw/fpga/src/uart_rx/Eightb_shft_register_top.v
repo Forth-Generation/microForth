@@ -25,10 +25,10 @@ module Eightb_shft_register_top (
 	else
 	  begin
 	     if(shift) begin
-		  out_1 <= {Rx,out_1[7:1]}; 
+          out_1 <= {Rx,out_1[7:1]}; 
 	       end	 
 	     if(load_buffer && Rd_en) begin
-		  out <= out_1;	  
+          out <= out_1;	  
 	     end
 	  end	
      end // always @ (posedge CLOCK or posedge reset)

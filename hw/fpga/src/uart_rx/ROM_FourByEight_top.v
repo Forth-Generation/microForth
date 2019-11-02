@@ -7,16 +7,16 @@ module ROM_FourByEight_top (
 
    wire [7:0] 	mem[0:9];
 
-  assign mem[0] = 8'd66;
-  assign mem[1] = 8'd139;
-  assign mem[2] = 8'd139;
-  assign mem[3] = 8'd139;
-  assign mem[4] = 8'd139;
-  assign mem[5] = 8'd139;
-  assign mem[6] = 8'd139;
-  assign mem[7] = 8'd139;
-  assign mem[8] = 8'd139;
-  assign mem[9] = 8'd139;
+  assign mem[0] = 8'd5;
+  assign mem[1] = 8'd10;
+  assign mem[2] = 8'd10;
+  assign mem[3] = 8'd10;
+  assign mem[4] = 8'd10;
+  assign mem[5] = 8'd10;
+  assign mem[6] = 8'd10;
+  assign mem[7] = 8'd10;
+  assign mem[8] = 8'd10;
+  assign mem[9] = 8'd10;
    
    
    always @(posedge CLOCK) begin

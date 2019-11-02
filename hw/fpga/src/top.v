@@ -112,12 +112,12 @@ j1_prb j1_prb (
   .io_rd              ( j1_io_rd            ), // io read enable
   .io_din             ( j1_io_din           ), // io read data
 
-  .dout               ( j1_dout             ), // port b write data 
-  .mem_addr           ( j1_mem_addr         ), // port b address
-  .mem_wr             ( j1_mem_wr           ), // port b write enable
+  .dout               ( j1_dout             ), // port a write data 
+  .mem_addr           ( j1_mem_addr         ), // port a address
+  .mem_wr             ( j1_mem_wr           ), // port a write enable
 
-  .code_addr          ( j1_code_addr        ), // port a address
-  .insn               ( j1_insn             )  // port a read data - from instruction memory
+  .code_addr          ( j1_code_addr        ), // port b address
+  .insn               ( j1_insn             )  // port b read data - from instruction memory
 );
 
 // instruction/data ram
