@@ -1,5 +1,9 @@
 //  write AA then 55 to GPIO output reg
 
+80ff               // Push GP_OUT data    [FF]
+8032               // Push GP_OUT address [0032]
+6043               // IO_WR [AA] to GP_OUT reg, Pop stack (address)
+6003               // Pop stack (data)
 80AA               // Push GP_OUT data    [AA]
 8030               // Push GP_OUT address [0030]
 6043               // IO_WR [AA] to GP_OUT reg, Pop stack (address)

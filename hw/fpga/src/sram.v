@@ -39,12 +39,10 @@ reg   [ADDR_WIDTH-1:0] ram_addr_b;
 // Initialize memory
 //-----------------------------------------------------------------------------
 
-`ifdef SIMULATION
 initial
   begin
     $readmemh("sram.dat", ram_array);
   end
-`endif
 
 //-----------------------------------------------------------------------------
 // Port a - read and write

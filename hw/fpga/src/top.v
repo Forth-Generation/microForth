@@ -61,8 +61,8 @@ genvar                  g;
 
 reg [32:0] count;
 
-assign led = count[23];
-//assign led = gpio_out[0];
+//assign led = count[23];
+assign led = gpio_out[0];
 
 always @ (posedge clk or posedge rst)
   if (rst)

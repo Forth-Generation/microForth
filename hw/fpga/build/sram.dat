@@ -1,0 +1,11 @@
+//  write AA then 55 to GPIO output reg
+
+80AA               // Push UART_TX_DATA data    [AA]
+8000               // Push UART_TX_DATA address [0000]
+6043               // IO_WR [AA] to UART_TX_DATA reg, Pop stack (address)
+6003               // Pop stack (data)
+8055               // Push UART_TX_DATA data    [55]
+8000               // Push UART_TX_DATA address [0000]
+6043               // IO_WR [55] to UART_TX_DATA reg, Pop stack
+6003               // Pop stack
+0000               // unconditional branch (ubranch) to 0000
