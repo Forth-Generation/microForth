@@ -3,7 +3,8 @@
 `timescale 1ns/1ps
 
 module tb (
-  input wire verilator_clk
+  input wire verilator_clk,
+  input wire verilator_rst
 );
 
 localparam SIM_DELAY = 1;
@@ -21,7 +22,7 @@ integer             i,j,k;
 reg         clk_16;
 // dut inputs
 wire        clk;
-reg         rst_n;
+wire        rst_n;
 reg         uart_rxd;
 // dut outputs
 wire        uart_txd;
@@ -115,6 +116,16 @@ endtask
 `endif
 
 //----------------------------------------------------------------------
+// Reset
+//----------------------------------------------------------------------
+
+`ifdef VERILATOR
+  assign rst_n = ~verilator_rst;
+`else
+
+`endif
+
+//----------------------------------------------------------------------
 // Instantiate DUTs
 //----------------------------------------------------------------------
 
@@ -152,10 +163,10 @@ end
 
 initial
 begin
-  rst_n = 0;
+//  rst_n = 0;
 
 //  #101;
-  rst_n = 1;
+//  rst_n = 1;
 
 //  #100_0000;
 end

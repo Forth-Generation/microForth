@@ -19,11 +19,13 @@ int main(int argc, char** argv, char** env) {
   tfp->open("wave.vcd");
 
   top->verilator_clk = 1;
+  top->verilator_rst = 1;
 
   while (main_time < 100000 && !Verilated::gotFinish()) {
     top->verilator_clk = ~top->verilator_clk;
     top->eval();
     tfp->dump(main_time);
+    top->verilator_rst = 0;
     main_time += 31.25;
   }
 
