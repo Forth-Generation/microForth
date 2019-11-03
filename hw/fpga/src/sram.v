@@ -14,14 +14,15 @@ module sram #(
   parameter ADDR_WIDTH = $clog2(DEPTH)
 ) (
 
-  input  wire                   clk,
   input  wire                   rst,
 
+  input  wire                   clk_a,
   input  wire  [ADDR_WIDTH-1:0] addr_a,
   input  wire       [WIDTH-1:0] wdata_a,
   input  wire                   write_en_a,
   output wire       [WIDTH-1:0] rdata_a,
 
+  input  wire                   clk_b,
   input  wire  [ADDR_WIDTH-1:0] addr_b,
   output wire       [WIDTH-1:0] rdata_b
 
@@ -34,7 +35,7 @@ module sram #(
 reg        [WIDTH-1:0] ram_array [0:DEPTH-1];
 
 reg   [ADDR_WIDTH-1:0] ram_addr_a;
-reg   [ADDR_WIDTH-1:0] ram_addr_b;
+reg        [WIDTH-1:0] ram_rdata_b;
 
 
 generate
@@ -44,69 +45,69 @@ generate
 //-----------------------------------------------------------------------------
 
 if ((INFER == 0) && (DEPTH == 8192) && (WIDTH == 16))
-begin
-  sdpram_8kx16 sdpram_8kx161 (
-    .rd_aclr    ( rst        ),
+  begin
+    sdpram_8kx16 sdpram_8kx161 (
+      .rd_aclr    ( rst        ),
 
-    .wrclock    ( clk        ),
-    .wrclocken  ( 1'b1       ),
-    .wren       ( write_en_a ),
-    .wraddress  ( addr_a     ),
-    .data       ( rdata_a    ),
+      .wrclock    ( clk_a      ),
+      .wrclocken  ( 1'b1       ),
+      .wren       ( write_en_a ),
+      .wraddress  ( addr_a     ),
+      .data       ( rdata_a    ),
 
-    .rdclock    ( clk        ),
-    .rdclocken  ( 1'b1       ),
-    .rdaddress  ( addr_b     ),
-    .q          ( rdata_b    )
-  );
+      .rdclock    ( clk_b      ),
+      .rdclocken  ( 1'b1       ),
+      .rdaddress  ( addr_b     ),
+      .q          ( rdata_b    )
+    );
 
-end
+  end
 
 //-----------------------------------------------------------------------------
 // Infer RAM
 //-----------------------------------------------------------------------------
 
-if (INFER == 1)
-begin
+else if (INFER == 1)
+  begin
+    //-----------------------------------------------------------------------------
+    // Initialize memory
+    //-----------------------------------------------------------------------------
 
-  //-----------------------------------------------------------------------------
-  // Initialize memory
-  //-----------------------------------------------------------------------------
-
-  initial
-    begin
-      $readmemh("sram.dat", ram_array);
-    end
-
-  //-----------------------------------------------------------------------------
-  // Port a - read and write
-  //-----------------------------------------------------------------------------
-
-  assign rdata_a = ram_array[ram_addr_a];
-
-  always @ (posedge clk or posedge rst)
-    if (rst)
-      ram_addr_a <= {ADDR_WIDTH{1'b0}};
-    else
+    initial
       begin
-        ram_addr_a <= addr_a;
-
-        if (write_en_a)
-          ram_array[addr_a] <= wdata_a;
+        $readmemh("sram.dat", ram_array);
       end
 
-  //-----------------------------------------------------------------------------
-  // Port b - read only
-  //-----------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
+    // Port a - read and write
+    //-----------------------------------------------------------------------------
 
-  assign rdata_b = ram_array[ram_addr_b];
+    assign rdata_a = ram_array[ram_addr_a];
 
-  always @ (posedge clk or posedge rst)
-    if (rst)
-      ram_addr_b <= {ADDR_WIDTH{1'b0}};
-    else
-      ram_addr_b <= addr_b;
-end
+    always @ (posedge clk_a or posedge rst)
+      if (rst)
+        ram_addr_a <= {ADDR_WIDTH{1'b0}};
+      else
+        begin
+          ram_addr_a <= addr_a;
+
+          if (write_en_a)
+            ram_array[addr_a] <= wdata_a;
+        end
+
+    //-----------------------------------------------------------------------------
+    // Port b - read only
+    // Register data instead of address to emulate write->read delay of real ram
+    //-----------------------------------------------------------------------------
+
+    assign rdata_b = ram_rdata_b;
+
+    always @ (posedge clk_b or posedge rst)
+      if (rst)
+        ram_rdata_b <= ram_array['d0];
+      else
+        ram_rdata_b <= ram_array[addr_b];
+  end
 
 endgenerate
 

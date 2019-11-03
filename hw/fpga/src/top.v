@@ -138,20 +138,28 @@ j1_prb j1_prb (
   .insn               ( j1_insn             )  // port b read data - from instruction memory
 );
 
+// infer memory for now because altera model is not supported by verilator
+`ifdef SIMULATION
+  localparam INFER = 1;
+`else
+  localparam INFER = 0;
+`endif
+
 // instruction/data ram
 sram #(
   .WIDTH              ( DATA_WIDTH          ),
   .DEPTH              ( 8192                ),
   .INFER              ( 1                   )
 ) sram     (
-  .clk                ( clk                 ),
   .rst                ( 1'b0                ),
 
+  .clk_a              ( clk                 ),
   .addr_a             ( j1_mem_addr[12:0]   ),
   .wdata_a            ( j1_dout             ),
   .write_en_a         ( j1_mem_wr           ),
   .rdata_a            (                     ),
 
+  .clk_b              ( clk                 ),
   .addr_b             ( j1_code_addr        ),
   .rdata_b            ( j1_insn             )
 );
