@@ -1,21 +1,29 @@
 forth -+
        |
-       +- doc                        Specs, datasheets, papers
+       +- doc                                  Specs, datasheets, papers
        |
-       +- hw  -+                     Hardware
+       +- hw  -+                               Hardware
        |       |
-       |       +- board                Board related files
+       |       +- board                          Board related files
        |       |
-       |       +- fpga  -+             FPGA related files
+       |       +- fpga  -+                       FPGA related files
        |                 |
-       |                 +- build        Build/implementation 
+       |                 +- build                  Build/implementation 
        |                 |
-       |                 +- inc          Include files
+       |                 +- inc                    Verilog include files
        |                 |
-       |                 +- sim          Simulation
+       |                 +- sim   -+               Simulation
+       |                 |         |
+       |                 |         +- common         Common sim scripts, etc
+       |                 |         |
+       |                 |         +- top            Top level sim
+       |                 |         |
+       |                 |         +- uart           Module-level uart sim
        |                 |
-       |                 +- src          Verilog source files
+       |                 +- src                    Verilog source files
        |
-       +- sw                         Software
+       +- sw  -+                               Software
+       |       |
+       |       +- uart_tx                        Test program for tx uart
        |
-       +- tools                      Development tools
+       +- tools                                Development tools
