@@ -28,7 +28,7 @@ module Eightb_dwn_cntr_top (
 	   end
 	   
 	   else if(count != 8'b0) begin
-	      count <= count - 1;
+	      count <= count - 8'd1;
 	   end
 	end
      end
