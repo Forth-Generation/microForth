@@ -26,32 +26,34 @@ localparam DATA_WIDTH = 16;
 // Internal signals
 //-----------------------------------------------------------------------------
 
-wire                    j1_io_rd;
-wire                    j1_io_wr;
-wire            [15:0]  j1_mem_addr;
-wire                    j1_mem_wr;
-wire  [DATA_WIDTH-1:0]  j1_dout;
-wire  [DATA_WIDTH-1:0]  j1_io_din;
-wire            [12:0]  j1_code_addr;
-wire            [15:0]  j1_insn;
+wire                    j1_io_rd            /*synthesis keep*/ ;
+wire                    j1_io_wr            /*synthesis keep*/ ;
+wire            [15:0]  j1_mem_addr         /*synthesis keep*/ ;
+wire                    j1_mem_wr           /*synthesis keep*/ ;
+wire  [DATA_WIDTH-1:0]  j1_dout             /*synthesis keep*/ ;
+wire  [DATA_WIDTH-1:0]  j1_io_din           /*synthesis keep*/ ;
+wire            [12:0]  j1_code_addr        /*synthesis keep*/ ;
+wire            [15:0]  j1_insn             /*synthesis keep*/ ;
 
-wire                    uart_rx_rd;
-wire                    uart_rx_clr_ovrflw;
-wire             [7:0]  uart_rx_rdata;
-wire                    uart_rx_sfe;
-wire                    uart_rx_d_valid;
-wire                    uart_rx_overflow;
+wire                    uart_rx_rd          /*synthesis keep*/ ;
+wire                    uart_rx_clr_ovrflw  /*synthesis keep*/ ;
+wire             [7:0]  uart_rx_rdata       /*synthesis keep*/ ;
+wire                    uart_rx_sfe         /*synthesis keep*/ ;
+wire                    uart_rx_d_valid     /*synthesis keep*/ ;
+wire                    uart_rx_overflow    /*synthesis keep*/ ;
 
-wire             [7:0]  uart_tx_wdata;
-wire                    uart_tx_wr;
-wire                    uart_tx_tbr_valid;
+wire             [7:0]  uart_tx_wdata       /*synthesis keep*/ ;
+wire                    uart_tx_wr          /*synthesis keep*/ ;
+wire                    uart_tx_tbr_valid   /*synthesis keep*/ ;
 
-reg                     rst;
-reg              [1:0]  rst_sync;
+reg                     rst                 /*synthesis keep*/ ;
+reg                     rst_n_1             /*synthesis keep*/ ;
+reg                     rst_n_2             /*synthesis keep*/ ;
+reg              [5:0]  rst_count           /*synthesis keep*/ ;
 
-wire             [7:0]  gpio_in;
-wire             [7:0]  gpio_out;
-wire             [7:0]  gpio_oe;
+wire             [7:0]  gpio_in             /*synthesis keep*/ ;
+wire             [7:0]  gpio_out            /*synthesis keep*/ ;
+wire             [7:0]  gpio_oe             /*synthesis keep*/ ;
 
 genvar                  g;
 
@@ -89,14 +91,30 @@ assign gpio_in = gpio;
 always @ (posedge clk or negedge rst_n)
   if (!rst_n)
     begin
-      rst      <= 1'b1;
-      rst_sync <= 2'b11;
+      rst       <= 1'b1;
+      rst_n_1   <= 1'b0;
+      rst_n_2   <= 1'b0;
+      rst_count <= 6'b111111;
     end
   else
     begin
-      rst_sync[1] <= 1'b0;
-      rst_sync[0] <= rst_sync[1];
-      rst         <= rst_sync[0];
+      rst_n_1 <= rst_n;
+      rst_n_2 <= rst_n_1;
+
+      if (!rst_n_2)
+        begin
+          rst       <= 1'b1;
+          rst_count <= 6'b111111;
+        end
+      else if (rst_count != 6'd0)
+        begin
+          rst       <= 1'b1;
+          rst_count <= rst_count - 6'd1;
+        end
+      else
+        begin
+          rst       <= 1'b0;
+        end
     end
 
 //-----------------------------------------------------------------------------
@@ -126,7 +144,7 @@ sram #(
   .DEPTH              ( 8192                )
 ) sram     (
   .clk                ( clk                 ),
-  .rst                ( rst                 ),
+  .rst                ( 1'b0                ),
 
   .addr_a             ( j1_mem_addr[12:0]   ),
   .wdata_a            ( j1_dout             ),
