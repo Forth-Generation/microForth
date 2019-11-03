@@ -38,7 +38,7 @@ module j1_prb #(
   stack2 #(.WIDTH(WIDTH), .DEPTH(15)) dstack(.clk(clk), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
   stack2 #(.WIDTH(WIDTH), .DEPTH(17)) rstack(.clk(clk), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
 
-  wire [16:0] minus = {1'b1, ~st0} + st1 + 1;
+  wire [16:0] minus = {1'b1, ~st0} + st1 + {{WIDTH-1{1'b0}}, 1'b1};
   wire signedless = st0[15] ^ st1[15] ? st1[15] : minus[16];
 
   always @*
