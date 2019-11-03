@@ -141,7 +141,8 @@ j1_prb j1_prb (
 // instruction/data ram
 sram #(
   .WIDTH              ( DATA_WIDTH          ),
-  .DEPTH              ( 8192                )
+  .DEPTH              ( 8192                ),
+  .INFER              ( 1                   )
 ) sram     (
   .clk                ( clk                 ),
   .rst                ( 1'b0                ),
