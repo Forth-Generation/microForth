@@ -21,8 +21,8 @@ set_output_delay -clock clk -min -fall 1 [ get_ports { gpio* uart_txd led } ]
 # signaltap access
 set_input_delay  -clock altera_reserved_tck -max -rise 5 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
 set_input_delay  -clock altera_reserved_tck -max -fall 5 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
-set_input_delay  -clock altera_reserved_tck -min -rise 1 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
-set_input_delay  -clock altera_reserved_tck -min -fall 1 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
+set_input_delay  -clock altera_reserved_tck -min -rise 2 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
+set_input_delay  -clock altera_reserved_tck -min -fall 2 [ get_ports { altera_reserved_tms altera_reserved_tdi } ]
 
 set_output_delay -clock altera_reserved_tck -max -rise 5 [ get_ports { altera_reserved_tdo } ]
 set_output_delay -clock altera_reserved_tck -max -fall 5 [ get_ports { altera_reserved_tdo } ]
