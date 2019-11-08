@@ -1,0 +1,9 @@
+80AA     //              00AA    imm         \ push GP_out data (AA)
+8030     //              0030    imm         \ push GP_out address (30)
+6043     //                      io!         \ store AA to I/O address 30
+6103     // 
+8055     //              0055    imm         \ push GP_out data (55)
+8030     //              0030    imm         \ push GP_out address (30)
+6043     //                      io!         \ store 55 to I/O address 30
+6103     // 
+0000     //              0000    ubranch     \ branch to 0000
