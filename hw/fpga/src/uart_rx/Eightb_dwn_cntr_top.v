@@ -7,6 +7,7 @@ module Eightb_dwn_cntr_top (
    output reg        CO
 );
 
+//
    reg [7:0]   count;
  	          
    always @(posedge CLOCK or posedge reset)
