@@ -47,6 +47,9 @@ my @Stk;           # Data Stack used to make instruction codes
 #      dictionary data structure     #
 ######################################
 
+#   %dict{word}   =  [ @ExecutionTuple {,@ExecutionTuple}*  ]
+#        @ExecutionTuple  =  [ \&FunctionRef, [ parameters] ]
+
 my %dict;          # word dictionary - hash of defined words/subroutines
             # Forth word             execution functions
 %dict  =  (
@@ -112,7 +115,7 @@ sub GetToken {
 
                 ### split tokens on $line into @Tokens array
         $ln      =  $line;
-        #$ln      =~ s/^\s*//;    # remove leading whitespace on line
+        $ln      =~ s/^\s*//;    # remove leading whitespace on line
         @Tokens  =  split /\s+/, $ln;
         
         if ($debug) {
@@ -141,7 +144,6 @@ sub GetToken {
 #---------------------------------#
 sub AddWord {
   my $word;
-  my ($Ntyp, $num);
   
   if ( &GetToken ) {
     $word  =  $TOKEN;
@@ -175,12 +177,7 @@ sub AddWord {
         &Execute($TOKEN);                          # execute comment type
       }
     
-      when  ($TOKEN =~  /^(?i)(0x|0d|)([0-9a-f]+)$/ ) { # number (0x/0d/hhhh)
-        $Ntyp  =  $1;
-        $Num   =  $2;
-            # if number is hex convert it to decimal
-        unless ( $Ntyp =~ m/^0D$/i ) { $Num = hex($Num) }
-        print $logfile "    << found number t($Ntyp) n($Num)\n";
+      when  ( &validNum($TOKEN) ) { # number (0xHHHH/DDDD)
         push @{$dict{$word}}, ( [ \&pushStk, [ $Num ] ] );
       }
       
@@ -189,7 +186,7 @@ sub AddWord {
           print $logfile "    $TOKEN not found in dictionary\n";
         }
         else {
-          print $logfile "    $TOKEN in dictionary\n";
+          if ($debug) { print $logfile "    $TOKEN in dictionary\n" }
           push @{$dict{$word}}, ( [ \&Execute, [ $TOKEN ] ] );
         }
       }
@@ -291,14 +288,17 @@ sub BslashComment {
 #  output file                    #
 #---------------------------------#
 sub writecode {
-  my $hnum;
-  $hnum  =  sprintf("%4.4X", $Stk[0]);
+  state $addr = 0;
+  my ($hnum,$haddr);
+  $haddr  =  sprintf("%4.4X", $addr++);
+  $hnum   =  sprintf("%4.4X", $Stk[0]);
+  
   if ($debug) {
     print $logfile "  << writecode  TOS<$hnum> >>\n";
-    shift(@Stk);
   }
   
-  print $outHEXfile "$hnum     // $line\n";
+  shift(@Stk);
+  print $outHEXfile "$hnum     // $haddr $line\n";
       #  clear line so that it will not appear as a comment
       #  on multi cell forth primitive words in hex output
   $line  =  "";
@@ -364,7 +364,9 @@ sub pushStk {
   my $int  = shift @_;
   
   unshift(@Stk, $int);   # push $int onto @Stk
-  if ($debug) { \printStk }
+  if ($debug) { &printStk }
+  
+  return 1;
   
 }  # end pushStk
 
@@ -380,11 +382,21 @@ sub validNum {
   if ($debug) {
     print $logfile "  << validNum($word) >>\n";
   }
-  if  ($word =~  /^(?i)(0x|0d|)([0-9a-f]+)$/ ) { # number (0x/0d/hhhh)
+  $Ntyp  =  "";
+  if  ($word =~  /^(?i)(0x|)([0-9a-f]+)$/ ) { # number (0xHHHH/DDDD)
     $Ntyp  =  $1;
     $Num   =  $2;
         # if number is hex convert it to decimal
-    unless ( $Ntyp =~ m/^0D$/i ) { $Num = hex($Num) }
+    if ( $Ntyp =~ m/^0x$/i   ) {
+      $Num = hex($Num);
+    }
+    elsif ( $Num !~ m/^[0-9]+$/ ) {
+      return 0;
+    }
+    
+    if ($debug) {
+       print $logfile "    << found number t($Ntyp) n($Num)\n";
+    }
     return 1;
   }
      # word was not a valid hex or decimal number
@@ -507,9 +519,6 @@ close $inFile;   #  close Forth basewords input file
     &Execute($TOKEN);
   }
   elsif  ( &validNum($TOKEN) ) { #  is number (0x/0d/hhhh) ?
-    if ($debug) {
-       print $logfile "    << found number t($Ntyp) n($Num)\n";
-    }
     &pushStk($Num);
   }
   else {
