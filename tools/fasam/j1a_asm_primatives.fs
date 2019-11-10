@@ -1,41 +1,41 @@
 \  j1a  assembler base word definitions
 
-: T          0x0000 ;
-: N          0x0100 ;
-: T+N        0x0200 ;
-: T&N        0x0300 ;
-: T|N        0x0400 ;
-: T^N        0x0500 ;
-: ~T         0x0600 ;
-: N==T       0x0700 ;
-: N<T        0x0800 ;
-: T2/        0x0900 ;
-: T2*        0x0a00 ;
-: rT         0x0b00 ;
-: N-T        0x0c00 ;
-: io[T]      0x0d00 ;
-: status     0x0e00 ;
-: Nu<T       0x0f00 ;
+: T            0000 ;
+: N            0100 ;
+: T+N          0200 ;
+: T&N          0300 ;
+: T|N          0400 ;
+: T^N          0500 ;
+: ~T           0600 ;
+: N==T         0700 ;
+: N<T          0800 ;
+: T2/          0900 ;
+: T2*          0a00 ;
+: rT           0b00 ;
+: N-T          0c00 ;
+: io[T]        0d00 ;
+: status       0e00 ;
+: Nu<T         0f00 ;
 
-: T->N       0x0010 |or| ;
-: T->R       0x0020 |or| ;
-: N->[T]     0x0030 |or| ;
-: N->io[T]   0x0040 |or| ;
-: _IORD_     0x0050 |or| ;
-: RET        0x0080 |or| ;
+: T->N         0010 |or| ;
+: T->R         0020 |or| ;
+: N->[T]       0030 |or| ;
+: N->io[T]     0040 |or| ;
+: _IORD_       0050 |or| ;
+: RET          0080 |or| ;
 
-: d-1        0x0003 |or| ;
-: d+1        0x0001 |or| ;
-: r-1        0x000c |or| ;
-: r-2        0x0008 |or| ;
-: r+1        0x0004 |or| ;
+: d-1          0003 |or| ;
+: d+1          0001 |or| ;
+: r-1          000c |or| ;
+: r-2          0008 |or| ;
+: r+1          0004 |or| ;
 
-: imm        0x8000 |or| tcode, ;
-: alu        0x6000 |or| tcode, ;
-: ubranch    0x0000 |or| tcode, ;
-: 0branch    0x2000 |or| tcode, ;
-: scall      0x4000 |or| tcode, ;
-: @imm       0x5000 |or| tcode, ;   \ fetch immediate
+: imm          8000 |or| tcode, ;
+: alu          6000 |or| tcode, ;
+: ubranch      0000 |or| tcode, ;
+: 0branch      2000 |or| tcode, ;
+: scall        4000 |or| tcode, ;
+: @imm         5000 |or| tcode, ;   \ fetch immediate
 
 
 :: noop      T                       alu ;
@@ -68,7 +68,6 @@
 :: 2*        T2*                     alu ;
 :: depth     status T->N         d+1 alu ;
 :: exit      T  RET              r-1 alu ;
-:: pexit     T  RET          d-1 r-1 alu ;  \ pop return
 :: hack      T      N->io[T]         alu ;
 
 \ Elided words

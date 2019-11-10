@@ -1,0 +1,1643 @@
+ >>OPENING File <j1a_asm_primatives.fs>
+  dictionary keys :
+    (
+    :
+    ::
+    ;
+    \
+    h#
+    tcode,
+    {
+    |or|
+----- end dictionary keys -----
+
+Read next line b<j1a_asm_primatives.fs> l<1>
+ line> \  j1a  assembler base word definitions
+{\}  {j1a}  {assembler}  {base}  {word}  {definitions}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<2>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<3>
+ line> : T            0000 ;
+{:}  {T}  {0000}  {;}  
+  << Execute(:) >>
+<< AddWord <T> >>
+  >> TOKEN<0000>
+    << found number t() n(0)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<4>
+ line> : N            0100 ;
+{:}  {N}  {0100}  {;}  
+  << Execute(:) >>
+<< AddWord <N> >>
+  >> TOKEN<0100>
+    << found number t() n(256)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<5>
+ line> : T+N          0200 ;
+{:}  {T+N}  {0200}  {;}  
+  << Execute(:) >>
+<< AddWord <T+N> >>
+  >> TOKEN<0200>
+    << found number t() n(512)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<6>
+ line> : T&N          0300 ;
+{:}  {T&N}  {0300}  {;}  
+  << Execute(:) >>
+<< AddWord <T&N> >>
+  >> TOKEN<0300>
+    << found number t() n(768)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<7>
+ line> : T|N          0400 ;
+{:}  {T|N}  {0400}  {;}  
+  << Execute(:) >>
+<< AddWord <T|N> >>
+  >> TOKEN<0400>
+    << found number t() n(1024)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<8>
+ line> : T^N          0500 ;
+{:}  {T^N}  {0500}  {;}  
+  << Execute(:) >>
+<< AddWord <T^N> >>
+  >> TOKEN<0500>
+    << found number t() n(1280)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<9>
+ line> : ~T           0600 ;
+{:}  {~T}  {0600}  {;}  
+  << Execute(:) >>
+<< AddWord <~T> >>
+  >> TOKEN<0600>
+    << found number t() n(1536)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<10>
+ line> : N==T         0700 ;
+{:}  {N==T}  {0700}  {;}  
+  << Execute(:) >>
+<< AddWord <N==T> >>
+  >> TOKEN<0700>
+    << found number t() n(1792)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<11>
+ line> : N<T          0800 ;
+{:}  {N<T}  {0800}  {;}  
+  << Execute(:) >>
+<< AddWord <N<T> >>
+  >> TOKEN<0800>
+    << found number t() n(2048)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<12>
+ line> : T2/          0900 ;
+{:}  {T2/}  {0900}  {;}  
+  << Execute(:) >>
+<< AddWord <T2/> >>
+  >> TOKEN<0900>
+    << found number t() n(2304)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<13>
+ line> : T2*          0a00 ;
+{:}  {T2*}  {0a00}  {;}  
+  << Execute(:) >>
+<< AddWord <T2*> >>
+  >> TOKEN<0a00>
+    << found number t() n(2560)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<14>
+ line> : rT           0b00 ;
+{:}  {rT}  {0b00}  {;}  
+  << Execute(:) >>
+<< AddWord <rT> >>
+  >> TOKEN<0b00>
+    << found number t() n(2816)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<15>
+ line> : N-T          0c00 ;
+{:}  {N-T}  {0c00}  {;}  
+  << Execute(:) >>
+<< AddWord <N-T> >>
+  >> TOKEN<0c00>
+    << found number t() n(3072)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<16>
+ line> : io[T]        0d00 ;
+{:}  {io[T]}  {0d00}  {;}  
+  << Execute(:) >>
+<< AddWord <io[T]> >>
+  >> TOKEN<0d00>
+    << found number t(0d) n(00)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<17>
+ line> : status       0e00 ;
+{:}  {status}  {0e00}  {;}  
+  << Execute(:) >>
+<< AddWord <status> >>
+  >> TOKEN<0e00>
+    << found number t() n(3584)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<18>
+ line> : Nu<T         0f00 ;
+{:}  {Nu<T}  {0f00}  {;}  
+  << Execute(:) >>
+<< AddWord <Nu<T> >>
+  >> TOKEN<0f00>
+    << found number t() n(3840)
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<19>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<20>
+ line> : T->N         0010 |or| ;
+{:}  {T->N}  {0010}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <T->N> >>
+  >> TOKEN<0010>
+    << found number t() n(16)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<21>
+ line> : T->R         0020 |or| ;
+{:}  {T->R}  {0020}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <T->R> >>
+  >> TOKEN<0020>
+    << found number t() n(32)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<22>
+ line> : N->[T]       0030 |or| ;
+{:}  {N->[T]}  {0030}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <N->[T]> >>
+  >> TOKEN<0030>
+    << found number t() n(48)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<23>
+ line> : N->io[T]     0040 |or| ;
+{:}  {N->io[T]}  {0040}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <N->io[T]> >>
+  >> TOKEN<0040>
+    << found number t() n(64)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<24>
+ line> : _IORD_       0050 |or| ;
+{:}  {_IORD_}  {0050}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <_IORD_> >>
+  >> TOKEN<0050>
+    << found number t() n(80)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<25>
+ line> : RET          0080 |or| ;
+{:}  {RET}  {0080}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <RET> >>
+  >> TOKEN<0080>
+    << found number t() n(128)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<26>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<27>
+ line> : d-1          0003 |or| ;
+{:}  {d-1}  {0003}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <d-1> >>
+  >> TOKEN<0003>
+    << found number t() n(3)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<28>
+ line> : d+1          0001 |or| ;
+{:}  {d+1}  {0001}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <d+1> >>
+  >> TOKEN<0001>
+    << found number t() n(1)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<29>
+ line> : r-1          000c |or| ;
+{:}  {r-1}  {000c}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r-1> >>
+  >> TOKEN<000c>
+    << found number t() n(12)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<30>
+ line> : r-2          0008 |or| ;
+{:}  {r-2}  {0008}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r-2> >>
+  >> TOKEN<0008>
+    << found number t() n(8)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<31>
+ line> : r+1          0004 |or| ;
+{:}  {r+1}  {0004}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r+1> >>
+  >> TOKEN<0004>
+    << found number t() n(4)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<32>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<33>
+ line> : imm          8000 |or| tcode, ;
+{:}  {imm}  {8000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <imm> >>
+  >> TOKEN<8000>
+    << found number t() n(32768)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<34>
+ line> : alu          6000 |or| tcode, ;
+{:}  {alu}  {6000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <alu> >>
+  >> TOKEN<6000>
+    << found number t() n(24576)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<35>
+ line> : ubranch      0000 |or| tcode, ;
+{:}  {ubranch}  {0000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <ubranch> >>
+  >> TOKEN<0000>
+    << found number t() n(0)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<36>
+ line> : 0branch      2000 |or| tcode, ;
+{:}  {0branch}  {2000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <0branch> >>
+  >> TOKEN<2000>
+    << found number t() n(8192)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<37>
+ line> : scall        4000 |or| tcode, ;
+{:}  {scall}  {4000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <scall> >>
+  >> TOKEN<4000>
+    << found number t() n(16384)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<38>
+ line> : @imm         5000 |or| tcode, ;   \ fetch immediate
+{:}  {@imm}  {5000}  {|or|}  {tcode,}  {;}  {\}  {fetch}  {immediate}  
+  << Execute(:) >>
+<< AddWord <@imm> >>
+  >> TOKEN<5000>
+    << found number t() n(20480)
+  >> TOKEN<|or|>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<39>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<40>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<41>
+ line> :: noop      T                       alu ;
+{::}  {noop}  {T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <noop> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<42>
+ line> :: +         T+N                 d-1 alu ;
+{::}  {+}  {T+N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <+> >>
+  >> TOKEN<T+N>
+    T+N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<43>
+ line> :: -         N-T                 d-1 alu ;
+{::}  {-}  {N-T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <-> >>
+  >> TOKEN<N-T>
+    N-T in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<44>
+ line> :: xor       T^N                 d-1 alu ;
+{::}  {xor}  {T^N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <xor> >>
+  >> TOKEN<T^N>
+    T^N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<45>
+ line> :: and       T&N                 d-1 alu ;
+{::}  {and}  {T&N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <and> >>
+  >> TOKEN<T&N>
+    T&N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<46>
+ line> :: or        T|N                 d-1 alu ;
+{::}  {or}  {T|N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <or> >>
+  >> TOKEN<T|N>
+    T|N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<47>
+ line> :: invert    ~T                      alu ;
+{::}  {invert}  {~T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <invert> >>
+  >> TOKEN<~T>
+    ~T in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<48>
+ line> :: =         N==T                d-1 alu ;
+{::}  {=}  {N==T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <=> >>
+  >> TOKEN<N==T>
+    N==T in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<49>
+ line> :: <         N<T                 d-1 alu ;
+{::}  {<}  {N<T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <<> >>
+  >> TOKEN<N<T>
+    N<T in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<50>
+ line> :: u<        Nu<T                d-1 alu ;
+{::}  {u<}  {Nu<T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <u<> >>
+  >> TOKEN<Nu<T>
+    Nu<T in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<51>
+ line> :: swap      N     T->N              alu ;
+{::}  {swap}  {N}  {T->N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <swap> >>
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<52>
+ line> :: dup       T     T->N          d+1 alu ;
+{::}  {dup}  {T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <dup> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<53>
+ line> :: drop      N                   d-1 alu ;
+{::}  {drop}  {N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <drop> >>
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<54>
+ line> :: over      N     T->N          d+1 alu ;
+{::}  {over}  {N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over> >>
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<55>
+ line> :: nip       T                   d-1 alu ;
+{::}  {nip}  {T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <nip> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<56>
+ line> :: >r        N     T->R      r+1 d-1 alu ;
+{::}  {>r}  {N}  {T->R}  {r+1}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <>r> >>
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<T->R>
+    T->R in dictionary
+  >> TOKEN<r+1>
+    r+1 in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<57>
+ line> :: r>        rT    T->N      r-1 d+1 alu ;
+{::}  {r>}  {rT}  {T->N}  {r-1}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <r>> >>
+  >> TOKEN<rT>
+    rT in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<r-1>
+    r-1 in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<58>
+ line> :: r@        rT    T->N          d+1 alu ;
+{::}  {r@}  {rT}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <r@> >>
+  >> TOKEN<rT>
+    rT in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<59>
+ line> :: io@       T     _IORD_            alu
+{::}  {io@}  {T}  {_IORD_}  {alu}  
+  << Execute(::) >>
+<< AddWord <io@> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<_IORD_>
+    _IORD_ in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+
+Read next line b<j1a_asm_primatives.fs> l<60>
+ line>              io[T]                   alu ;
+{io[T]}  {alu}  {;}  
+  >> TOKEN<io[T]>
+    io[T] in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<61>
+ line> :: !         
+{::}  {!}  
+  << Execute(::) >>
+<< AddWord <!> >>
+
+Read next line b<j1a_asm_primatives.fs> l<62>
+ line>              T     N->[T]        d-1 alu
+{T}  {N->[T]}  {d-1}  {alu}  
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<N->[T]>
+    N->[T] in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+
+Read next line b<j1a_asm_primatives.fs> l<63>
+ line>              N                   d-1 alu ;
+{N}  {d-1}  {alu}  {;}  
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<64>
+ line> :: io!       
+{::}  {io!}  
+  << Execute(::) >>
+<< AddWord <io!> >>
+
+Read next line b<j1a_asm_primatives.fs> l<65>
+ line>              T     N->io[T]      d-1 alu
+{T}  {N->io[T]}  {d-1}  {alu}  
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<N->io[T]>
+    N->io[T] in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+
+Read next line b<j1a_asm_primatives.fs> l<66>
+ line>              N                   d-1 alu ;
+{N}  {d-1}  {alu}  {;}  
+  >> TOKEN<N>
+    N in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<67>
+ line> :: 2/        T2/                     alu ;
+{::}  {2/}  {T2/}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2/> >>
+  >> TOKEN<T2/>
+    T2/ in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<68>
+ line> :: 2*        T2*                     alu ;
+{::}  {2*}  {T2*}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2*> >>
+  >> TOKEN<T2*>
+    T2* in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<69>
+ line> :: depth     status T->N         d+1 alu ;
+{::}  {depth}  {status}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <depth> >>
+  >> TOKEN<status>
+    status in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<70>
+ line> :: exit      T  RET              r-1 alu ;
+{::}  {exit}  {T}  {RET}  {r-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <exit> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<RET>
+    RET in dictionary
+  >> TOKEN<r-1>
+    r-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<71>
+ line> :: pexit     T  RET          d-1 r-1 alu ;
+{::}  {pexit}  {T}  {RET}  {d-1}  {r-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <pexit> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<RET>
+    RET in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<r-1>
+    r-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<72>
+ line> :: hack      T      N->io[T]         alu ;
+{::}  {hack}  {T}  {N->io[T]}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <hack> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<N->io[T]>
+    N->io[T] in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<73>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<74>
+ line> \ Elided words
+{\}  {Elided}  {words}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<75>
+ line> \ These words are supported by the hardware but are not
+{\}  {These}  {words}  {are}  {supported}  {by}  {the}  {hardware}  {but}  {are}  {not}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<76>
+ line> \ part of ANS Forth.  They are named after the word-pair
+{\}  {part}  {of}  {ANS}  {Forth.}  {They}  {are}  {named}  {after}  {the}  {word-pair}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<77>
+ line> \ that matches their effect  
+{\}  {that}  {matches}  {their}  {effect}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<78>
+ line> \ Using these elided words instead of
+{\}  {Using}  {these}  {elided}  {words}  {instead}  {of}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<79>
+ line> \ the pair saves one cycle and one instruction.
+{\}  {the}  {pair}  {saves}  {one}  {cycle}  {and}  {one}  {instruction.}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<j1a_asm_primatives.fs> l<80>
+ line> 
+
+
+Read next line b<j1a_asm_primatives.fs> l<81>
+ line> :: 2dupand   T&N   T->N          d+1 alu ;
+{::}  {2dupand}  {T&N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupand> >>
+  >> TOKEN<T&N>
+    T&N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<82>
+ line> :: 2dup<     N<T   T->N          d+1 alu ;
+{::}  {2dup<}  {N<T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup<> >>
+  >> TOKEN<N<T>
+    N<T in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<83>
+ line> :: 2dup=     N==T  T->N          d+1 alu ;
+{::}  {2dup=}  {N==T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup=> >>
+  >> TOKEN<N==T>
+    N==T in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<84>
+ line> :: 2dupor    T|N   T->N          d+1 alu ;
+{::}  {2dupor}  {T|N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupor> >>
+  >> TOKEN<T|N>
+    T|N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<85>
+ line> :: 2dup+     T+N   T->N          d+1 alu ;
+{::}  {2dup+}  {T+N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup+> >>
+  >> TOKEN<T+N>
+    T+N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<86>
+ line> :: 2dupu<    Nu<T  T->N          d+1 alu ;
+{::}  {2dupu<}  {Nu<T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupu<> >>
+  >> TOKEN<Nu<T>
+    Nu<T in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<87>
+ line> :: 2dupxor   T^N   T->N          d+1 alu ;
+{::}  {2dupxor}  {T^N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupxor> >>
+  >> TOKEN<T^N>
+    T^N in dictionary
+  >> TOKEN<T->N>
+    T->N in dictionary
+  >> TOKEN<d+1>
+    d+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<88>
+ line> :: dup>r     T     T->R      r+1     alu ;
+{::}  {dup>r}  {T}  {T->R}  {r+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <dup>r> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<T->R>
+    T->R in dictionary
+  >> TOKEN<r+1>
+    r+1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<89>
+ line> :: overand   T&N                     alu ;
+{::}  {overand}  {T&N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overand> >>
+  >> TOKEN<T&N>
+    T&N in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<90>
+ line> :: over>     N<T                     alu ;
+{::}  {over>}  {N<T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over>> >>
+  >> TOKEN<N<T>
+    N<T in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<91>
+ line> :: over=     N==T                    alu ;
+{::}  {over=}  {N==T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over=> >>
+  >> TOKEN<N==T>
+    N==T in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<92>
+ line> :: overor    T|N                     alu ;
+{::}  {overor}  {T|N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overor> >>
+  >> TOKEN<T|N>
+    T|N in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<93>
+ line> :: over+     T+N                     alu ;
+{::}  {over+}  {T+N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over+> >>
+  >> TOKEN<T+N>
+    T+N in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<94>
+ line> :: overu>    Nu<T                    alu ;
+{::}  {overu>}  {Nu<T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overu>> >>
+  >> TOKEN<Nu<T>
+    Nu<T in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<95>
+ line> :: overxor   T^N                     alu ;
+{::}  {overxor}  {T^N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overxor> >>
+  >> TOKEN<T^N>
+    T^N in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<96>
+ line> :: rdrop     T                   r-1 alu ;
+{::}  {rdrop}  {T}  {r-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <rdrop> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<r-1>
+    r-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<j1a_asm_primatives.fs> l<97>
+ line> :: tuck!     T     N->[T]        d-1 alu ;
+{::}  {tuck!}  {T}  {N->[T]}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <tuck!> >>
+  >> TOKEN<T>
+    T in dictionary
+  >> TOKEN<N->[T]>
+    N->[T] in dictionary
+  >> TOKEN<d-1>
+    d-1 in dictionary
+  >> TOKEN<alu>
+    alu in dictionary
+  >> TOKEN<;>
+  dictionary keys :
+    !
+    (
+    +
+    -
+    0branch
+    2*
+    2/
+    2dup+
+    2dup<
+    2dup=
+    2dupand
+    2dupor
+    2dupu<
+    2dupxor
+    :
+    ::
+    ;
+    <
+    =
+    >r
+    @imm
+    N
+    N->[T]
+    N->io[T]
+    N-T
+    N<T
+    N==T
+    Nu<T
+    RET
+    T
+    T&N
+    T+N
+    T->N
+    T->R
+    T2*
+    T2/
+    T^N
+    T|N
+    \
+    _IORD_
+    alu
+    and
+    d+1
+    d-1
+    depth
+    drop
+    dup
+    dup>r
+    exit
+    h#
+    hack
+    imm
+    invert
+    io!
+    io@
+    io[T]
+    nip
+    noop
+    or
+    over
+    over+
+    over=
+    over>
+    overand
+    overor
+    overu>
+    overxor
+    pexit
+    r+1
+    r-1
+    r-2
+    r>
+    r@
+    rT
+    rdrop
+    scall
+    status
+    swap
+    tcode,
+    tuck!
+    u<
+    ubranch
+    xor
+    {
+    |or|
+    ~T
+----- end dictionary keys -----
+ >>OPENING File <slowBlink.asm>
+ >>OPENING File <j1a.hex>
+
+Read next line b<slowBlink.asm> l<1>
+ line> 
+
+
+Read next line b<slowBlink.asm> l<2>
+ line>              00FF    imm         \ push GP_out data (FF)
+{00FF}  {imm}  {\}  {push}  {GP_out}  {data}  {(FF)}  
+  << validNum(00FF) >>
+    << found number t() n(255)
+  Stk :  00FF
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  00FF
+  << Execute(|or|) >>
+  Stk :  80FF
+  << Execute(tcode,) >>
+  << writecode  TOS<80FF> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<3>
+ line>              0032    imm         \ push GP_out address (32)
+{0032}  {imm}  {\}  {push}  {GP_out}  {address}  {(32)}  
+  << validNum(0032) >>
+    << found number t() n(50)
+  Stk :  0032
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  0032
+  << Execute(|or|) >>
+  Stk :  8032
+  << Execute(tcode,) >>
+  << writecode  TOS<8032> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<4>
+ line>                      io!         \ store AA to I/O address 30
+{io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>>> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  6000  0043
+  << Execute(|or|) >>
+  Stk :  6043
+  << Execute(tcode,) >>
+  << writecode  TOS<6043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  6000  0103
+  << Execute(|or|) >>
+  Stk :  6103
+  << Execute(tcode,) >>
+  << writecode  TOS<6103> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<5>
+ line>                      
+
+
+Read next line b<slowBlink.asm> l<6>
+ line>              00AA    imm         \ push GP_out data (AA)
+{00AA}  {imm}  {\}  {push}  {GP_out}  {data}  {(AA)}  
+  << validNum(00AA) >>
+    << found number t() n(170)
+  Stk :  00AA
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  00AA
+  << Execute(|or|) >>
+  Stk :  80AA
+  << Execute(tcode,) >>
+  << writecode  TOS<80AA> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<7>
+ line>              0030    imm         \ push GP_out address (30)
+{0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+  << validNum(0030) >>
+    << found number t() n(48)
+  Stk :  0030
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  0030
+  << Execute(|or|) >>
+  Stk :  8030
+  << Execute(tcode,) >>
+  << writecode  TOS<8030> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<8>
+ line>                      io!         \ store AA to I/O address 30
+{io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>>> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  6000  0043
+  << Execute(|or|) >>
+  Stk :  6043
+  << Execute(tcode,) >>
+  << writecode  TOS<6043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  6000  0103
+  << Execute(|or|) >>
+  Stk :  6103
+  << Execute(tcode,) >>
+  << writecode  TOS<6103> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<9>
+ line>                      
+
+
+Read next line b<slowBlink.asm> l<10>
+ line>              07D0    imm         \Push 0D2000 on the stack   
+{07D0}  {imm}  {\Push}  {0D2000}  {on}  {the}  {stack}  
+  << validNum(07D0) >>
+    << found number t() n(2000)
+  Stk :  07D0
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  07D0
+  << Execute(|or|) >>
+  Stk :  87D0
+  << Execute(tcode,) >>
+  << writecode  TOS<87D0> >>
+  << validNum(\Push) >>
+>>> Can not execute <\Push> not in dictionary
+  << validNum(0D2000) >>
+    << found number t(0D) n(2000)
+  Stk :  07D0
+  << validNum(on) >>
+>>> Can not execute <on> not in dictionary
+  << validNum(the) >>
+>>> Can not execute <the> not in dictionary
+  << validNum(stack) >>
+>>> Can not execute <stack> not in dictionary
+
+Read next line b<slowBlink.asm> l<11>
+ line>              0011    scall       \ call Delay
+{0011}  {scall}  {\}  {call}  {Delay}  
+  << validNum(0011) >>
+    << found number t() n(17)
+  Stk :  0011  07D0
+>>> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  4000  0011  07D0
+  << Execute(|or|) >>
+  Stk :  4011  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<4011> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<12>
+ line> 
+
+
+Read next line b<slowBlink.asm> l<13>
+ line>              0055    imm         \ push GP_out data (55)
+{0055}  {imm}  {\}  {push}  {GP_out}  {data}  {(55)}  
+  << validNum(0055) >>
+    << found number t() n(85)
+  Stk :  0055  07D0
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  0055  07D0
+  << Execute(|or|) >>
+  Stk :  8055  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<8055> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<14>
+ line>              0030    imm         \ push GP_out address (30)
+{0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+  << validNum(0030) >>
+    << found number t() n(48)
+  Stk :  0030  07D0
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  0030  07D0
+  << Execute(|or|) >>
+  Stk :  8030  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<8030> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<15>
+ line>                      io!         \ store 55 to I/O address 30
+{io!}  {\}  {store}  {55}  {to}  {I/O}  {address}  {30}  
+>>> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000  07D0
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000  07D0
+  << Execute(|or|) >>
+  Stk :  0040  07D0
+  << Execute(d-1) >>
+  Stk :  0003  0040  07D0
+  << Execute(|or|) >>
+  Stk :  0043  07D0
+  << Execute(alu) >>
+  Stk :  6000  0043  07D0
+  << Execute(|or|) >>
+  Stk :  6043  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<6043> >>
+  << Execute(N) >>
+  Stk :  0100  07D0
+  << Execute(d-1) >>
+  Stk :  0003  0100  07D0
+  << Execute(|or|) >>
+  Stk :  0103  07D0
+  << Execute(alu) >>
+  Stk :  6000  0103  07D0
+  << Execute(|or|) >>
+  Stk :  6103  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<6103> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<16>
+ line>                      
+
+
+Read next line b<slowBlink.asm> l<17>
+ line>             07D0    imm         \Push 0D2000 on the stack         
+{07D0}  {imm}  {\Push}  {0D2000}  {on}  {the}  {stack}  
+  << validNum(07D0) >>
+    << found number t() n(2000)
+  Stk :  07D0  07D0
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  87D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<87D0> >>
+  << validNum(\Push) >>
+>>> Can not execute <\Push> not in dictionary
+  << validNum(0D2000) >>
+    << found number t(0D) n(2000)
+  Stk :  07D0  07D0
+  << validNum(on) >>
+>>> Can not execute <on> not in dictionary
+  << validNum(the) >>
+>>> Can not execute <the> not in dictionary
+  << validNum(stack) >>
+>>> Can not execute <stack> not in dictionary
+
+Read next line b<slowBlink.asm> l<18>
+ line>             0011    scall       \ call Delay
+{0011}  {scall}  {\}  {call}  {Delay}  
+  << validNum(0011) >>
+    << found number t() n(17)
+  Stk :  0011  07D0  07D0
+>>> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  4000  0011  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  4011  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<4011> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<19>
+ line>              
+
+
+Read next line b<slowBlink.asm> l<20>
+ line>             0004    ubranch     \ branch to 0000
+{0004}  {ubranch}  {\}  {branch}  {to}  {0000}  
+  << validNum(0004) >>
+    << found number t() n(4)
+  Stk :  0004  07D0  07D0
+>>> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  0000  0004  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0004  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<0004> >>
+>>> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<slowBlink.asm> l<21>
+ line>   
+
+
+Read next line b<slowBlink.asm> l<22>
+ line>             0000    imm         \11 DELAY subroutine Push 0000
+{0000}  {imm}  {\11}  {DELAY}  {subroutine}  {Push}  {0000}  
+  << validNum(0000) >>
+    << found number t() n(0)
+  Stk :  0000  07D0  07D0
+>>> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  8000  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  8000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<8000> >>
+  << validNum(\11) >>
+>>> Can not execute <\11> not in dictionary
+  << validNum(DELAY) >>
+>>> Can not execute <DELAY> not in dictionary
+  << validNum(subroutine) >>
+>>> Can not execute <subroutine> not in dictionary
+  << validNum(Push) >>
+>>> Can not execute <Push> not in dictionary
+  << validNum(0000) >>
+    << found number t() n(0)
+  Stk :  0000  07D0  07D0
+
+Read next line b<slowBlink.asm> l<23>
+ line>                     ~T          
+{~T}  
+>>> TOKEN<~T>
+  << Execute(~T) >>
+  Stk :  0600  0000  07D0  07D0
+
+Read next line b<slowBlink.asm> l<24>
+ line>                      +
+{+}  
+>>> TOKEN<+>
+  << Execute(+) >>
+  << Execute(T+N) >>
+  Stk :  0200  0600  0000  07D0  07D0
+  << Execute(d-1) >>
+  Stk :  0003  0200  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0203  0600  0000  07D0  07D0
+  << Execute(alu) >>
+  Stk :  6000  0203  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  6203  0600  0000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<6203> >>
+
+Read next line b<slowBlink.asm> l<25>
+ line>                      dup
+{dup}  
+>>> TOKEN<dup>
+  << Execute(dup) >>
+  << Execute(T) >>
+  Stk :  0000  0600  0000  07D0  07D0
+  << Execute(T->N) >>
+  Stk :  0010  0000  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0010  0600  0000  07D0  07D0
+  << Execute(d+1) >>
+  Stk :  0001  0010  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0011  0600  0000  07D0  07D0
+  << Execute(alu) >>
+  Stk :  6000  0011  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  6011  0600  0000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<6011> >>
+
+Read next line b<slowBlink.asm> l<26>
+ line>             0017     0branch    \branch to skip
+{0017}  {0branch}  {\branch}  {to}  {skip}  
+  << validNum(0017) >>
+    << found number t() n(23)
+  Stk :  0017  0600  0000  07D0  07D0
+>>> TOKEN<0branch>
+  << Execute(0branch) >>
+  Stk :  2000  0017  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  2017  0600  0000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<2017> >>
+  << validNum(\branch) >>
+>>> Can not execute <\branch> not in dictionary
+  << validNum(to) >>
+>>> Can not execute <to> not in dictionary
+  << validNum(skip) >>
+>>> Can not execute <skip> not in dictionary
+
+Read next line b<slowBlink.asm> l<27>
+ line>             0011     ubranch    \ubranch to Delay
+{0011}  {ubranch}  {\ubranch}  {to}  {Delay}  
+  << validNum(0011) >>
+    << found number t() n(17)
+  Stk :  0011  0600  0000  07D0  07D0
+>>> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  0000  0011  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0011  0600  0000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<0011> >>
+  << validNum(\ubranch) >>
+>>> Can not execute <\ubranch> not in dictionary
+  << validNum(to) >>
+>>> Can not execute <to> not in dictionary
+  << validNum(Delay) >>
+>>> Can not execute <Delay> not in dictionary
+
+Read next line b<slowBlink.asm> l<28>
+ line>                      pexit      \return from sub with stack pop
+{pexit}  {\return}  {from}  {sub}  {with}  {stack}  {pop}  
+>>> TOKEN<pexit>
+  << Execute(pexit) >>
+  << Execute(T) >>
+  Stk :  0000  0600  0000  07D0  07D0
+  << Execute(RET) >>
+  Stk :  0080  0000  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0080  0600  0000  07D0  07D0
+  << Execute(d-1) >>
+  Stk :  0003  0080  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  0083  0600  0000  07D0  07D0
+  << Execute(r-1) >>
+  Stk :  000C  0083  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  008F  0600  0000  07D0  07D0
+  << Execute(alu) >>
+  Stk :  6000  008F  0600  0000  07D0  07D0
+  << Execute(|or|) >>
+  Stk :  608F  0600  0000  07D0  07D0
+  << Execute(tcode,) >>
+  << writecode  TOS<608F> >>
+  << validNum(\return) >>
+>>> Can not execute <\return> not in dictionary
+  << validNum(from) >>
+>>> Can not execute <from> not in dictionary
+  << validNum(sub) >>
+>>> Can not execute <sub> not in dictionary
+  << validNum(with) >>
+>>> Can not execute <with> not in dictionary
+  << validNum(stack) >>
+>>> Can not execute <stack> not in dictionary
+  << validNum(pop) >>
+>>> Can not execute <pop> not in dictionary
