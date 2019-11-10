@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 use Getopt::Std;
 use feature "switch";
+use feature "state";
 
 #   Program to read a Forth basewords file that has
 #   Forth code to generate j1a assembly instructions

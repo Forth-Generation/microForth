@@ -1,0 +1,24 @@
+80FF     // 0000             0x00FF    imm         \ push GP_out data (FF)
+8032     // 0001             0x0032    imm         \ push GP_out address (32)
+6043     // 0002                       io!         \ store AA to I/O address 30
+6103     // 0003 
+80AA     // 0004             0x00AA    imm         \ push GP_out data (AA)
+8030     // 0005             0x0030    imm         \ push GP_out address (30)
+6043     // 0006                       io!         \ store AA to I/O address 30
+6103     // 0007 
+87D0     // 0008             0x07D0    imm         \ Push 0d2000 on the stack   
+4011     // 0009             0x0011    scall       \ call Delay
+8055     // 000A             0x0055    imm         \ push GP_out data (55)
+8030     // 000B             0x0030    imm         \ push GP_out address (30)
+6043     // 000C                       io!         \ store 55 to I/O address 30
+6103     // 000D 
+87D0     // 000E             0x07D0    imm         \ Push 0D2000 on the stack         
+4011     // 000F             0x0011    scall       \ call Delay
+0004     // 0010             0x0004    ubranch     \ branch to 0004
+8000     // 0011             0x0000    imm         \ DELAY subroutine Push 0000
+6600     // 0012                       invert          
+6203     // 0013                       +
+6011     // 0014                       dup
+2017     // 0015             0x0017    0branch     \ branch to skip
+0011     // 0016             0x0011    ubranch     \ ubranch to Delay
+608F     // 0017                       pexit       \ return from sub with stack pop
