@@ -20,7 +20,7 @@
             0x0004    ubranch     \ branch to 0004
   
             0x0000    imm         \ DELAY subroutine Push 0000
-                      ~T          
+                      invert          
                       +
                       dup
             0x0017    0branch     \ branch to skip
