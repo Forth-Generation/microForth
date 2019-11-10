@@ -72,7 +72,7 @@ UART_Rcvr_top uart_rcvr_top (
   .Rx_raw             ( uart_rxd            ),
   .Rd_en              ( uart_rx_rd          ),
   .clr_ovrflw         ( uart_rx_clr_ovrflw  ),
-  .out                ( uart_rx_rdata       ),
+  .rx_data_out        ( uart_rx_rdata       ),
   .SFE                ( uart_rx_sfe         ),
   .d_valid            ( uart_rx_d_valid     ),
   .overflow           ( uart_rx_overflow    )

@@ -8,7 +8,7 @@ module UART_Rcvr_top (
          
    output wire       d_valid,
    output wire       overflow,
-   output wire [7:0] out,
+   output wire [7:0] rx_data_out,
    output wire       SFE
 );
    
@@ -73,7 +73,7 @@ Eightb_shft_register_top Shft_reg ( //IN
 				    .Rd_en (Rd_en),
 				    .clr_ovrflw (clr_ovrflw),
 				    //OUT
-				    .out (out),
+				    .rx_data_out (rx_data_out),
 				    .d_valid (d_valid),
 				    .overflow (overflow)
 				    );
