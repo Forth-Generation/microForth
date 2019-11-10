@@ -10,14 +10,14 @@ module j1_prb #(
 
   output wire io_rd,
   output wire io_wr,
-  output wire [15:0] mem_addr,     // RAM portB DATA write address (prb)
+  output wire [15:0] mem_addr,     // DATA write address (prb)
   output wire mem_wr,
-  output wire [WIDTH-1:0] dout,    // portB write DATA (prb)
+  output wire [WIDTH-1:0] dout,    // write DATA (prb)
 
   input  wire [WIDTH-1:0] io_din,
 
-  output wire [12:0] code_addr,    // RAM address port A - next Instruction (prb)
-  input  wire [15:0] insn);        // port A DataOut - current instruction word (prb)
+  output wire [12:0] code_addr,    // next Instruction (prb)
+  input  wire [15:0] insn);        // current instruction word (prb)
 
   reg [3:0] dsp, dspN;             // data stack pointer
   reg [WIDTH-1:0] st0, st0N;       // top of data stack
@@ -29,8 +29,8 @@ module j1_prb #(
   wire [WIDTH-1:0] rstkD;          // return stack write value
   reg reboot = 1;
 
-  assign mem_addr = st0[15:0];     // RAM address port B - DATA (prb)
-  assign code_addr = pcN;          // RAM address port A - next Instruction (prb)
+  assign mem_addr = st0[15:0];     // DATA (prb)
+  assign code_addr = pcN;          // next Instruction (prb)
 
   // The D and R stacks
   wire [WIDTH-1:0] st1, rst0;      // st1 is N data out (prb)
