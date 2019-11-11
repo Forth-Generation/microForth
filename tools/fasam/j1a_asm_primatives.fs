@@ -68,7 +68,7 @@
 :: 2*        T2*                     alu ;
 :: depth     status T->N         d+1 alu ;
 :: exit      T  RET              r-1 alu ;
-:: pexit     T  RET          d-1 r-1 alu ;  \ pop return
+:: pexit     N  RET          d-1 r-1 alu ;  \ pop return
 :: hack      T      N->io[T]         alu ;
 
 \ Elided words

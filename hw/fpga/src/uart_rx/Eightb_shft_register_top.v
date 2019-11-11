@@ -27,7 +27,7 @@ module Eightb_shft_register_top (
 	     if(shift) begin
           buffer_reg <= {Rx,buffer_reg[7:1]};   //Shift Rx data into buffer reg
 	       end	 
-	     if(load_buffer && Rd_en) begin
+	     if(load_buffer) begin
           rx_data_out <= buffer_reg;	  
 	     end
 	  end	

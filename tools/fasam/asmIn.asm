@@ -1,1 +1,1 @@
-../../sw/slowBlink/slowBlink.asm
+../../sw/uart_tx2/uart_tx2.asm

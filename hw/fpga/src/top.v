@@ -187,8 +187,7 @@ csr csr1 (
   .gpio_oe            ( gpio_oe             )
 );
    
-   assign uart_rx_rd = 1'b1; //enable rx read
-   assign uart_tx_wr = 1'b1; //enable tx write
+
    
 // recieve uart
 UART_Rcvr_top uart_rcvr_top (
@@ -197,7 +196,7 @@ UART_Rcvr_top uart_rcvr_top (
   .Rx_raw             ( uart_rxd            ),
   .Rd_en              ( uart_rx_rd          ),
   .clr_ovrflw         ( uart_rx_clr_ovrflw  ),
-  .rx_data_out                ( uart_rx_rdata       ),
+  .rx_data_out        ( uart_rx_rdata       ),
   .SFE                ( uart_rx_sfe         ),
   .d_valid            ( uart_rx_d_valid     ),
   .overflow           ( uart_rx_overflow    )

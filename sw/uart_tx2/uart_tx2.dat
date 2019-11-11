@@ -1,22 +1,32 @@
-//  write AA then 55 to GPIO output reg
-
-80AA               // 00 Push UART_TX_DATA data    [AA]
-8000               // 01 Push UART_TX_DATA address [0000]
-6043               // 02 IO_WR [AA] to UART_TX_DATA reg, Pop stack (address)
-6003               // 03 Pop stack (data)
-8020               // 04 Push delay (32) on stack
-400D               // 05 Call DELAY
-80CC               // 06 Push UART_TX_DATA data    [CC]
-8000               // 07 Push UART_TX_DATA address [0000]
-6043               // 08 IO_WR [55] to UART_TX_DATA reg, Pop stack
-6003               // 09 Pop stack
-8020               // 0A Push delay (32) on stack
-400D               // 0B Call DELAY
-0000               // 0C unconditional branch (ubranch) to 0000
-8000               // 0D DELAY subroutine Push 0000
-6600               // 0E ~T
-6203               // 0F  +
-6011               // 10 dup
-2013               // 11 obranch to SKIP
-000D               // 12 ubranch to DELAY
-618F               // 13 pexit  -  return from sub with stack pop
+80FF     // 0000             0x00FF    imm         \ push GP_out data (FF)
+8032     // 0001             0x0032    imm         \ push GP_out address (32)
+6043     // 0002                       io!         \ store AA to I/O address 30
+6103     // 0003 
+80FF     // 0004             0x00FF    imm         \ push GP_out data (FF)
+8030     // 0005             0x0030    imm         \ push GP_out address (30)
+6043     // 0006                       io!         \ store FF to I/O address 30
+6103     // 0007 
+8000     // 0008             0x0000    imm         \ push GP_out data (00)
+8030     // 0009             0x0030    imm         \ push GP_out address (30)
+6043     // 000A                       io!         \ store 00 to I/O address 30 
+6103     // 000B 
+80AA     // 000C             0x00AA    imm         \ push UART_TX_DATA data (AA)
+8000     // 000D             0x0000    imm         \ push UART_TX_DATA address (00)
+6043     // 000E                       io!         \ store AA to I/O address 30
+6103     // 000F 
+8014     // 0010              20        imm          \ push 20
+4019     // 0011             0x0019    scall        \ call DELAY       
+80CC     // 0012             0x00CC    imm         \ push UART_TX_DATA data (CC)
+8000     // 0013             0x0000    imm         \ push UART_TX_DATA address (00)
+6043     // 0014                       io!         \ store AA to I/O address 30
+6103     // 0015 
+8014     // 0016             20        imm          \ push 20
+4019     // 0017             0x0019    scall        \ call DELAY
+0004     // 0018             0x0004    ubranch     \ branch to 0004
+8000     // 0019             0x0000    imm         \ DELAY subroutine Push 0000
+6600     // 001A                       invert          
+6203     // 001B                       +
+6011     // 001C                       dup
+201F     // 001D             0x001F    0branch     \ branch to skip
+0019     // 001E             0x0019    ubranch     \ ubranch to DELAY
+618F     // 001F                       pexit       \ return from sub with stack pop
