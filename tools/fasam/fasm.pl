@@ -105,8 +105,18 @@ sub GetLine {
 
     $line  =~ s/\x0D?\x0A/\n/;   # allow files to have LF or CRLF
     chomp $line;
-    if ( $line =~ /^\s*$/  ) { next RDLINE }  # flush blank line
-    if ( $line =~ /^\s*\\/ ) { next RDLINE }  # flush comment line
+    if ( $line =~ /^\s*$/  ) {
+      if ( $ASMpass == 2 ) {
+        print $outHEXfile "         //      $line\n";
+      }
+      next RDLINE;  # flush blank line
+    }
+    if ( $line =~ /^\s*\\/ ) {
+      if ( $ASMpass == 2 ) {
+        print $outHEXfile "         //      $line\n";
+      }
+      next RDLINE;  # flush comment line
+    }
     
     if ($debug) {
       print $logfile "\nReadGL next line b<$inFileName> l<$lnum>\n line> $line\n";
@@ -378,6 +388,33 @@ sub printdict {
 
 
 #---------------------------------#
+#         printlabsymtab          #
+# writes label symbol table       #
+# to logfile                      #
+#---------------------------------#
+sub printlabsymtab {
+my ($ln,$ad,$used,$i);
+  
+  print $logfile "\n  Label Symbol Table :\n";
+  for my $word ( sort keys(%LabSymTab) ) {
+    $ln  =  $LabSymTab{$word}[0];
+    $ad  =  $LabSymTab{$word}[1];
+    $ad  =  sprintf("%4.4X", $ad);
+    if ( defined($LabSymTab{$word}[2]) ) {
+      for ($i=2; $i<scalar(@{$LabSymTab{$word}}); $i++) {
+        $used  .= "$LabSymTab{$word}[$i], ";
+      }
+      chop $used; chop $used;  # remove trailing ', ' from $used
+    }
+    print $logfile "    $word  a<$ad> d<$ln> u<$used>\n";
+    $used  =  "";
+  }
+  print $logfile "----- end  Label Symbol Table -----\n\n";
+  return 1;
+}  # end printlabsymtab
+
+
+#---------------------------------#
 #         printStk                #
 # writes values in Stk to logfile #
 #---------------------------------#
@@ -578,88 +615,124 @@ $ASMpass  = 1;     # initalize Assembler to pass 1
  
   PARSEASMTOKENS: while (&GetLine) {
 
-  if ($debug) {  print $logfile ">a> TOKEN1<$TOKEN> addr<$addr>\n"}
+    if ($debug) {  print $logfile ">a> TOKEN1<$TOKEN> addr<$addr>\n" }
 
-  if ( ($TOKEN ne "") && ( $ASMpass == 1) ) {
-          #  label on line
-    if ($debug) { print $logfile " >> found label <$TOKEN> on line<$lnum>\n"}
-    if ( $TOKEN =~ /^%\w+$/ ) { # check for valid label
-    
-            #  valid label on line
-      if ( exists($LabSymTab{$TOKEN}) ) {
-               # label exists in Label Symbol Table
-        if ( defined($LabSymTab{$TOKEN}[0]) ) {
-                 # label previously defined in Label Symbol Table
-          print $logfile "*** label<$TOKEN> previously defined on ";
-          print $logfile "line<$LabSymTab{$TOKEN}[0]>\n";
-          next PARSEASMTOKENS;
-        }
-               # put define line and Memory Address in Table
+    if ( ($TOKEN ne "") && ( $ASMpass == 1) ) {  # check for label/constant pass1
+            #  label on line
+      if ($debug) { print $logfile " >> found label/constant <$TOKEN> on line<$lnum>\n"}
+      
+      if ( $TOKEN =~ /^%\w+$/ ) { # check for valid label
+      
+              #  valid label on line
+        if ( exists($LabSymTab{$TOKEN}) ) {
+                 # label exists in Label Symbol Table
+          if ( defined($LabSymTab{$TOKEN}[0]) ) {
+                   # label previously defined in Label Symbol Table
+            print $logfile "*** label<$TOKEN> previously defined on ";
+            print $logfile "line<$LabSymTab{$TOKEN}[0]>\n";
+            next PARSEASMTOKENS;
+          }
+                 # put define line and Memory Address in Table
           $LabSymTab{$TOKEN}[0]  =  $lnum;
           $LabSymTab{$TOKEN}[1]  =  $addr;
           if ($debug) {
             print $logfile " >> label <$TOKEN> used before defined\n";
             print $logfile " >>   add DefinedLine<$lnum> address<$addr>\n";
           }
-      }
-      else {
-               # create Table entry for lable with defined line# and addr
-        $LabSymTab{$TOKEN}  =  [ $lnum, $addr ];
-        if ($debug) {
-          print $logfile " >> label <$TOKEN> added to SymTable l<$lnum> a<$addr>\n";
         }
+        else {
+                 # create Table entry for lable with defined line# and addr
+          $LabSymTab{$TOKEN}  =  [ $lnum, $addr ];
+          if ($debug) {
+            print $logfile " >> label <$TOKEN> added to SymTable l<$lnum> a<$addr>\n";
+          }
+        }
+      }  # end check for valid label
+      
+      elsif ( $TOKEN =~ /^\$\w+$/ ) { # check for valid constant
+      
+              #  valid constant on line
+        if ( exists($LabSymTab{$TOKEN}) ) {
+               # constant exists in Label Symbol Table
+                 # constant previously defined in Label Symbol Table
+          print $logfile "*** constant<$TOKEN> previously defined on ";
+          print $logfile "line<$LabSymTab{$TOKEN}[0]>\n";
+          next PARSEASMTOKENS;
+        }
+               # put define line and value in Table
+        unless ( scalar(@Tokens) ) {
+          print $logfile "*** constant<$TOKEN> on line<$lnum> has no value\n";
+          next PARSEASMTOKENS;
+        }
+        
+        $j  =  shift(@Tokens);
+        unless ( &validNum($j) ) {
+          print $logfile "    *****  invalid value<$j> for constant <$TOKEN>\n";
+          next PARSEASMTOKENS;
+        }
+        
+        $LabSymTab{$TOKEN}  =  [ $lnum, $Num ];
+        if ($debug) {
+            print $logfile " >> constant <$TOKEN> added to SymTable l<$lnum> v<$Num>\n";
+        }
+      }  # end check for valid constant
+      
+      else {
+             # label/constant had invalid syntax
+        print $logfile "    *****  invalid syntax for label/constant <$TOKEN>\n";
+        next PARSEASMTOKENS;
       }
-    }
-    else {
-           # label had invalid syntax
-      print $logfile "    *****  invalid syntax for label <$TOKEN>\n";
+    }  # end check for label/constant
+    
+    elsif ( ($TOKEN =~ /^\$\w+$/) && ( $ASMpass == 2) ) {  # constant pass2
+      print $outHEXfile "         //      $line\n";
       next PARSEASMTOKENS;
     }
-  }
 
-  while (scalar(@Tokens)) {
-    $TOKEN  =  shift(@Tokens);
-    
-    if ( exists($dict{$TOKEN}) ) {
-            # check for TOKEN defined in dictionary
-      if ($debug) { print $logfile ">a> TOKEN<$TOKEN>\n" }
+    while (scalar(@Tokens)) {
+      $TOKEN  =  shift(@Tokens);
       
-      &Execute($TOKEN);
-    }
-    
-    elsif  ( &validNum($TOKEN) ) {
-            #  number is valud(0xHHHH/DDDD)
-      &pushStk($Num);
-    }
-    
-    elsif  ( exists($LabSymTab{$TOKEN}) ) {
-            #  label exists in Label Symbol Table
-      $Laddr  =  $LabSymTab{$TOKEN}[1];
-      &pushStk($Laddr);
-      if ( $ASMpass == 1 ) {
-        push ( @{$LabSymTab{$TOKEN}}, $lnum );  # add lnum to used line numbers
+      if ( exists($dict{$TOKEN}) ) {
+              # check for TOKEN defined in dictionary
+        if ($debug) { print $logfile ">a> TOKEN<$TOKEN>\n" }
+        
+        &Execute($TOKEN);
       }
-    }
-    
-    elsif ( ($TOKEN =~ /^%\w+$/) && ($ASMpass == 1) ) {
-            #  undefined label being used as constant
-            #  put label in Label Symbol Table with
-            #  0000 addr value, undef defined line number
-            #  and lnum as used line number
-            
-      $LabSymTab{$TOKEN}  =  [ undef , hex("0x0000"), $lnum ];
-      $Laddr  =  $LabSymTab{$TOKEN}[1];
-      &pushStk($Laddr);
-    }
-    
-    else {
-      print $logfile ">a> *****Can not execute <$TOKEN> not in dictionary ";
-      print $logfile "    or Symbol Tables\n";
-    }
-  }  # end while scalar(@Tokens)
+      
+      elsif  ( &validNum($TOKEN) ) {
+              #  number is valud(0xHHHH/DDDD)
+        &pushStk($Num);
+      }
+      
+      elsif  ( exists($LabSymTab{$TOKEN}) ) {
+              #  label exists in Label Symbol Table
+        $Laddr  =  $LabSymTab{$TOKEN}[1];
+        &pushStk($Laddr);
+        if ( $ASMpass == 1 ) {
+          push ( @{$LabSymTab{$TOKEN}}, $lnum );  # add lnum to used line numbers
+        }
+      }
+      
+      elsif ( ($TOKEN =~ /^%\w+$/) && ($ASMpass == 1) ) {
+              #  undefined label being used as constant
+              #  put label in Label Symbol Table with
+              #  0000 addr value, undef defined line number
+              #  and lnum as used line number
+              
+        $LabSymTab{$TOKEN}  =  [ undef , hex("0x0000"), $lnum ];
+        $Laddr  =  $LabSymTab{$TOKEN}[1];
+        &pushStk($Laddr);
+      }
+      
+      else {
+        print $logfile ">a> *****Can not execute <$TOKEN> not in dictionary ";
+        print $logfile "    or Symbol Tables\n";
+      }
+    }  # end while scalar(@Tokens)
   #
   } # end PARSEASMTOKENS
   
+  if ( ($ASMpass == 1) && ($debug) ) { &printlabsymtab }
   $ASMpass++;
   close $inFile;
 }

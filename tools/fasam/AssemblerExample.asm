@@ -1,4 +1,7 @@
 
+$mSecDly       500                \ milliseconds Delay value for Big Delay
+$mSecCnt      2666                \ milliseconds Count value for Small Delay
+
             0x00FF    imm         \ push GP_out data (FF)
             0x0032    imm         \ push GP_out address (32)
                       io!         \ store AA to I/O address 30
@@ -14,7 +17,7 @@
             0x0030    imm         \ push GP_out address (30)
                       io!         \ store 55 to I/O address 30
                      
-               500    imm         \ Push 0D500 on the stack
+            $mSecDly  imm         \ Push $mSecDly on the stack
             %BigDly   scall       \ call %BigDly
              
             %LoopStrt ubranch     \ branch to %LoopStrt
@@ -32,7 +35,7 @@
                       +
                       dup
             
-              2666    imm         \ push 0D2666 (1 millisecond)
+            $mSecCnt  imm         \ push 0D2666 (1 millisecond)
             %SmallDly scall       \ call %SmallDly
             %RetBD    0branch     \ branch to %RetBD
             %BigDly   ubranch     \ ubranch to %BigDly
