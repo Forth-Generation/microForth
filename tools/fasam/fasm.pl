@@ -33,15 +33,19 @@ my ($i,$j,$k);
 
 my $line;          # current input line from inFile
 my $lnum;          # current input line number
-my $cmnt;          # '\' comment on current asm file input line
+
+my $addr = 0;      # memory address to be written next
+my $Laddr;         # address of Label
 
 my $TOKEN;         # the current Token
 my @Tokens;        # Array of tokens on current line
 my $TokIndx;       # Index of current token
 
-my $Ntyp = "";     # Number Type of immediate values [0d, 0x, (''=hex)]
+my $Ntyp = "";     # Number Type of immediate values [0x, (''=dec)]
 my $Num  = 0;      # decimal value of immediate number
 my @Stk;           # Data Stack used to make instruction codes
+
+my $ASMpass = 1;   # Assembler pass number
 
 
 ######################################
@@ -66,24 +70,65 @@ my %dict;          # word dictionary - hash of defined words/subroutines
 );
 
 
-my %OPdict;          # word dictionary - hash of defined words/subroutines
-            # pseudo OP             execution functions
-%OPdict =  (
-              ':'            => [  [ \&AddWord, [ ] ]         ],
-              ';'            => [  [ \&notImplemented, [ ] ]  ],
-              '::'           => [  [ \&AddWord, [ ] ]  ],
-              '('            => [  [ \&LparenComment, [ ] ]   ],
-              '{'            => [  [ \&LbraceComment, [ ] ]   ],
-              '\\'           => [  [ \&BslashComment, [ ] ]   ],
-              'h#'           => [  [ \&notImplemented, [ ] ]  ],
-              'tcode,'       => [  [ \&writecode, [ ] ]       ],
-              '|or|'         => [  [ \&orFunction, [ ] ]    ],
-);
+######################################
+#      Symbol Table Hashes           #
+######################################
+
+#
+#  Label Symbol Table
+#    %LabSymTab{Label}  =  [ $DefinedLineNumber, $addr {, $usedaddr}*n ]
+my %LabSymTab;   # Symbol table hash for %labels
+                 # All label names begin with a '%'
+%LabSymTab =  (
+    #        '%LabelName'   =>   [ $DefinedLineNum, $addr {, $UsedLineNum}*n ]
+              );
 
 
 ######################################
 #             subroutines            #
 ######################################
+
+
+#---------------------------------#
+#           GetLine               #
+#  read next line from inFile     #
+#  flush blank and comment lines  #
+#  split line into @Tokens        #
+#  shift first value into $TOKEN  #
+#  return 1 if token written      #
+#  return 0 if no token(file done)#
+#---------------------------------#
+sub GetLine {
+  
+  RDLINE: while ($line = <$inFile>) {  # read next line
+    $lnum++;
+
+    $line  =~ s/\x0D?\x0A/\n/;   # allow files to have LF or CRLF
+    chomp $line;
+    if ( $line =~ /^\s*$/  ) { next RDLINE }  # flush blank line
+    if ( $line =~ /^\s*\\/ ) { next RDLINE }  # flush comment line
+    
+    if ($debug) {
+      print $logfile "\nReadGL next line b<$inFileName> l<$lnum>\n line> $line\n";
+    }
+
+            ### split tokens on $line into @Tokens array
+    @Tokens  =  split /\s+/, $line;
+    
+    if ($debug) {
+      for my $tok ( @Tokens ) { print $logfile "{$tok}  " }
+      print $logfile "\n";
+    }
+
+    $TOKEN  =  shift(@Tokens);   # write token to $TOKEN
+    return 1;                    # found token
+  }  #  end read next line
+  
+      # found EOF
+  $TOKEN = "";
+  return 0;
+  
+}  # end GetLine
 
 
 #---------------------------------#
@@ -209,6 +254,7 @@ sub AddWord {
 sub Execute {
   my $word  = shift @_;
   my $eXfuncRef;       # reference to Execution function
+  my $fcnt = 0;
   
   if ($debug) {
     print $logfile "  << Execute($word) >>\n";
@@ -218,9 +264,10 @@ sub Execute {
     @_  =  @{$tref->[1]};        # array of parameters
     $eXfuncRef  =  $tref->[0];  # execution function reference
     unless ( &{$eXfuncRef} ) {
-      print $logfile "*** encountered error in Execute<$TOKEN>\n";
+      print $logfile "*** encountered error in Execute<$word> fcnt<$fcnt>\n";
       return 0;
     }
+    $fcnt++;  # increment function call count
   }
   return 1;
 }  # end Execute
@@ -289,7 +336,6 @@ sub BslashComment {
 #  output file                    #
 #---------------------------------#
 sub writecode {
-  state $addr = 0;
   my ($hnum,$haddr);
   $haddr  =  sprintf("%4.4X", $addr++);
   $hnum   =  sprintf("%4.4X", $Stk[0]);
@@ -298,11 +344,20 @@ sub writecode {
     print $logfile "  << writecode  TOS<$hnum> >>\n";
   }
   
+  unless ( exists($Stk[0]) ) {
+    print "*** Stack underflow in writecode\n";
+    if ($debug) { print "*** Stack underflow in writecode\n" }
+    return 0;
+  }
   shift(@Stk);
-  print $outHEXfile "$hnum     // $haddr $line\n";
-      #  clear line so that it will not appear as a comment
-      #  on multi cell forth primitive words in hex output
-  $line  =  "";
+  
+       # Write to output file on Assembler Pass 2
+  if ( $ASMpass == 2 ) {
+    print $outHEXfile "$hnum     // $haddr $line\n";
+        #  clear line so that it will not appear as a comment
+        #  on multi cell forth primitive words in hex output
+    $line  =  "";
+  }
   return 1;
 }  # end writecode
 
@@ -347,6 +402,7 @@ sub orFunction {
   
   unless ( exists($Stk[0]) && exists($Stk[1]) ) {
     print "*** Stack underflow in or\n";
+    if ($debug) { print $logfile "*** Stack underflow in or\n" }
     return 0;
   }
   else {
@@ -458,9 +514,6 @@ if ($opt_o) { # open output if specified
 else  { # otherwise write hex output to j1a.hex
   $hexOutFileName = "j1a.hex";
 }
-     # open Perl output File
-open ($outPERLfile, ">", $hexOutFileName)  or die  "$hexOutFileName : $! \n";
-
 
 if ($opt_d) { $debug = 1 }
 if ($opt_h) {print $invokemessage; exit(1);}
@@ -481,11 +534,11 @@ $TOKEN   =  "";   # initialize $TOKEN
 PARSEBASETOKENS: while (&GetToken) {
     
   if ( exists($dict{$TOKEN}) ) {   # check for TOKEN defined in dictionary
-        #print $logfile ">>> TOKEN<$TOKEN>\n";
+        #print $logfile ">b> TOKEN<$TOKEN>\n";
     &Execute($TOKEN);
   }
   else {
-    print $logfile ">>> Can not execute <$TOKEN> not in dictionary\n";
+    print $logfile ">b> Can not execute <$TOKEN> not in dictionary\n";
   }
   
 } # end PARSEBASETOKENS
@@ -496,39 +549,121 @@ close $inFile;   #  close Forth basewords input file
 
 
 
-    # read the asm source file and
-    # create the asm hex output file
+  # read the asm source file and
+  # create the asm hex output file
+
+   # open asm input File
+$inFileName  =  $asmInFileName;  # GetToken reads from asm input file
+open ($inFile, "<", $asmInFileName)  or die  "$asmInFileName : $! \n";
+print $logfile " >>OPENING File <$asmInFileName>\n";
+
+   # open asm hex output File
+open ($outHEXfile, ">", $hexOutFileName)  or die  "$hexOutFileName : $! \n";
+print $logfile " >>OPENING File <$hexOutFileName>\n";
+
+
+$ASMpass  = 1;     # initalize Assembler to pass 1
+ 
+ while ( $ASMpass < 3 ) {
+  $lnum     =  0;
+  $addr     =  0;
+  $TOKEN    =  "";   # initialize $TOKEN
+  @Tokens   =  ();   # initialize @Tokens
 
      # open asm input File
   open ($inFile, "<", $asmInFileName)  or die  "$asmInFileName : $! \n";
   print $logfile " >>OPENING File <$asmInFileName>\n";
   
-     # open asm hex output File
-  open ($outHEXfile, ">", $hexOutFileName)  or die  "$hexOutFileName : $! \n";
-  print $logfile " >>OPENING File <$hexOutFileName>\n";
-  
-  $inFileName  =  $asmInFileName;  # GetToken reads from asm input file
+ if ($debug) { print $logfile "\n########## Assembler pass <$ASMpass>\n\n"}
+ 
+  PARSEASMTOKENS: while (&GetLine) {
 
- $lnum    =  0;
- $TOKEN   =  "";   # initialize $TOKEN
- @Tokens  =  ();   # initialize @Tokens
- PARSEASMTOKENS: while (&GetToken) {
+  if ($debug) {  print $logfile ">a> TOKEN1<$TOKEN> addr<$addr>\n"}
 
-  if ( exists($dict{$TOKEN}) ) {   # check for TOKEN defined in dictionary
-    if ($debug) { print $logfile ">>> TOKEN<$TOKEN>\n" }
+  if ( ($TOKEN ne "") && ( $ASMpass == 1) ) {
+          #  label on line
+    if ($debug) { print $logfile " >> found label <$TOKEN> on line<$lnum>\n"}
+    if ( $TOKEN =~ /^%\w+$/ ) { # check for valid label
     
-    &Execute($TOKEN);
+            #  valid label on line
+      if ( exists($LabSymTab{$TOKEN}) ) {
+               # label exists in Label Symbol Table
+        if ( defined($LabSymTab{$TOKEN}[0]) ) {
+                 # label previously defined in Label Symbol Table
+          print $logfile "*** label<$TOKEN> previously defined on ";
+          print $logfile "line<$LabSymTab{$TOKEN}[0]>\n";
+          next PARSEASMTOKENS;
+        }
+               # put define line and Memory Address in Table
+          $LabSymTab{$TOKEN}[0]  =  $lnum;
+          $LabSymTab{$TOKEN}[1]  =  $addr;
+          if ($debug) {
+            print $logfile " >> label <$TOKEN> used before defined\n";
+            print $logfile " >>   add DefinedLine<$lnum> address<$addr>\n";
+          }
+      }
+      else {
+               # create Table entry for lable with defined line# and addr
+        $LabSymTab{$TOKEN}  =  [ $lnum, $addr ];
+        if ($debug) {
+          print $logfile " >> label <$TOKEN> added to SymTable l<$lnum> a<$addr>\n";
+        }
+      }
+    }
+    else {
+           # label had invalid syntax
+      print $logfile "    *****  invalid syntax for label <$TOKEN>\n";
+      next PARSEASMTOKENS;
+    }
   }
-  elsif  ( &validNum($TOKEN) ) { #  is number (0x/0d/hhhh) ?
-    &pushStk($Num);
-  }
-  else {
-    print $logfile ">>> Can not execute <$TOKEN> not in dictionary\n";
-  }
-  #
-} # end PARSEASMTOKENS
 
-close $inFile;
-unless ($outPERLfile eq "STDOUT") { close $outPERLfile }
+  while (scalar(@Tokens)) {
+    $TOKEN  =  shift(@Tokens);
+    
+    if ( exists($dict{$TOKEN}) ) {
+            # check for TOKEN defined in dictionary
+      if ($debug) { print $logfile ">a> TOKEN<$TOKEN>\n" }
+      
+      &Execute($TOKEN);
+    }
+    
+    elsif  ( &validNum($TOKEN) ) {
+            #  number is valud(0xHHHH/DDDD)
+      &pushStk($Num);
+    }
+    
+    elsif  ( exists($LabSymTab{$TOKEN}) ) {
+            #  label exists in Label Symbol Table
+      $Laddr  =  $LabSymTab{$TOKEN}[1];
+      &pushStk($Laddr);
+      if ( $ASMpass == 1 ) {
+        push ( @{$LabSymTab{$TOKEN}}, $lnum );  # add lnum to used line numbers
+      }
+    }
+    
+    elsif ( ($TOKEN =~ /^%\w+$/) && ($ASMpass == 1) ) {
+            #  undefined label being used as constant
+            #  put label in Label Symbol Table with
+            #  0000 addr value, undef defined line number
+            #  and lnum as used line number
+            
+      $LabSymTab{$TOKEN}  =  [ undef , hex("0x0000"), $lnum ];
+      $Laddr  =  $LabSymTab{$TOKEN}[1];
+      &pushStk($Laddr);
+    }
+    
+    else {
+      print $logfile ">a> *****Can not execute <$TOKEN> not in dictionary ";
+      print $logfile "    or Symbol Tables\n";
+    }
+  }  # end while scalar(@Tokens)
+  #
+  } # end PARSEASMTOKENS
+  
+  $ASMpass++;
+  close $inFile;
+}
+
+close $outHEXfile;
 unless ($logfile eq "STDOUT") { close $logfile }
 exit;
