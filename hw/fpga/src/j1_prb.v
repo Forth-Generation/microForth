@@ -35,8 +35,8 @@ module j1_prb #(
   // The D and R stacks
   wire [WIDTH-1:0] st1, rst0;      // st1 is N data out (prb)
   reg [1:0] dspI, rspI;            // stack pointer increment values (prb)
-  stack2 #(.WIDTH(WIDTH), .DEPTH(15)) dstack(.clk(clk), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
-  stack2 #(.WIDTH(WIDTH), .DEPTH(17)) rstack(.clk(clk), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
+  RAM_stack #(.WIDTH(WIDTH), .DEPTH(512)) dstack(.clk(clk), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
+  RAM_stack #(.WIDTH(WIDTH), .DEPTH(512)) rstack(.clk(clk), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
 
   wire [16:0] minus = {1'b1, ~st0} + st1 + {{WIDTH-1{1'b0}}, 1'b1};
   wire signedless = st0[15] ^ st1[15] ? st1[15] : minus[16];
@@ -89,25 +89,25 @@ module j1_prb #(
   always @*
   begin
         // determine data stack write and incr/decr value (prb)
-    casez ({pc[12], insn[15:13]})
-    4'b1_???,
-    4'b0_1??:   {dstkW, dspI} = {1'b1,      2'b01};        // push fetch/immediate literal on Dstack (prb)
-    4'b0_001:   {dstkW, dspI} = {1'b0,      2'b11};        // conditional jump pop Dstack (prb)
-    4'b0_011:   {dstkW, dspI} = {func_T_N,  {insn[1:0]}};  // alu function, write Dstack if func_T_N (prb)
+    casez ({pc[12], insn[15:13],resetq})                      // Added reset to case(jmt)
+    5'b1_???_1,
+    5'b0_1??_1:   {dstkW, dspI} = {1'b1,      2'b01};        // push fetch/immediate literal on Dstack (prb)
+    5'b0_001_1:   {dstkW, dspI} = {1'b0,      2'b11};        // conditional jump pop Dstack (prb)
+    5'b0_011_1:   {dstkW, dspI} = {func_T_N,  {insn[1:0]}};  // alu function, write Dstack if func_T_N (prb)
     default:    {dstkW, dspI} = {1'b0,      2'b00};
     endcase
     dspN = dsp + {dspI[1], dspI[1], dspI};
 
         // determine return stack write and incr/decr value (prb)
-    casez ({pc[12], insn[15:13]})
-    4'b1_???:   {rstkW, rspI} = {1'b0,      2'b11};        // "fetch" return - pop Rstack (prb)
-    4'b0_010:   {rstkW, rspI} = {1'b1,      2'b01};        // call or fetch - push Rstack (prb)
-    4'b0_011:   {rstkW, rspI} = {func_T_R,  insn[3:2]};    // alu (prb)
+    casez ({pc[12], insn[15:13], resetq})                   //Added reset to case (jmt)
+    5'b1_???_1:   {rstkW, rspI} = {1'b0,      2'b11};        // "fetch" return - pop Rstack (prb)
+    5'b0_010_1:   {rstkW, rspI} = {1'b1,      2'b01};        // call or fetch - push Rstack (prb)
+    5'b0_011_1:   {rstkW, rspI} = {func_T_R,  insn[3:2]};    // alu (prb)
     default:    {rstkW, rspI} = {1'b0,      2'b00};
     endcase
 
         // calculate next pc
-    casez ({reboot, pc[12], insn[15:13], insn[7], |st0})
+    casez ({reboot, pc[12], insn[15:13], insn[7], |st0})      
     7'b1_0_???_?_?:   pcN = 0;            // Reset - clear PC
     
     7'b0_0_000_?_?,                       // jump (prb)
