@@ -7,7 +7,7 @@ rstack = []
 
 tokens = []
 token = '' 
-
+params = []
 
 f = open(sys.argv[1])
 
@@ -28,6 +28,7 @@ def get_token():
     while not tokens:
         line = f.readline()
 
+        # if reached EOF  
         if line == '':
             return False
 
@@ -37,19 +38,56 @@ def get_token():
 
     return True 
 
-def add_word(name):
-    """
-    Adds word to the forth dictionary
+# def add_word():
+#     """
+#     Adds word to the forth dictionary
+# 
+#     Args:
+#         name: name of word as string
+#     Returns:
+#         None
+#     """
+# 
+#     global tokens
+#     global token
+#     global params
+#     print("Tokens", tokens)
+# 
+#     word = {}
+# 
+#     word['name'] = token
+# 
+#     code = []
+#     params = []
+#     while not token:
+#         token = tokens.pop(0)
+#         found = False
+#         for i in reversed(range(len(dictionary))):
+#             if dictionary[i]['name'] == token:
+#                 code.append(token)
+#                 found = True
+#                 break
+#         if found:
+#             print(token, "Added to code")
+#             continue
+#         else:
+#             try:
+#                 int(token)
+#                 print(token, "Added num")
+#             except:
+#                 print(token, "not found")
+#                 continue
+# 
+#     num = int(token)
+#     code.append(pushd)
+#     params.append(
+# 
+#     print("Tokens", tokens)
+#         #tokens.pop(0)
+#     
+#     return
 
-    Args:
-        name: name of word as string
-    Returns:
-        None
-    """
-
-    return
-
-def pushd(params):
+def pushd():
     """
     Pushes the values of params onto the data stack
 
@@ -60,8 +98,11 @@ def pushd(params):
     """
 
     global dstack
+    global params
 
     dstack += params
+
+    params = []
 
     return
 
@@ -95,12 +136,11 @@ def execute(i):
 
     word = dictionary[i]
 
-    # for exref in word['code']:
-    exref = word['code']
-    if word['params'] is None:
-        exref()
-    else:
-        exref(word['params'])
+    for exref in word['code']:
+        if word['params'] is None:
+            exref()
+        else:
+            exref(word['params'])
 
     return
 
@@ -113,7 +153,7 @@ def or_func():
     Args:
         None
     Return:
-        Boolean for success or stack underflow
+        Boolean for success or stack overflow   
     """
 
     global dstack
@@ -140,12 +180,11 @@ def print_dstack():
     return
 
 # dictionary.append({'name' : ':', 'code' : (add_word), 'params' : None})
-dictionary.append({'name' : 'or', 'code' : (or_func), 'params' : None})
+dictionary.append({'name' : 'or', 'code' : (or_func,), 'params' : None})
 # dictionary.append({'name' : '."', {'code' : []})
-dictionary.append({'name' : '.s', 'code' : (print_dstack), 'params' : None})
+dictionary.append({'name' : '.s', 'code' : (print_dstack,), 'params' : None})
 
 while get_token():
-    #print(token)
     found = False
     for i in reversed(range(len(dictionary))):
         if dictionary[i]['name'] == token:
@@ -164,4 +203,5 @@ while get_token():
             continue
 
     num = int(token)
-    pushd([num])
+    params = [num]
+    pushd() #[num])
