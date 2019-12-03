@@ -10,11 +10,11 @@ module RAM_stack #(
   input wire [WIDTH-1:0] wd);
 
    //Internal Signals
-   wire [ADDR_WIDTH-1:0] 		 wr_addr;
-   wire [ADDR_WIDTH-1:0] 		 rd_addr;
-   wire 		 rd_add_enable;
-   wire      		 wr_add_enable;
-   wire 		 stack_wr_addr_notZero;
+   reg  [ADDR_WIDTH-1:0] 		 wr_addr;
+   reg  [ADDR_WIDTH-1:0] 		 rd_addr;
+   reg  		 rd_add_enable;
+   reg       		 wr_add_enable;
+   reg  		 stack_wr_addr_notZero;
   
    reg [ADDR_WIDTH-1:0]  stack_wr_addr_reg;
    reg [ADDR_WIDTH-1:0]  stack_rd_addr_reg;
@@ -23,25 +23,26 @@ module RAM_stack #(
     begin
      //Add Enable Logic   
      if( |stack_wr_addr_reg || delta[1] == 0) begin
-        assign wr_add_enable = 1'b1;
+        wr_add_enable = 1'b1;
      end else begin
-        assign wr_add_enable = 1'b0;
+        wr_add_enable = 1'b0;
      end
 
-     assign stack_wr_addr_notZero = |stack_wr_addr_reg;
+     stack_wr_addr_notZero = |stack_wr_addr_reg;
+
      if( |stack_rd_addr_reg || delta[1] == 1'b0) begin
-        assign rd_add_enable = stack_wr_addr_notZero;
+        rd_add_enable = stack_wr_addr_notZero;
      end else begin
-        assign rd_add_enable = 1'b0;
+        rd_add_enable = 1'b0;
      end
 
      //Adders
      if(wr_add_enable) begin
-        assign wr_addr = {  {(ADDR_WIDTH-2){delta[1]}} ,delta} + stack_wr_addr_reg;
+        wr_addr = {  {(ADDR_WIDTH-2){delta[1]}} ,delta} + stack_wr_addr_reg;
      end
 
       if(rd_add_enable) begin
-          assign rd_addr = {  {(ADDR_WIDTH-2){delta[1]}} ,delta} + stack_rd_addr_reg;
+          rd_addr = {  {(ADDR_WIDTH-2){delta[1]}} ,delta} + stack_rd_addr_reg;
       end
    end
    
