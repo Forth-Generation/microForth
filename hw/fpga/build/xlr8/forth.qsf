@@ -49,11 +49,11 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
 
-set_global_assignment -name SEARCH_PATH ../src
-set_global_assignment -name SEARCH_PATH ../src/uart_tx
-set_global_assignment -name SEARCH_PATH ../src/uart_rx
-set_global_assignment -name SEARCH_PATH ../inc
-set_global_assignment -name SEARCH_PATH ../cores
+set_global_assignment -name SEARCH_PATH ../../src
+set_global_assignment -name SEARCH_PATH ../../src/uart_tx
+set_global_assignment -name SEARCH_PATH ../../src/uart_rx
+set_global_assignment -name SEARCH_PATH ../../inc
+set_global_assignment -name SEARCH_PATH ../../cores
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
@@ -409,6 +409,7 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=107"
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=107" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=345" -section_id auto_signaltap_0
+
 
 
 
