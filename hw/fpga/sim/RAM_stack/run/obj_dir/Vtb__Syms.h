@@ -28,8 +28,6 @@ class Vtb__Syms : public VerilatedSyms {
     
     // SCOPE NAMES
     VerilatedScope __Vscope_tb__top__j1_prb;
-    VerilatedScope __Vscope_tb__top__j1_prb__dstack;
-    VerilatedScope __Vscope_tb__top__j1_prb__rstack;
     
     // CREATORS
     Vtb__Syms(Vtb* topp, const char* namep);

@@ -1,0 +1,26 @@
+verilator -cc \
+  +libext+.v \
+  +libext+.sv \
+  \
+  ../tb/tb.v \
+  +incdir+../../../src \
+  +incdir+../../../inc \
+  +incdir+../../../ip  \
+  +incdir+../tb \
+  -y ../../../src \
+  -y ../../../src/uart_tx \
+  -y ../../../src/uart_rx \
+  -y ../tb \
+  +define+SIMULATION=1 \
+  +define+VERILATOR=1 \
+  --trace \
+  --exe verilator_top.cpp\
+
+# /home/altera/current/quartus/eda/sim_lib/altera_mf.v
+# /home/altera/current/quartus/eda/sim_lib/sgate.v \
+# /home/altera/current/quartus/eda/sim_lib/220model.v \
+# /home/altera/current/quartus/eda/sim_lib/stratixv_atoms.v \
+# /home/altera/current/quartus/eda/sim_lib/stratixv_hssi_atoms.v \
+# /home/altera/current/quartus/eda/sim_lib/altera_lnsim.sv \
+# /home/altera/current/quartus/eda/sim_lib/altera_primitives.v
+
