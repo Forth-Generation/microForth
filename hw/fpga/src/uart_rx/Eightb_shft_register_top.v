@@ -1,34 +1,36 @@
 module Eightb_shft_register_top (
 
-   input  wire       reset,
-   input  wire       Rx,
-   input  wire       load_buffer,
-   input  wire       shift,
-   input  wire       Rd_en,
-   input  wire       clr_ovrflw,
-   input  wire       CLOCK,
-   
-   output reg  [7:0] rx_data_out,
-   output reg        d_valid,
-   output reg        overflow
+   input wire 	    reset,
+   input wire 	    Rx,
+   input wire 	    load_buffer,
+   input wire 	    shift,
+   input wire 	    Rd_en,
+   input wire 	    clr_ovrflw,
+   input wire 	    CLOCK,
+				
+   output reg [7:0] rx_data_out,
+   output reg 	    d_valid,
+   output reg 	    overflow
 );
 
-
-   reg    [7:0] buffer_reg;
+   reg [7:0] 	    shft_reg;
+   reg [7:0] 	    buffer_reg;
    
    always @(posedge CLOCK or posedge reset)
      begin
 	if(reset)begin         //Clear Registers on reset
+	  shft_reg <= 8'b0;	   
 	  buffer_reg <= 8'b0;
 	  rx_data_out <= 8'b0;
 	end
 	else
 	  begin
 	     if(shift) begin
-          buffer_reg <= {Rx,buffer_reg[7:1]};   //Shift Rx data into buffer reg
+		shft_reg <= {Rx,shft_reg[7:1]};   //Shift Rx data into buffer reg
 	       end	 
 	     if(load_buffer) begin
-          rx_data_out <= buffer_reg;	  
+		buffer_reg <= shft_reg;
+		if(Rd_en) rx_data_out <= buffer_reg;
 	     end
 	  end	
      end // always @ (posedge CLOCK or posedge reset)

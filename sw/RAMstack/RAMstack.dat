@@ -1,0 +1,27 @@
+6000     // 0000 		noop			
+FFFF     // 0001 	0x7FFF  imm  		\ Push 0x7FFF
+6103     // 0002 		drop		\ Pop stack
+         //      
+6000     // 0003 	        noop
+6000     // 0004 	        noop
+         //      
+8001     // 0005 	1       imm		\ Push 1
+8002     // 0006 	2	imm		\ Push 2
+8003     // 0007 	3       imm		\ Push 3
+8004     // 0008 	4	imm		\ Push 4
+8005     // 0009 	5	imm		\ Push 5
+6103     // 000A 		drop		\ Pop
+6103     // 000B 		drop		\ Pop
+6103     // 000C 		drop		\ Pop
+6103     // 000D 		drop		\ Pop
+6103     // 000E 		drop		\ Pop
+         //      
+6000     // 000F 		noop		
+6000     // 0010 		noop		   
+6000     // 0011 		noop		
+         //      
+8001     // 0012 	1	imm		\ Push 5
+6000     // 0013 		noop
+6103     // 0014 		drop		\ Pop
+         //      
+0000     // 0015 	0	ubranch		\ Start Over
