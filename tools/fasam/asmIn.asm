@@ -1,1 +1,1 @@
-../../sw/uart_tx2/uart_tx2.asm
+../../sw/StepperMotor/StepperMotor.asm
