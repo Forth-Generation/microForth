@@ -10,10 +10,21 @@ help :
 	@echo ""
 	@echo "make <target>"
 	@echo ""
+	@echo "  run"
+	@echo "  ---------"
 	@echo "  gui        Run the Modelsim GUI"
+	@echo "  verilator  Run verilator simulation"
+	@echo "  wave       Run waveform viewer"
 	@echo "  compile    Compile the simulation for batch execution"
 	@echo "  run        Compile and run the simulation in batch mode"
-	@echo "  links      Create shortcut links"
+	@echo ""
+	@echo "  setup"
+	@echo "  ---------"
+	@echo "  se         Create shortcut links for Modelsim se"
+	@echo "  ase        Create shortcut links for Modelsim ase"
+	@echo ""
+	@echo "  cleanup"
+	@echo "  ---------"
 	@echo "  clean      Remove intermediate files"
 	@echo "  veryclean  Remove all uncontrolled files"
 	@echo ""
@@ -34,8 +45,9 @@ gui :
 links se :
 	@if [ `uname` == Linux ] ;\
 	then \
-	  echo "Creating dofile links"          ;\
+	  echo "Creating dofile links for Modelsim se";\
 	  ln -sf ${COMMON}/compile_se.do     c  ;\
+	  ln -sf ${COMMON}/compile_altera.do ca ;\
 	  ln -sf ${COMMON}/run_se.do         r  ;\
 	  ln -sf ${COMMON}/all.do            a  ;\
 	  ln -sf wave.do                     w  ;\
@@ -46,16 +58,13 @@ links se :
 	  cp ${COMMON}/all.do                a  ;\
 	fi
 
-phy :
-	ln -sf ${COMMON}/compile_altera_phy.do ca
-	ln -sf ${COMMON}/compile_phy.do        c
-	ln -sf ${COMMON}/run_phy.do            r
-	ln -sf wave.do                         w
-
 ase :
-	ln -sf ${COMMON}/compile_ase.do c
-	ln -sf ${COMMON}/run_ase.do     r
-	ln -sf wave.do                  w
+	@echo "Creating dofile links for Modelsim ase";\
+	ln -sf ${COMMON}/compile_se.do     c  ;\
+	ln -sf ${COMMON}/compile_altera.do ca ;\
+	ln -sf ${COMMON}/run_se.do         r  ;\
+	ln -sf ${COMMON}/all.do            a  ;\
+	ln -sf wave.do                     w
 
 #----------------------------------------------------------------------
 # clean
@@ -90,8 +99,27 @@ run :
 	. ./run_batch
 
 #----------------------------------------------------------------------
-# misc
+# waveform viewer
 #----------------------------------------------------------------------
 
+wave:
+	gtkwave wave.vcd sigs.sav
 
+#----------------------------------------------------------------------
+# verilator
+#----------------------------------------------------------------------
+
+verilator:
+	@echo ----------------------------------------
+	@echo Building verilator src
+	@echo ----------------------------------------
+	./vc
+	@echo ----------------------------------------
+	@echo Compiling verilator
+	@echo ----------------------------------------
+	make -j -C obj_dir -f Vtb.mk Vtb
+	@echo ----------------------------------------
+	@echo Running verilator
+	@echo ----------------------------------------
+	./obj_dir/Vtb -dump
 
