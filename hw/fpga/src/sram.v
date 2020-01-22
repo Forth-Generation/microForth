@@ -10,6 +10,9 @@ module sram #(
   parameter WIDTH = 32,
   parameter DEPTH = 256,
   parameter INFER = 0,
+  parameter TYPE  = "dual_port",     // simple dual port (default)
+  //                "single_port"    // single port
+  //                "true_dual_port" // true dual port (inference not supported yet)
 
   parameter ADDR_WIDTH = $clog2(DEPTH)
 ) (
@@ -41,26 +44,52 @@ reg        [WIDTH-1:0] ram_rdata_b;
 generate
 
 //-----------------------------------------------------------------------------
-// Instantiate megafunction
+// Instantiate a matching megafunction
 //-----------------------------------------------------------------------------
 
-if ((INFER == 0) && (DEPTH == 8192) && (WIDTH == 16))
+if (INFER == 0) 
   begin
-    sdpram_8kx16 sdpram_8kx161 (
-      .rd_aclr    ( rst        ),
 
-      .wrclock    ( clk_a      ),
-      .wrclocken  ( 1'b1       ),
-      .wren       ( write_en_a ),
-      .wraddress  ( addr_a     ),
-      .data       ( rdata_a    ),
+    // simple dual port
+    if ((TYPE == "dual_port") && (DEPTH == 8192) && (WIDTH == 16))
+      begin
+        sdpram_8kx16 sdpram_8kx16 (
+          .rd_aclr    ( rst        ),
 
-      .rdclock    ( clk_b      ),
-      .rdclocken  ( 1'b1       ),
-      .rdaddress  ( addr_b     ),
-      .q          ( rdata_b    )
-    );
+          .wrclock    ( clk_a      ),
+          .wrclocken  ( 1'b1       ),
+          .wren       ( write_en_a ),
+          .wraddress  ( addr_a     ),
+          .data       ( wdata_a    ),
 
+          .rdclock    ( clk_b      ),
+          .rdclocken  ( 1'b1       ),
+          .rdaddress  ( addr_b     ),
+          .q          ( rdata_b    )
+        );
+      end
+
+    // single port
+    else if ((TYPE == "single_port") && (DEPTH == 512) && (WIDTH == 16))
+      begin
+        ram_512x16 ram_512x16 (
+          .clock      ( clk_a      ),
+          .wren       ( write_en_a ),
+          .address    ( addr_a     ),
+          .data       ( wdata_a    ),
+          .q          ( rdata_a    )
+        );
+
+        assign rdata_b = 'd0;
+      end
+
+
+    else
+      initial 
+        begin
+          $display("Unable to instantiate %s RAM: %0dx%0d, no match found", TYPE, DEPTH, WIDTH);
+          $stop;
+        end
   end
 
 //-----------------------------------------------------------------------------
