@@ -1,26 +1,28 @@
-module UART_TrROM_top (
-   input  wire       CLOCK,
-   input  wire [3:0] addr,
+module UART_TrROM_top#(                                                                              
+   parameter WIDTH = 8                                                        
+)
+(
+   input wire 		  CLOCK,
+   input wire [3:0] 	  addr,
+  //input wire 		  wr_en,
+  //input wire [9:0] 	  wr_bitMask, 
 
-   output reg  [7:0] data_out
+   output reg [WIDTH-1:0] data_out
 );
-
-  wire [7:0] 	mem[0:9];
-
-  assign mem[0] = 8'd10;
-  assign mem[1] = 8'd10;
-  assign mem[2] = 8'd10;
-  assign mem[3] = 8'd10;
-  assign mem[4] = 8'd10;
-  assign mem[5] = 8'd10;
-  assign mem[6] = 8'd10;
-  assign mem[7] = 8'd10;
-  assign mem[8] = 8'd10;
-  assign mem[9] = 8'd10;
+   reg [6:0] 		  start;
+   reg [WIDTH-1:0] 	  cnt_reg;
+   reg [9:0] 		  bitMask; 		  
+	  
    
+   assign cnt_reg  = {{(WIDTH-8){1'b0}},8'd168};
+   assign bitMask = 10'h3df;
    
+  
    always @(posedge CLOCK) begin
-      data_out = mem[addr];
+      //if(wr_en) bitMask <= wr_bitMask;
+      data_out = (cnt_reg+{{(WIDTH-1){1'b0}},bitMask[addr])
    end
-   
-endmodule // ROM_FourByEight
+
+endmodule
+
+
