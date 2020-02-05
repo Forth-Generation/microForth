@@ -20,7 +20,7 @@ module UART_TrROM_top#(
   
    always @(posedge CLOCK) begin
       //if(wr_en) bitMask <= wr_bitMask;
-      data_out = (cnt_reg+{{(WIDTH-1){1'b0}},bitMask[addr])
+      data_out = (cnt_reg+{{(WIDTH-1){1'b0}},bitMask[addr]});
    end
 
 endmodule

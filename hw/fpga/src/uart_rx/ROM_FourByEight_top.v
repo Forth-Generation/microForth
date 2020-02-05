@@ -1,8 +1,5 @@
-module ROM_FourByEight_top #(
-			  parameter WIDTH = 8
-)
-(
-
+module ROM_FourByEight_top
+#(
    parameter WIDTH = 8
 )
 (
@@ -17,16 +14,16 @@ module ROM_FourByEight_top #(
    reg [WIDTH-1:0]        cnt_reg;
    reg [9:0]              bitMask;
 
-   assign start = 6'd69;
+   assign start = 7'd69;
    assign cnt_reg  = {{(WIDTH-8){1'b0}},8'd168};
    assign bitMask = 10'h3df;
 
    wire [WIDTH-1:0]  cntVal;
-   assign cntVal = (|addr) ? cnt_reg : { {(WIDTH-6){1'b0}} ,start};
+   assign cntVal = (|addr) ? { {(WIDTH-8){1'b0}}  ,cnt_reg} : { {(WIDTH-7){1'b0}} ,start};
    
    always @(posedge CLOCK) begin
       //if(wr_en) bitMask <= wr_bitMask;                                       
-      data_out = (cntVal+{{(WIDTH-1){1'b0}},bitMask[addr]);
+      data_out = (cntVal+{ {(WIDTH-1){1'b0}} ,bitMask[addr]});
    end
    
 endmodule 
