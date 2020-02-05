@@ -1,3 +1,5 @@
+`default_nettype wire
+
 //
 //----------------------------------------------------------------------
 `timescale 1ns/1ps
@@ -29,6 +31,8 @@ wire        uart_txd;
 wire  [7:0] gpio;
 wire        led;
 reg   [7:0] gpio_drive;
+
+reg         tb_rst;
 
 assign uart_rxd = uart_txd;
 //----------------------------------------------------------------------
@@ -123,7 +127,7 @@ endtask
 `ifdef VERILATOR
   assign rst_n = ~verilator_rst;
 `else
-
+  assign rst_n = ~tb_rst;
 `endif
 
 //----------------------------------------------------------------------
@@ -164,12 +168,12 @@ end
 
 initial
 begin
-//  rst_n = 0;
+  tb_rst = 1;
 
-//  #101;
-//  rst_n = 1;
+  #101;
+  tb_rst = 0;
 
-//  #100_0000;
+  #100_0000;
 end
 
 endmodule

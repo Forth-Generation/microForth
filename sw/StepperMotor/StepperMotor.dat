@@ -1,4 +1,4 @@
-         //                     \ milliseconds Count value for Small Delay 
+         //      $StepDelay 5                \ milliseconds Count value for Small Delay 
          //      
 80FF     // 0000                         0x00FF    imm         \ push GP_out data (FF)
 8032     // 0001                         0x0032    imm         \ push GP_out address (32)
@@ -10,7 +10,7 @@
 6043     // 0006                                   io!         \ store AA to I/O address 30
 6103     // 0007 
          //                                        
-8064     // 0008                         100  imm         \ Push 0D500 on the stack   
+8005     // 0008                         $StepDelay  imm         \ Push 0D500 on the stack   
 4024     // 0009                         0x0024     scall       \ call Big Delay
          //                              
 8009     // 000A                         0x0009    imm         \ push GP_out data (0F)
@@ -18,7 +18,7 @@
 6043     // 000C                                   io!         \ store AA to I/O address 30
 6103     // 000D 
          //                                       
-8064     // 000E                         100    imm         \ Push 0D500 on the stack   
+8005     // 000E                         $StepDelay    imm         \ Push 0D500 on the stack   
 4024     // 000F                         0x0024     scall       \ call Big Delay         
          //                               
 8005     // 0010                         0x0005    imm         \ push GP_out data (0A)
@@ -26,7 +26,7 @@
 6043     // 0012                                   io!         \ store AA to I/O address 30
 6103     // 0013 
          //                                        
-8064     // 0014                         100  imm         \ Push 0D500 on the stack   
+8005     // 0014                         $StepDelay  imm         \ Push 0D500 on the stack   
 4024     // 0015                         0x0024     scall       \ call Big Delay
          //                              
 8006     // 0016                         0x0006    imm         \ push GP_out data (0F)
@@ -34,7 +34,7 @@
 6043     // 0018                                   io!         \ store AA to I/O address 30
 6103     // 0019 
          //                                       
-8064     // 001A                         100    imm         \ Push 0D500 on the stack   
+8005     // 001A                         $StepDelay    imm         \ Push 0D500 on the stack   
 4024     // 001B                         0x0024     scall       \ call Big Delay   
          //                               
          //                               

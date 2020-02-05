@@ -1,4 +1,4 @@
-`default_nettype none
+//`default_nettype none
 `define WIDTH 16
 
 module j1_prb #(
@@ -35,8 +35,8 @@ module j1_prb #(
   // The D and R stacks
   wire [WIDTH-1:0] st1, rst0;      // st1 is N data out (prb)
   reg [1:0] dspI, rspI;            // stack pointer increment values (prb)
-  RAM_stack2 #(.WIDTH(WIDTH), .DEPTH(15)) dstack(.clk(clk), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
-  RAM_stack2 #(.WIDTH(WIDTH), .DEPTH(17)) rstack(.clk(clk), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
+  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512)) dstack(.clk(clk), .rst(~resetq), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
+  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512)) rstack(.clk(clk), .rst(~resetq), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
 
   wire [16:0] minus = {1'b1, ~st0} + st1 + {{WIDTH-1{1'b0}}, 1'b1};
   wire signedless = st0[15] ^ st1[15] ? st1[15] : minus[16];

@@ -1,4 +1,4 @@
-               \ milliseconds Count value for Small Delay 
+$StepDelay 5                \ milliseconds Count value for Small Delay 
 
                         0x00FF    imm         \ push GP_out data (FF)
                         0x0032    imm         \ push GP_out address (32)
@@ -8,28 +8,28 @@
                         0x0030    imm         \ push GP_out address (30)
                                   io!         \ store AA to I/O address 30
                                   
-                        100  imm         \ Push 0D500 on the stack   
+                        $StepDelay  imm         \ Push 0D500 on the stack   
                         0x0024     scall       \ call Big Delay
                         
                         0x0009    imm         \ push GP_out data (0F)
                         0x0030    imm         \ push GP_out address (30)
                                   io!         \ store AA to I/O address 30
                                  
-                        100    imm         \ Push 0D500 on the stack   
+                        $StepDelay    imm         \ Push 0D500 on the stack   
                         0x0024     scall       \ call Big Delay         
                          
                         0x0005    imm         \ push GP_out data (0A)
                         0x0030    imm         \ push GP_out address (30)
                                   io!         \ store AA to I/O address 30
                                   
-                        100  imm         \ Push 0D500 on the stack   
+                        $StepDelay  imm         \ Push 0D500 on the stack   
                         0x0024     scall       \ call Big Delay
                         
                         0x0006    imm         \ push GP_out data (0F)
                         0x0030    imm         \ push GP_out address (30)
                                   io!         \ store AA to I/O address 30
                                  
-                        100    imm         \ Push 0D500 on the stack   
+                        $StepDelay    imm         \ Push 0D500 on the stack   
                         0x0024     scall       \ call Big Delay   
                          
                          
