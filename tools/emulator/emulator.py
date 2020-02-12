@@ -7,7 +7,6 @@ rstack = []
 
 tokens = []
 token = '' 
-params = []
 
 f = open(sys.argv[1])
 
@@ -89,7 +88,7 @@ def get_token():
 
 def pushd():
     """
-    Pushes the values of params onto the data stack
+    Pushes a number onto the data stack
 
     Args:
         params: tuple of integers to push onto the data stack
@@ -98,11 +97,9 @@ def pushd():
     """
 
     global dstack
-    global params
+    global token
 
-    dstack += params
-
-    params = []
+    dstack.append(token)
 
     return
 
@@ -119,6 +116,42 @@ def popd():
     global dstack
 
     dstack.pop()
+
+    return
+
+def pushr():
+    """
+    Pops a number off of data stack and push onto the return stack
+
+    Args:
+        None
+    Returns:
+        None
+    """
+
+    global rstack
+    global token
+
+    rstack.append(dstack[-1])
+    dstack.pop()
+
+    print(rstack)
+
+    return
+
+def popr():
+    """
+    Pops a number off the return stack
+
+    Args:
+        None
+    Returns:
+        The integer popped off the return stack. If the return stack is empty it will return None. 
+    """
+
+    global rstack
+
+    dstack.append(rstack.pop())
 
     return
 
@@ -179,10 +212,21 @@ def print_dstack():
 
     return
 
+def dadd():
+    global dstack
+    a = dstack.pop()
+    b = dstack.pop()
+    dstack.append(a+b)
+
+    return
+
 # dictionary.append({'name' : ':', 'code' : (add_word), 'params' : None})
 dictionary.append({'name' : 'or', 'code' : (or_func,), 'params' : None})
 # dictionary.append({'name' : '."', {'code' : []})
 dictionary.append({'name' : '.s', 'code' : (print_dstack,), 'params' : None})
+dictionary.append({'name' : '>r', 'code' : (pushr, ), 'params' : None})
+dictionary.append({'name' : 'r>', 'code' : (popr, ), 'params' : None})
+dictionary.append({'name' : '+' , 'code' : (dadd, ), 'params' : None})
 
 while get_token():
     found = False
@@ -202,6 +246,5 @@ while get_token():
             print(token, "not found")
             continue
 
-    num = int(token)
-    params = [num]
+    token = int(token)
     pushd() #[num])
