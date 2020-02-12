@@ -37,54 +37,38 @@ def get_token():
 
     return True 
 
-# def add_word():
-#     """
-#     Adds word to the forth dictionary
-# 
-#     Args:
-#         name: name of word as string
-#     Returns:
-#         None
-#     """
-# 
-#     global tokens
-#     global token
-#     global params
-#     print("Tokens", tokens)
-# 
-#     word = {}
-# 
-#     word['name'] = token
-# 
-#     code = []
-#     params = []
-#     while not token:
-#         token = tokens.pop(0)
-#         found = False
-#         for i in reversed(range(len(dictionary))):
-#             if dictionary[i]['name'] == token:
-#                 code.append(token)
-#                 found = True
-#                 break
-#         if found:
-#             print(token, "Added to code")
-#             continue
-#         else:
-#             try:
-#                 int(token)
-#                 print(token, "Added num")
-#             except:
-#                 print(token, "not found")
-#                 continue
-# 
-#     num = int(token)
-#     code.append(pushd)
-#     params.append(
-# 
-#     print("Tokens", tokens)
-#         #tokens.pop(0)
-#     
-#     return
+def add_word():
+    """
+    Adds word to the forth dictionary
+ 
+    Args:
+        name: name of word as string
+    Returns:
+        None
+    """
+ 
+    global tokens
+    global token
+
+    L1 = []
+
+    token = tokens.pop(0)
+    name = token
+    print(type(name))
+    
+    while tokens[0] != ';':
+        token = tokens.pop(0)
+        for i in reversed(range(len(dictionary))):
+            if dictionary[i]['name'] == token:
+                L1.append(dictionary[i]['code'])
+
+    L2 = []
+    for tup in L1:
+        L2 += list(tup)     
+    # print(tuple(L2))
+    dictionary.append({'name' : name, 'code': tuple(L2), 'params': None})
+
+    tokens = []
 
 def pushd():
     """
@@ -135,7 +119,7 @@ def pushr():
     rstack.append(dstack[-1])
     dstack.pop()
 
-    print(rstack)
+    print("rstack: ", rstack)
 
     return
 
@@ -170,10 +154,14 @@ def execute(i):
     word = dictionary[i]
 
     for exref in word['code']:
-        if word['params'] is None:
-            exref()
+        # if word['params'] is None:
+        if isinstance(exref, int):
+            dstack.append(exref)
         else:
-            exref(word['params'])
+            exref()
+        # else:
+            
+            # exref(word['params'])
 
     return
 
@@ -227,6 +215,10 @@ dictionary.append({'name' : '.s', 'code' : (print_dstack,), 'params' : None})
 dictionary.append({'name' : '>r', 'code' : (pushr, ), 'params' : None})
 dictionary.append({'name' : 'r>', 'code' : (popr, ), 'params' : None})
 dictionary.append({'name' : '+' , 'code' : (dadd, ), 'params' : None})
+dictionary.append({'name' : 'add2' , 'code' : (2, dadd), 'params' : None})
+dictionary.append({'name' : 'swap', 'code' : (pushr, pushr, popr, popr), 'params' : None})
+dictionary.append({'name' : 'swap', 'code' : (pushr, pushr, popr, popr), 'params' : None})
+dictionary.append({'name' : ':', 'code' : (add_word,), 'params' : None})
 
 while get_token():
     found = False

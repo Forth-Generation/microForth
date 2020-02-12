@@ -1,7 +1,9 @@
-2 3 4
+1 2 3
+: 2r> r> r> ;
+>r >r >r .s
+2r> .s
+
+3
 .s
-or
-.s
->r
-r>
-.s
+: addadd + + ;
+addadd .s
