@@ -50,7 +50,7 @@ def add_word():
     global tokens
     global token
 
-    L1 = []
+    codelist = []
 
     token = tokens.pop(0)
     name = token
@@ -60,13 +60,13 @@ def add_word():
         token = tokens.pop(0)
         for i in reversed(range(len(dictionary))):
             if dictionary[i]['name'] == token:
-                L1.append(dictionary[i]['code'])
+                codelist.append(dictionary[i]['code'])
 
-    L2 = []
-    for tup in L1:
-        L2 += list(tup)     
+    code = []
+    for tup in codelist:
+        code += list(tup)     
     # print(tuple(L2))
-    dictionary.append({'name' : name, 'code': tuple(L2), 'params': None})
+    dictionary.append({'name' : name, 'code': tuple(code), 'params': None})
 
     tokens = []
 
