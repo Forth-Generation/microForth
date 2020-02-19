@@ -10,9 +10,9 @@ module ROM_FourByEight_top
 
    output reg [WIDTH-1:0] data_out
 );
-   reg [6:0]              start;
-   reg [WIDTH-1:0]        cnt_reg;
-   reg [9:0]              bitMask;
+   wire [6:0]              start;
+   wire [WIDTH-1:0]        cnt_reg;
+   wire [9:0]              bitMask;
 
    assign start = 7'd69;
    assign cnt_reg  = {{(WIDTH-8){1'b0}},8'd168};

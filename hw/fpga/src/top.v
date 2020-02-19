@@ -21,6 +21,7 @@ module top #(
 );
 
 localparam DATA_WIDTH = 16;
+localparam INSN_WIDTH = 18;
 
 //-----------------------------------------------------------------------------
 // Internal signals
@@ -33,7 +34,8 @@ wire                    j1_mem_wr           /*synthesis keep*/ ;
 wire  [DATA_WIDTH-1:0]  j1_dout             /*synthesis keep*/ ;
 wire  [DATA_WIDTH-1:0]  j1_io_din           /*synthesis keep*/ ;
 wire            [12:0]  j1_code_addr        /*synthesis keep*/ ;
-wire            [15:0]  j1_insn             /*synthesis keep*/ ;
+wire  [INSN_WIDTH-1:0]  j1_insn             /*synthesis keep*/ ;
+wire  [DATA_WIDTH-1:0]  j1_rdata	    /*synthesis keep*/ ;
 
 wire                    uart_rx_rd          /*synthesis keep*/ ;
 wire                    uart_rx_clr_ovrflw  /*synthesis keep*/ ;
@@ -122,7 +124,7 @@ always @ (posedge clk or negedge rst_n)
 //-----------------------------------------------------------------------------
 
 // processor
-j1_prb j1_prb (
+my_j1 j1 (
   .clk                ( clk                 ),
   .resetq             ( ~rst                ),
 
@@ -132,7 +134,8 @@ j1_prb j1_prb (
 
   .dout               ( j1_dout             ), // port a write data 
   .mem_addr           ( j1_mem_addr         ), // port a address
-  .mem_wr             ( j1_mem_wr           ), // port a write enable
+  .mem_wr             ( j1_mem_wr           ), // port a write enable 
+  .rdata	      ( j1_rdata            ), // port a read data
 
   .code_addr          ( j1_code_addr        ), // port b address
   .insn               ( j1_insn             )  // port b read data - from instruction memory
@@ -147,7 +150,7 @@ j1_prb j1_prb (
 
 // instruction/data ram
 sram #(
-  .WIDTH              ( DATA_WIDTH          ),
+  .WIDTH              ( INSN_WIDTH          ),
   .DEPTH              ( 8192                ),
   .INFER              ( 1                   )
 ) sram     (
@@ -155,9 +158,9 @@ sram #(
 
   .clk_a              ( clk                 ),
   .addr_a             ( j1_mem_addr[12:0]   ),
-  .wdata_a            ( j1_dout             ),
+  .wdata_a            ( {2'b0,j1_dout}      ),
   .write_en_a         ( j1_mem_wr           ),
-  .rdata_a            (                     ),
+  .rdata_a            ( {2'b0,j1_rdata}     ),
 
   .clk_b              ( clk                 ),
   .addr_b             ( j1_code_addr        ),

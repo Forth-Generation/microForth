@@ -1,7 +1,7 @@
 //`default_nettype none
 `define WIDTH 16
 
-module j1_prb #(
+module my_j1 #(
   parameter WIDTH = 16
 
 ) (
