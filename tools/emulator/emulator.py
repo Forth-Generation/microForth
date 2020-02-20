@@ -120,6 +120,7 @@ def pushr():
     dstack.pop()
 
     print("rstack: ", rstack)
+    
 
     return
 
@@ -205,8 +206,19 @@ def dadd():
     a = dstack.pop()
     b = dstack.pop()
     dstack.append(a+b)
+    
+    writeOut('T->N|d-1|alu')
+    
 
     return
+
+def writeOut(word):
+    """ Writes out Assembly Code
+    """
+    
+    f = open('output.asm','a')
+    f.write(word)
+    f.close
 
 # dictionary.append({'name' : ':', 'code' : (add_word), 'params' : None})
 dictionary.append({'name' : 'or', 'code' : (or_func,), 'params' : None})
