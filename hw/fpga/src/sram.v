@@ -27,6 +27,8 @@ module sram #(
 
   input  wire                   clk_b,
   input  wire  [ADDR_WIDTH-1:0] addr_b,
+  input  wire  [WIDTH-1:0]      wdata_b,
+  input  wire                   write_en_b,
   output wire       [WIDTH-1:0] rdata_b
 
 );
@@ -67,6 +69,22 @@ if (INFER == 0)
           .rdaddress  ( addr_b     ),
           .q          ( rdata_b    )
         );
+      end
+
+    // true dual port
+    else if ((TYPE == "true_dual_port") && (DEPTH == 8192) && (WIDTH == 18))
+      begin
+	tdpram_8kx18	tdpram_8kx18_inst (
+		.address_a ( addr_a ),
+		.address_b ( addr_b ),
+		.clock ( clk ),
+		.data_a ( wdata_a ),
+		.data_b ( wdata_b ),
+		.wren_a ( write_en_a ),
+		.wren_b ( write_en_b ),
+		.q_a ( rdata_a ),
+		.q_b ( rdata_b )
+	);	
       end
 
     // single port

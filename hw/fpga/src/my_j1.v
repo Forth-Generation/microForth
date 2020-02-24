@@ -37,8 +37,8 @@ module my_j1 #(
   // The D and R stacks
   wire [WIDTH-1:0] st1, rst0;      // st1 is N data out (prb)
   reg [1:0] dspI, rspI;            // stack pointer increment values (prb)
-  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512)) dstack(.clk(clk), .rst(~resetq), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
-  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512)) rstack(.clk(clk), .rst(~resetq), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
+  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512), .INFER(1)) dstack(.clk(clk), .rst(~resetq), .rd(st1),  .we(dstkW), .wd(st0),   .delta(dspI));
+  ram_stack3 #(.WIDTH(WIDTH), .DEPTH(512), .INFER(1)) rstack(.clk(clk), .rst(~resetq), .rd(rst0), .we(rstkW), .wd(rstkD), .delta(rspI));
 
   wire [16:0] minus = {1'b1, ~st0} + st1 + {{WIDTH-1{1'b0}}, 1'b1};
   wire signedless = st0[15] ^ st1[15] ? st1[15] : minus[16];
@@ -113,19 +113,19 @@ module my_j1 #(
     endcase
 
         // calculate next PC address
-    casez ({reboot, insn[15:13], insn[7], |st0})      
-    6'b1_???_?_?:   pcN = 0;            // Reset - clear PC
+    casez ({reboot, insn[17:13], insn[7], |st0})      
+    8'b1_??_???_?_?:   pcN = 0;            // Reset - clear PC
     
-    6'b0_000_?_?,                       // jump (prb)
-    6'b0_010_?_?,                       // call (prb)
-    6'b0_001_?_0:   pcN = insn[12:0];   // conditional branch if st0==0 (prb)
+    8'b0_01_000_?_?,                       // jump (prb)
+    8'b0_01_010_?_?,                       // call (prb)
+    8'b0_01_001_?_0:   pcN = insn[12:0];   // conditional branch if st0==0 (prb)
 
-    6'b0_100_?_?,                       // jump (jmt)                                                                                               
-    6'b0_110_?_?,                       // call (jmt)                                                             
-    6'b0_101_?_0:   pcN = relative_addr;   // conditional branch if st0==0 (jmt) 
+    8'b0_01_100_?_?,                       // jump (jmt)                                                                                               
+    8'b0_01_110_?_?,                       // call (jmt)                                                             
+    8'b0_01_101_?_0:   pcN = relative_addr;   // conditional branch if st0==0 (jmt) 
       
    // 7'b0_1_???_?_?,                       // "fetch" return (prb)
-    6'b0_011_1_?:   pcN = rst0[13:1];   // return (prb)
+    8'b0_01_011_1_?:   pcN = rst0[13:1];   // return (prb)
     
     default:          pcN = pc_plus_1;
     endcase

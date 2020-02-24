@@ -35,7 +35,7 @@ wire  [DATA_WIDTH-1:0]  j1_dout             /*synthesis keep*/ ;
 wire  [DATA_WIDTH-1:0]  j1_io_din           /*synthesis keep*/ ;
 wire            [12:0]  j1_code_addr        /*synthesis keep*/ ;
 wire  [INSN_WIDTH-1:0]  j1_insn             /*synthesis keep*/ ;
-wire  [DATA_WIDTH-1:0]  j1_rdata	    /*synthesis keep*/ ;
+wire  [INSN_WIDTH-1:0]  j1_rdata	    /*synthesis keep*/ ;
 
 wire                    uart_rx_rd          /*synthesis keep*/ ;
 wire                    uart_rx_clr_ovrflw  /*synthesis keep*/ ;
@@ -135,7 +135,7 @@ my_j1 j1 (
   .dout               ( j1_dout             ), // port a write data 
   .mem_addr           ( j1_mem_addr         ), // port a address
   .mem_wr             ( j1_mem_wr           ), // port a write enable 
-  .rdata	      ( j1_rdata            ), // port a read data
+  .rmem_data	      ( j1_rdata[15:0]      ), // port a read data
 
   .code_addr          ( j1_code_addr        ), // port b address
   .insn               ( j1_insn             )  // port b read data - from instruction memory
@@ -160,10 +160,12 @@ sram #(
   .addr_a             ( j1_mem_addr[12:0]   ),
   .wdata_a            ( {2'b0,j1_dout}      ),
   .write_en_a         ( j1_mem_wr           ),
-  .rdata_a            ( {2'b0,j1_rdata}     ),
+  .rdata_a            ( j1_rdata            ),
 
   .clk_b              ( clk                 ),
   .addr_b             ( j1_code_addr        ),
+  .wdata_b            ( {18{1'b0}}          ),
+  .write_en_b         ( 1'b0		    ),
   .rdata_b            ( j1_insn             )
 );
 
