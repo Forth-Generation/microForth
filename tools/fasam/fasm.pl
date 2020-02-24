@@ -27,7 +27,7 @@ use feature "state";
  my $invokemessage = '
 
      to invoke :
-GenForthSubs.pl -b basewordsFname -a asmInFileName {-o hexOutFileName} {-d} {-h} {-l LogFileName}
+fasm.pl -b basewordsFname -a asmInFileName {-o hexOutFileName} {-d} {-h} {-l LogFileName}
 
      where :
  -b basewordsFname    Forth basewords filename {required]
@@ -404,8 +404,8 @@ sub BslashComment {
 #---------------------------------#
 sub writecode {
   my ($hnum,$haddr);
-  $haddr  =  sprintf("%4.4X", $addr++);
-  $hnum   =  sprintf("%4.4X", $Stk[0]);
+  $haddr  =  sprintf("%5.5X", $addr++);
+  $hnum   =  sprintf("%5.5X", $Stk[0]);
   
   if ($debug) {
     print $logfile "  << writecode  TOS<$hnum> >>\n";

@@ -1,7 +1,7 @@
 
             0x00FF    imm         \ push GP_out data (FF)
             0x0032    imm         \ push GP_out address (32)
-                      io!         \ store AA to I/O address 30
+                      io!         \ store FF to I/O address 32
                      
             0x00AA    imm         \ push GP_out data (AA)
             0x0030    imm         \ push GP_out address (30)
