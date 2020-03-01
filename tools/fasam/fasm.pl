@@ -656,7 +656,7 @@ open ($outHEXfile, ">", $hexOutFileName)  or die  "$hexOutFileName : $! \n";
 print $logfile " >>OPENING File <$hexOutFileName>\n";
 
 
-$ASMpass  = 1;     # initalize Assembler to pass 1
+$ASMpass  = 1;     # initialize Assembler to pass 1
  
  while ( $ASMpass < 3 ) {
   $lnum     =  0;
