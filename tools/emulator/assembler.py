@@ -8,7 +8,7 @@ rstack = []
 tokens = []
 token = '' 
 
-f = open(sys.argv[1])
+#f = open('forthwordstest.fs')
 
 def get_token():
     """
@@ -56,7 +56,7 @@ def add_word():
 
     token = tokens.pop(0)
     name = token
-    print('Name: ', name)
+    #print('Name: ', name)
     if len(tokens) == 0 :
             get_token()
             #print(tokens)
@@ -65,7 +65,7 @@ def add_word():
     
     while tokens[0] != ';':
         #print(tokens)
-        print(token)
+        #print(token)
         token = tokens.pop(0)
         #print(tokens)
         if '0x' in token:
@@ -267,15 +267,18 @@ def writeOut(word):
     """
     
     f = open('output.asm','a')
-    f.write(word)
+    print('Length: ', len(word))
     f.close
 
 def printOut():
     global dstack
     a = int(dstack.pop(0),16)
-    #print(hex(a))
+    a = hex(a)
     f = open('Test.hex', 'a')
-    f.write(hex(a) + '\n')
+    if len(a) < 6:
+        c = 6 - len(a)
+        a = '0'*c + a
+    f.write( a.replace('0x', '') + '\n')
     f.close
 
 def orFunc():
@@ -304,27 +307,66 @@ dictionary.append({'name' : ':', 'code' : (add_word,), 'params' : None})
 dictionary.append({'name' : 'tcode,', 'code' : (printOut,), 'params': None })
 dictionary.append({'name' : '|or|', 'code': (orFunc, ), 'params' : None})
 
+
+fileList = ['forthwordstest.fs']
+for i in range(len(sys.argv)):
+    fileList.append(sys.argv[i])
+fileList.pop(1)
+for i in range(len(fileList)):
+    f = open(fileList[i])
+
+    while get_token():
+        found = False
+        token = tokens.pop(0)
+        print(token)
+        if '\\' in token:
+            tokens = []
+        else:
+            for i in reversed(range(len(dictionary))):
+                if dictionary[i]['name'] == token:
+                    execute(i)
+                    found = True
+                    break
+            if found:
+                #print(token, "Found")
+                continue
+            else:
+                try:
+                    if '0x' in token:
+                        dstack.insert(0, token)
+                    #print(token, "Found num")
+                except:
+                    #print(token, "not found")
+                    continue
+
+'''
+f = open(sys.argv[1])
 while get_token():
     found = False
     token = tokens.pop(0)
-    for i in reversed(range(len(dictionary))):
-        if dictionary[i]['name'] == token:
-            execute(i)
-            found = True
-            break
-    if found:
-        #print(token, "Found")
-        continue
+    print(token)
+    if '\\' in token:
+            tokens = []
     else:
-        try:
-            if '0x' in token:
-                dstack.insert(0, token)
-            #print(token, "Found num")
-        except:
-            #print(token, "not found")
+        for i in reversed(range(len(dictionary))):
+            if dictionary[i]['name'] == token:
+                execute(i)
+                found = True
+                break
+        if found:
+            #print(token, "Found")
             continue
+        else:
+            try:
+                if '0x' in token:
+                    dstack.insert(0, token)
+                #print(token, "Found num")
+            except:
+                #print(token, "not found")
+                continue
 
     #token = int(token)
     #pushd() #[num])
-print(dictionary)
+#print(dictionary)
 #print(dstack)
+'''

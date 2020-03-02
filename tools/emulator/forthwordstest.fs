@@ -1,3 +1,5 @@
+\  j1a  assembler base word definitions
+
 : T            0x0000 ;
 : N            0x0100 ;
 : T+N          0x0200 ;
@@ -33,7 +35,8 @@
 : ubranch      0x0000 |or| tcode, ;
 : 0branch      0x2000 |or| tcode, ;
 : scall        0x4000 |or| tcode, ;
-: @imm         0x5000 |or| tcode, ;
+: @imm         0x5000 |or| tcode, ;   \ fetch immediate
+
 
 : noop      T                       alu ;
 : +         T+N                 d-1 alu ;
@@ -67,45 +70,27 @@
 : exit      T  RET              r-1 alu ;
 : hack      T      N->io[T]         alu ;
 
+\ Elided words
+\ These words are supported by the hardware but are not
+\ part of ANS Forth.  They are named after the word-pair
+\ that matches their effect  
+\ Using these elided words instead of
+\ the pair saves one cycle and one instruction.
 
-           0x00FF    imm        
-            0x0032    imm         
-                      io!         
-                     
-            0x00AA    imm         
-            0x0030    imm        
-                      io!         
-                     
-            0x01F4   imm         
-            0x0018    scall     
-
-            0x0055    imm       
-            0x0030    imm        
-                      io!         
-                     
-            0x01F4    imm                 
-            0x0018    scall       
-             
-            0x0004    ubranch     
-  
-            0x0000    imm        
-                      invert          
-                      +
-                      dup
-            0x0017    0branch    
-            0x0011    ubranch          
-
-            0x0000    imm         
-                      invert          
-                      +
-                      dup
-            
-            0x0A6A    imm       
-            0x0011    scall     
-            0x0020   0branch     
-            0x0018    ubranch
-                      exit 
-                           
-
-     
-
+: 2dupand   T&N   T->N          d+1 alu ;
+: 2dup<     N<T   T->N          d+1 alu ;
+: 2dup=     N==T  T->N          d+1 alu ;
+: 2dupor    T|N   T->N          d+1 alu ;
+: 2dup+     T+N   T->N          d+1 alu ;
+: 2dupu<    Nu<T  T->N          d+1 alu ;
+: 2dupxor   T^N   T->N          d+1 alu ;
+: dup>r     T     T->R      r+1     alu ;
+: overand   T&N                     alu ;
+: over>     N<T                     alu ;
+: over=     N==T                    alu ;
+: overor    T|N                     alu ;
+: over+     T+N                     alu ;
+: overu>    Nu<T                    alu ;
+: overxor   T^N                     alu ;
+: rdrop     T                   r-1 alu ;
+: tuck!     T     N->[T]        d-1 alu ;
