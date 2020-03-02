@@ -2,3 +2,5 @@
 hw/fpga/build/*/db
 hw/fpga/build/*/incremental_db
 hw/fpga/build/*/output_files
+
+.DS_Store
