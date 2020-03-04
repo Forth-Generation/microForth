@@ -52,6 +52,7 @@ set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
 set_global_assignment -name SEARCH_PATH ../../src
 set_global_assignment -name SEARCH_PATH ../../src/uart_tx
 set_global_assignment -name SEARCH_PATH ../../src/uart_rx
+set_global_assignment -name SEARCH_PATH ../../src/VGA
 set_global_assignment -name SEARCH_PATH ../../inc
 set_global_assignment -name SEARCH_PATH ../../cores
 
@@ -78,6 +79,25 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uart_rxd
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uart_txd
 
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to uart_txd
+
+#VGA
+set_location_assignment PIN_AB9 -to VGA_HS
+set_location_assignment PIN_AB8 -to VGA_VS
+
+set_location_assignment PIN_Y14 -to VGA_R[0]
+set_location_assignment PIN_Y13 -to VGA_R[1]
+set_location_assignment PIN_W12 -to VGA_R[2]
+set_location_assignment PIN_AA11 -to VGA_R[3]
+
+set_location_assignment PIN_AA14 -to VGA_B[0]
+set_location_assignment PIN_AB13 -to VGA_B[1]
+set_location_assignment PIN_AA12 -to VGA_B[2]
+set_location_assignment PIN_AB11 -to VGA_B[3]
+
+set_location_assignment PIN_AA9 -to VGA_G[0]
+set_location_assignment PIN_AB7 -to VGA_G[1]
+set_location_assignment PIN_AB6 -to VGA_G[2]
+set_location_assignment PIN_AB5 -to VGA_G[3]
 
 # gpio
 
@@ -421,5 +441,8 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LE
 
 set_global_assignment -name CDF_FILE Chain1.cdf
 
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+
+set_global_assignment -name QIP_FILE test_pll.qip
+
 set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
