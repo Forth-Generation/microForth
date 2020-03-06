@@ -56,6 +56,8 @@ def add_word():
 
     if tokens[0] == ':':
         tokens.pop(0)
+    if tokens[0] =='::':
+        tokens.pop(0)
 
     token = tokens.pop(0)
     name = token
@@ -278,8 +280,8 @@ def printOut():
     a = int(dstack.pop(0),16)
     a = hex(a)
     f = open('Test.hex', 'a')
-    if len(a) < 6:
-        c = 6 - len(a)
+    if len(a) < 7:
+        c = 7 - len(a)
         a = '0'*c + a
     f.write( a.replace('0x', '') + '\n')
     f.close
@@ -307,11 +309,12 @@ def orFunc():
 #dictionary.append({'name' : 'swap', 'code' : (pushr, pushr, popr, popr), 'params' : None})
 #dictionary.append({'name' : 'swap', 'code' : (pushr, pushr, popr, popr), 'params' : None})
 dictionary.append({'name' : ':', 'code' : (add_word,), 'params' : None})
+dictionary.append({'name' : '::', 'code' : (add_word,), 'params' : None})
 dictionary.append({'name' : 'tcode,', 'code' : (printOut,), 'params': None })
 dictionary.append({'name' : '|or|', 'code': (orFunc, ), 'params' : None})
 
 
-fileList = ['forthwordstest.fs']
+fileList = ['f18_asm_primatives.fs']
 for i in range(len(sys.argv)):
     fileList.append(sys.argv[i])
 fileList.pop(1)
@@ -341,6 +344,7 @@ for i in range(len(fileList)):
                 except:
                     #print(token, "not found")
                     continue
+print(dictionary)
 
 '''
 f = open(sys.argv[1])
