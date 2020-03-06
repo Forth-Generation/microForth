@@ -21,7 +21,7 @@
                        dup
              0x0017    0branch     \ branch to skip
              0x0011    ubranch     \ ubranch to Small Delay
-                       pexit       \ return from sub with stack pop
+                       exit       \ return from sub with stack pop
              0x0000    imm         \ Big DELAY subroutine Push 0000
                        invert          
                        +
@@ -30,4 +30,4 @@
              0x0011    scall      \ call Small delay
              0x0020   0branch     \ branch to skip
              0x0018    ubranch    \ ubranch to Big Delay
-                       pexit      \ return from sub with stack pop
+                       exit      \ return from sub with stack pop

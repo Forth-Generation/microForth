@@ -54,6 +54,9 @@ def add_word():
     codelist = []
     paramslist = []
 
+    if tokens[0] == ':':
+        tokens.pop(0)
+
     token = tokens.pop(0)
     name = token
     #print('Name: ', name)
@@ -94,7 +97,7 @@ def add_word():
             found = False
         if len(tokens) == 0 :
             get_token()
-            print(tokens)
+            #print(tokens)
 
     code = []
     #for tup in codelist:
@@ -163,7 +166,7 @@ def pushr():
     rstack.append(dstack[-1])
     dstack.pop()
 
-    print("rstack: ", rstack)
+    #print("rstack: ", rstack)
     
 
     return
@@ -201,7 +204,7 @@ def execute(i):
         for i in range(len(word['params'])):
             #print('I MADE IT HERE')
             pushda(word['params'][i])
-            print(word['params'][i])
+            #print(word['params'][i])
 
     for exref in word['code']:
         #print(exref)
@@ -247,7 +250,7 @@ def print_dstack():
 
     global dstack
 
-    print(dstack)
+    #print(dstack)
 
     return
 
@@ -267,7 +270,7 @@ def writeOut(word):
     """
     
     f = open('output.asm','a')
-    print('Length: ', len(word))
+    #print('Length: ', len(word))
     f.close
 
 def printOut():
@@ -284,7 +287,7 @@ def printOut():
 def orFunc():
     global dstack
 
-    print(dstack)
+    #print(dstack)
     a = int(dstack.pop(0), 16) | int(dstack.pop(0), 16)
     dstack.insert(0,str(hex(a)))
     
@@ -318,7 +321,7 @@ for i in range(len(fileList)):
     while get_token():
         found = False
         token = tokens.pop(0)
-        print(token)
+        #print(token)
         if '\\' in token:
             tokens = []
         else:
