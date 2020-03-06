@@ -1,10 +1,12 @@
 class Word:
     
-    def __init__(self, name):
+    def __init__(self, name, *codes):
         self.previous = None
         self.count = len(name)
         self.name = name
         self.code = []
+        for i in codes:
+            self.code.append(i)
         self.params = []
 
 class Diction:
@@ -17,10 +19,11 @@ class Diction:
         while(temp):
             print (temp.name)
             print (temp.count)
+            print (temp.code)
             temp = temp.previous
-            
-    def addWord(self, newNode):
-        newWord = Word(newNode)
+
+    def addWord(self, newNode, *codes ):
+        newWord = Word(newNode, codes)
         if self.head is None:
             self.head = newWord
             return
@@ -31,9 +34,7 @@ class Diction:
 
 
 Dictionary = Diction()
-Dictionary.addWord('io!')
-Dictionary.addWord('imm')
-Dictionary.addWord('Butters')
+Dictionary.addWord('noop' , 6000)
 Dictionary.printDict()
 
 
