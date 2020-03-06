@@ -4,3 +4,15 @@ hw/fpga/build/*/incremental_db
 hw/fpga/build/*/output_files
 
 .DS_Store
+
+hw/board/hinj/.Hinj_User_Manual.pdf.icloud
+
+hw/board/hinj/Hinj_User_Manual.pdf
+
+hw/board/xlr8/.XLR8_Schematic.pdf.icloud
+
+hw/board/xlr8/XLR8_Schematic.pdf
+
+hw/fpga/sim/lib/altera/.altera_mf.v.icloud
+
+hw/fpga/sim/lib/altera/altera_mf.v
