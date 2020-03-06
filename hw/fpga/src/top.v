@@ -17,7 +17,13 @@ module top #(
   output wire        uart_txd,
 
   inout  wire  [7:0] gpio,
-  output wire        led
+  output wire        led,
+  
+  output wire			VGA_HS,
+  output wire			VGA_VS,
+  output wire  [3:0] VGA_R,
+  output wire  [3:0] VGA_G,
+  output wire  [3:0] VGA_B
 );
 
 localparam DATA_WIDTH = 16;
@@ -56,6 +62,12 @@ reg              [5:0]  rst_count           /*synthesis keep*/ ;
 wire             [7:0]  gpio_in             /*synthesis keep*/ ;
 wire             [7:0]  gpio_out            /*synthesis keep*/ ;
 wire             [7:0]  gpio_oe             /*synthesis keep*/ ;
+
+wire							px_clk					/*synthesis keep*/;
+wire							locked 					/*synthesis keep*/;
+
+wire             [11:0] x                    /*synthesis keep*/;
+wire             [10:0] y                    /*synthesis keep*/;
 
 genvar                  g;
 
@@ -218,5 +230,30 @@ UART_Tr_top uart_tr_top (
   .TBR_Valid          ( uart_tx_tbr_valid   )
 );
 
+pll_test pixel_clock (
+	.inclk0 				 (clk),
+	.areset				 (rst),
+	.c0   	  	  	    (px_clk),
+	.locked            (locked)
+);
 
+
+vga1280x1024 display (
+	.px_clk			(px_clk),
+	.rst 				(rst),
+	.hsync			(VGA_HS),
+	.vsync			(VGA_VS),
+	.x					(x),
+	.y					(y)
+);
+
+    wire sq_a, sq_b, sq_c, sq_d;
+    assign sq_a = ((x > 120) & (y >  40) & (x < 280) & (y < 200)) ? 1 : 0;
+    assign sq_b = ((x > 200) & (y > 120) & (x < 360) & (y < 280)) ? 1 : 0;
+    assign sq_c = ((x > 280) & (y > 200) & (x < 440) & (y < 360)) ? 1 : 0;
+    assign sq_d = ((x > 1000) & (y > 900) & (x < 1279) & (y < 1023)) ? 1 : 0;
+
+    assign VGA_R[3] = sq_b;         // square b is red
+    assign VGA_G[3] = sq_a | sq_d;  // squares a and d are green
+    assign VGA_B[3] = sq_c;         // square c is blue
 endmodule
