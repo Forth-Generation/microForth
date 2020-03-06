@@ -32,9 +32,12 @@
 
 : imm        0x00000 |or| tcode, ;
 : alu        0x16000 |or| tcode, ;
-: ubranch    0x10000 |or| tcode, ;
-: 0branch    0x12000 |or| tcode, ;
+: ubranch    0x10000 |or| tcode, ;   \ unconditional absolute branch
+: ubranchr   0x18000 |or| tcode, ;   \ unconditional relative branch
+: 0branch    0x12000 |or| tcode, ;   \ unconditional absolute branch
+: 0branchr   0x1A000 |or| tcode, ;
 : scall      0x14000 |or| tcode, ;
+: scallr     0x1C000 |or| tcode, ;
 : @imm       0x20000 |or| tcode, ;   \ fetch immediate
 
 
