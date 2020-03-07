@@ -30,15 +30,15 @@
 : r-2        0x00008 |or| ;
 : r+1        0x00004 |or| ;
 
-: imm        0x00000 |or| tcode, ;
-: alu        0x16000 |or| tcode, ;
-: ubranch    0x10000 |or| tcode, ;   \ unconditional absolute branch
-: ubranchr   0x18000 |or| tcode, ;   \ unconditional relative branch
-: 0branch    0x12000 |or| tcode, ;   \ conditional absolute branch
-: 0branchr   0x1A000 |or| tcode, ;   \ conditional absolute branch
-: scall      0x14000 |or| tcode, ;   \ subroutine call absolute
-: scallr     0x1C000 |or| tcode, ;   \ subroutine call relative
-: @imm       0x20000 |or| tcode, ;   \ fetch immediate
+: imm                0x00000 |or| tcode, ;
+: alu                0x16000 |or| tcode, ;
+: ubranch            0x10000 |or| tcode, ;   \ unconditional absolute branch
+: ubranchr   |s-12b| 0x18000 |or| tcode, ;   \ unconditional relative branch
+: 0branch            0x12000 |or| tcode, ;   \ conditional absolute branch
+: 0branchr   |s-12b| 0x1A000 |or| tcode, ;   \ conditional relative branch
+: scall              0x14000 |or| tcode, ;   \ subroutine call absolute
+: scallr     |s-12b| 0x1C000 |or| tcode, ;   \ subroutine call relative
+: @imm               0x20000 |or| tcode, ;   \ fetch immediate
 
 
 :: noop      T                       alu ;

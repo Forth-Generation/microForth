@@ -91,7 +91,7 @@ my ($i,$j,$k);
 my $line;          # current input line from inFile
 my $lnum;          # current input line number
 
-my $addr = 0;      # memory address to be written next
+my $addr = 0;      # memory address to be written next (pc of instruction)
 my $Laddr;         # address of Label
 
 my $TOKEN;         # the current Token
@@ -124,6 +124,7 @@ my %dict;          # word dictionary - hash of defined words/subroutines
               'h#'           => [  [ \&notImplemented, [ ] ]  ],
               'tcode,'       => [  [ \&writecode, [ ] ]       ],
               '|or|'         => [  [ \&orFunction, [ ] ]    ],
+              '|s-12b|'      => [  [ \&signed12bSub, [ ] ]    ],
 );
 
 
@@ -164,13 +165,13 @@ sub GetLine {
     chomp $line;
     if ( $line =~ /^\s*$/  ) {
       if ( $ASMpass == 2 ) {
-        print $outHEXfile "         //      $line\n";
+        print $outHEXfile "          //      $line\n";
       }
       next RDLINE;  # flush blank line
     }
     if ( $line =~ /^\s*\\/ ) {
       if ( $ASMpass == 2 ) {
-        print $outHEXfile "         //      $line\n";
+        print $outHEXfile "          //      $line\n";
       }
       next RDLINE;  # flush comment line
     }
@@ -365,7 +366,7 @@ sub LparenComment {
 #         LbraceComment           #
 #  consumes tokens from @Tokens   #
 #  until a token that ends with   #
-#  '}' is found                   #
+#  '}' is found                   #Stack underflow in or
 #---------------------------------#
 sub LbraceComment {
   if ($debug) {
@@ -495,8 +496,8 @@ sub printStk {
 sub orFunction {
   
   unless ( exists($Stk[0]) && exists($Stk[1]) ) {
-    print "*** Stack underflow in or\n";
-    if ($debug) { print $logfile "*** Stack underflow in or\n" }
+    print "*** Stack underflow in or on line<$lnum>\n";
+    if ($debug) { print $logfile "*** Stack underflow in or on line<$lnum>\n" }
     return 0;
   }
   else {
@@ -505,6 +506,41 @@ sub orFunction {
     return 1;
   }
 }  # end orFunction
+
+
+#----------------------------------#
+#        signed12bSub              #
+# implement 12 bit signed Subtract #
+# to calculate address offset from #
+# the pc                           #
+# T has address                    #
+# return 0 if stack underflow      #
+#----------------------------------#
+sub signed12bSub {
+  
+  my $reloffset;
+  unless ( exists($Stk[0]) ) {
+    print "*** Stack underflow in signed12bSub on line<$lnum>\n";
+    if ($debug) {
+      print $logfile "*** Stack underflow in signed12bSub on line<$lnum>\n";
+    }
+    return 0;
+  }
+  else {
+    $reloffset = $Stk[0] - $addr;
+       # check for relative offset > 0xFFF
+    if ( abs($reloffset) > 0xFFF ) {
+      print "*** relative offset too large in signed12bSub on line<$lnum>\n";
+      if ($debug) {
+        print $logfile "*** relative offset too large in signed12bSub on line<$lnum>\n";
+      }
+      return 0;
+    }
+    $Stk[0] = $reloffset & 0x1FFF;  # put signed 13bit offset on TOS
+    if ($debug) { &printStk }
+    return 1;
+  }
+}  # end signed12bSub
 
 
 #---------------------------------#
@@ -742,7 +778,7 @@ $ASMpass  = 1;     # initialize Assembler to pass 1
     }  # end check for label/constant
     
     elsif ( ($TOKEN =~ /^\$\w+$/) && ( $ASMpass == 2) ) {  # constant pass2
-      print $outHEXfile "         //      $line\n";
+      print $outHEXfile "          //      $line\n";
       next PARSEASMTOKENS;
     }
 
@@ -790,6 +826,7 @@ $ASMpass  = 1;     # initialize Assembler to pass 1
   } # end PARSEASMTOKENS
   
   if ( ($ASMpass == 1) && ($debug) ) { &printlabsymtab }
+  
   $ASMpass++;
   close $inFile;
 }

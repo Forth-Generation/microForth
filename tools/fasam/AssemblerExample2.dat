@@ -1,0 +1,46 @@
+          //      \       this example has a relative branch in Big Delay
+          //      $mSecDly       500                \ milliseconds Delay value for Big Delay
+          //      $mSecCnt      2666                \ milliseconds Count value for Small Delay
+          //      
+000FF     // 00000             0x00FF    imm         \ push GP_out data (FF)
+00032     // 00001             0x0032    imm         \ push GP_out address (32)
+16043     // 00002                       io!         \ store AA to I/O address 30
+16103     // 00003 
+          //                           
+000AA     // 00004 %LoopStrt   0x00AA    imm         \ push GP_out data (AA)
+00030     // 00005             0x0030    imm         \ push GP_out address (30)
+16043     // 00006                       io!         \ store AA to I/O address 30
+16103     // 00007 
+          //                           
+001F4     // 00008             0x01F4    imm         \ Push 0D500 on the stack
+14018     // 00009             %BigDly   scall       \ call Big Delay
+          //      
+00055     // 0000A             0x0055    imm         \ push GP_out data (55)
+00030     // 0000B             0x0030    imm         \ push GP_out address (30)
+16043     // 0000C                       io!         \ store 55 to I/O address 30
+16103     // 0000D 
+          //                           
+001F4     // 0000E             $mSecDly  imm         \ Push $mSecDly on the stack
+1C009     // 0000F             %BigDly   scallr      \ call %BigDly
+          //                   
+10004     // 00010             %LoopStrt ubranch     \ branch to %LoopStrt
+          //        
+00000     // 00011 %SmallDly   0x0000    imm         \ Small DELAY subroutine Push 0000
+16600     // 00012                       invert          
+16203     // 00013                       +
+16011     // 00014                       dup
+12017     // 00015             %RetSD    0branch     \ branch to %RetSD
+10011     // 00016             %SmallDly ubranch     \ ubranch to %SmallDly
+1618F     // 00017 %RetSD                pexit       \ return from sub with stack pop
+          //      
+00001     // 00018 %BigDly     0x0001    imm         \ Big DELAY subroutine Push 0001
+16C03     // 00019                       -           \ Subtract 1 from BigDly loopcount
+          //                  
+00A6A     // 0001A             $mSecCnt  imm         \ push 0d2666 (1 millisecond)
+14011     // 0001B             %SmallDly scall       \ call %SmallDly
+          //      
+16011     // 0001C                       dup         \ dup BigDly loopcount
+00000     // 0001D             0x0000    imm         \ push 0 on stack
+16703     // 0001E                       =           \ compare BigDly loopcount to 0
+1BFF9     // 0001F             %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
+1618F     // 00020 %RetBD                pexit       \ return from sub with stack pop

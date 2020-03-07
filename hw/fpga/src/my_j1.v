@@ -26,7 +26,7 @@ module my_j1 #(
 
   reg [12:0] pc /* verilator public_flat */, pcN;           // program counter
   wire [12:0] pc_plus_1 = pc + 13'd1;
-  wire [12:0] relative_addr;       //jmt
+  wire [13:0] relative_addr;       //jmt -- relative address calc uses signed numbers
   reg rstkW;                       // return stack write
   wire [WIDTH-1:0] rstkD;          // return stack write value
   reg reboot = 1;
@@ -90,7 +90,8 @@ module my_j1 #(
   assign io_rd = !reboot & is_alu & func_ior;
 
   assign rstkD = (insn[13] == 1'b0) ? {{(WIDTH - 14){1'b0}}, pc_plus_1, 1'b0} : st0;
-  assign relative_addr = pc + insn[12:0]; //relative branch address(jmt) 
+  assign relative_addr = {1'b0,pc} + {insn[12],insn[12:0]}; //relative branch address(jmt)
+                                                            // relative offset is signed
    
   always @*
   begin
@@ -116,13 +117,13 @@ module my_j1 #(
     casez ({reboot, insn[17:13], insn[7], |st0})      
     8'b1_??_???_?_?:   pcN = 0;            // Reset - clear PC
     
-    8'b0_01_000_?_?,                       // jump (prb)
-    8'b0_01_010_?_?,                       // call (prb)
+    8'b0_01_000_?_?,                       // jump absolute (prb)
+    8'b0_01_010_?_?,                       // call absolute (prb)
     8'b0_01_001_?_0:   pcN = insn[12:0];   // conditional branch if st0==0 (prb)
 
-    8'b0_01_100_?_?,                       // jump (jmt)                                                                                               
-    8'b0_01_110_?_?,                       // call (jmt)                                                             
-    8'b0_01_101_?_0:   pcN = relative_addr;   // conditional branch if st0==0 (jmt) 
+    8'b0_01_100_?_?,                       // jump relative (jmt)
+    8'b0_01_110_?_?,                       // call relative (jmt)
+    8'b0_01_101_?_0:   pcN = relative_addr[12:0];   // conditional branch if st0==0 (jmt) 
       
    // 7'b0_1_???_?_?,                       // "fetch" return (prb)
     8'b0_01_011_1_?:   pcN = rst0[13:1];   // return (prb)

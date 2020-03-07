@@ -1,54 +1,47 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /tb/top/clk
 add wave -noupdate /tb/top/rst_n
 add wave -noupdate /tb/top/rst
-add wave -noupdate -divider {ram port a}
-add wave -noupdate -radix hexadecimal /tb/top/sram/addr_a
-add wave -noupdate -radix hexadecimal /tb/top/sram/wdata_a
-add wave -noupdate -radix hexadecimal /tb/top/sram/write_en_a
-add wave -noupdate -radix hexadecimal /tb/top/sram/rdata_a
-add wave -noupdate -divider {ram port b}
-add wave -noupdate -radix hexadecimal /tb/top/sram/addr_b
-add wave -noupdate -radix hexadecimal /tb/top/sram/rdata_b
-add wave -noupdate -divider j1
-add wave -noupdate -radix hexadecimal /tb/top/j1_prb/pc
-add wave -noupdate -radix hexadecimal /tb/top/j1_prb/pcN
-add wave -noupdate /tb/top/j1_prb/reboot
-add wave -noupdate -radix hexadecimal /tb/top/j1_prb/st0
-add wave -noupdate -radix hexadecimal /tb/top/j1_prb/st0N
-add wave -noupdate -radix hexadecimal /tb/top/j1_prb/insn
-add wave -noupdate -radix hexadecimal /tb/top/j1_code_addr
-add wave -noupdate -radix hexadecimal /tb/top/j1_dout
-add wave -noupdate -radix hexadecimal /tb/top/j1_insn
-add wave -noupdate -radix hexadecimal /tb/top/j1_io_din
-add wave -noupdate -radix hexadecimal /tb/top/j1_io_rd
-add wave -noupdate -radix hexadecimal /tb/top/j1_io_wr
-add wave -noupdate -radix hexadecimal /tb/top/j1_mem_addr
-add wave -noupdate -radix hexadecimal /tb/top/j1_mem_wr
-add wave -noupdate -divider gpio
-add wave -noupdate -radix hexadecimal /tb/top/gpio_in
-add wave -noupdate -radix hexadecimal /tb/top/gpio_oe
-add wave -noupdate -radix hexadecimal /tb/top/gpio_out
-add wave -noupdate -radix hexadecimal /tb/top/gpio
-add wave -noupdate -divider uart_tx
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/CO
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/Clear_Valid
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/Counter_Val
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/Data_in
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/LC
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/LoadSR
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/ROMaddr
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/SetSR
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/Shift
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/TBR_Valid
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/TBR_en
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/Tx
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/clk
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/reset
-add wave -noupdate -radix hexadecimal /tb/top/uart_tr_top/FSM1/state
+add wave -noupdate -divider VGA
+add wave -noupdate /tb/top/px_clk
+add wave -noupdate /tb/top/VGA_HS
+add wave -noupdate /tb/top/VGA_VS
+add wave -noupdate -radix hexadecimal /tb/top/h_addr
+add wave -noupdate -radix hexadecimal /tb/top/v_addr
+add wave -noupdate /tb/top/display/h_count
+add wave -noupdate /tb/top/display/v_count
+add wave -noupdate -divider Sprite
+add wave -noupdate /tb/top/sprite_on
+add wave -noupdate -radix decimal /tb/top/ball/x_N_loc
+add wave -noupdate -radix decimal /tb/top/ball/y_N_loc
+add wave -noupdate -radix hexadecimal /tb/top/ball/x_rel_addr
+add wave -noupdate -radix hexadecimal /tb/top/ball/y_rel_addr
+add wave -noupdate -radix hexadecimal /tb/top/ball/x_loc
+add wave -noupdate -radix hexadecimal /tb/top/ball/y_loc
+add wave -noupdate /tb/top/ball/screenbegin
+add wave -noupdate /tb/top/ball/update_x
+add wave -noupdate /tb/top/ball/update_y
+add wave -noupdate /tb/top/ball/x_N_loc_en
+add wave -noupdate /tb/top/ball/y_N_loc_en
+add wave -noupdate -divider F18
+add wave -noupdate /tb/top/j1/clk
+add wave -noupdate -radix unsigned /tb/top/j1/pc
+add wave -noupdate -radix hexadecimal /tb/top/j1/code_addr
+add wave -noupdate -radix hexadecimal /tb/top/j1/insn
+add wave -noupdate -radix hexadecimal /tb/top/j1/st0
+add wave -noupdate -radix hexadecimal /tb/top/j1/st1
+add wave -noupdate /tb/top/j1/io_wr
+add wave -noupdate -radix hexadecimal /tb/top/j1/dout
+add wave -noupdate -divider {New Divider}
+add wave -noupdate -radix hexadecimal /tb/top/IO_Decode_Blk1/io_wr
+add wave -noupdate -radix hexadecimal /tb/top/IO_Decode_Blk1/cpu_din
+add wave -noupdate -radix hexadecimal /tb/top/IO_Decode_Blk1/cpu_addr
+add wave -noupdate /tb/top/IO_Decode_Blk1/io_block_decode
+add wave -noupdate /tb/top/IO_Decode_Blk1/io_decode_en
+add wave -noupdate -radix hexadecimal /tb/top/IO_Decode_Blk1/delayed_strobe
+add wave -noupdate -radix hexadecimal /tb/top/IO_Decode_Blk1/io_dout
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {140000 ps} 0}
+WaveRestoreCursors {{Cursor 1} {13672 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 250
 configure wave -valuecolwidth 40
@@ -64,4 +57,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {44487 ps} {372613 ps}
+WaveRestoreZoom {0 ps} {228344 ps}

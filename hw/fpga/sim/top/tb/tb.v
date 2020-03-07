@@ -4,6 +4,8 @@
 //----------------------------------------------------------------------
 `timescale 1ns/1ps
 
+`define SIM 1
+
 module tb (
   input wire verilator_clk,
   input wire verilator_rst
@@ -135,7 +137,7 @@ endtask
 //----------------------------------------------------------------------
 
 top #(
-  .PARAM1                 ( 0        )
+  .PARAM1                 ( 1        )
 ) top (
   .clk                    ( clk      ),
   .rst_n                  ( rst_n    ),

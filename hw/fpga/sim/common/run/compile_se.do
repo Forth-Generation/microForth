@@ -16,6 +16,7 @@ vlog \
   -y ../../../cores \
   -y ../../../src/uart_tx \
   -y ../../../src/uart_rx \
+  -y ../../../src/VGA \
   -y ../tb \
   +define+SIMULATION=1
 

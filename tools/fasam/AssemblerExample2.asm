@@ -1,4 +1,4 @@
-
+\       this example has a relative branch in Big Delay
 $mSecDly       500                \ milliseconds Delay value for Big Delay
 $mSecCnt      2666                \ milliseconds Count value for Small Delay
 
@@ -18,7 +18,7 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
                       io!         \ store 55 to I/O address 30
                      
             $mSecDly  imm         \ Push $mSecDly on the stack
-            %BigDly   scall       \ call %BigDly
+            %BigDly   scallr      \ call %BigDly
              
             %LoopStrt ubranch     \ branch to %LoopStrt
   
@@ -39,5 +39,5 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
                       dup         \ dup BigDly loopcount
             0x0000    imm         \ push 0 on stack
                       =           \ compare BigDly loopcount to 0
-            %BigDly   0branch     \ branch to %BigDly if loopcount not 0
+            %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
 %RetBD                pexit       \ return from sub with stack pop
