@@ -32,7 +32,7 @@ fasm.pl -b basewordsFname -a asmInFileName {-o hexOutFileName} {-d} {-h} {-l Log
      where :
  -b basewordsFname    Forth basewords filename {required]
  -a asmInFileName     j1a input asm filename {required]
- -o hexOutFileName    j1a output hex filename [default to j1a.hex]
+ -o hexOutFileName    j1a output hex filename [default to asm.dat]
  -l LogFileName       Output Log Filename [default to STDOUT]
  -d                   prints debug info to LogFileName
  -h                   prints this message
@@ -40,6 +40,12 @@ fasm.pl -b basewordsFname -a asmInFileName {-o hexOutFileName} {-d} {-h} {-l Log
 ';
 
 my $asmExample = '
+\        example has a relative branch in Big Delay
+\        example has a relative subroutine call in LoopStrt
+\        example has an <org> that moves the subroutines to 0x400
+\        example has a <dblock> that reserves named loctions
+
+
 $mSecDly       500                \ milliseconds Delay value for Big Delay
 $mSecCnt      2666                \ milliseconds Count value for Small Delay
 
@@ -59,10 +65,13 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
                       io!         \ store 55 to I/O address 30
                      
             $mSecDly  imm         \ Push $mSecDly on the stack
-            %BigDly   scall       \ call %BigDly
+            %BigDly   scallr      \ call %BigDly
              
             %LoopStrt ubranch     \ branch to %LoopStrt
-  
+
+
+            0x0400    <org>       \ org memory to 0x400
+
 %SmallDly   0x0000    imm         \ Small DELAY subroutine Push 0000
                       invert          
                       +
@@ -71,16 +80,27 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
             %SmallDly ubranch     \ ubranch to %SmallDly
 %RetSD                pexit       \ return from sub with stack pop
 
-%BigDly     0x0000    imm         \ Big DELAY subroutine Push 0000
-                      invert          
-                      +
-                      dup
+%BigDly     0x0001    imm         \ Big DELAY subroutine Push 0001
+                      -           \ Subtract 1 from BigDly loopcount
             
-            $mSecCnt  imm         \ push 0D2666 (1 millisecond)
+            $mSecCnt  imm         \ push 0d2666 (1 millisecond)
             %SmallDly scall       \ call %SmallDly
-            %RetBD    0branch     \ branch to %RetBD
-            %BigDly   ubranch     \ ubranch to %BigDly
+
+                      dup         \ dup BigDly loopcount
+            0x0000    imm         \ push 0 on stack
+                      =           \ compare BigDly loopcount to 0
+            %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
 %RetBD                pexit       \ return from sub with stack pop
+
+%Var01             1  <dblock>    \ creat  1 word memory block named %Var01
+%Blk6              6  <dblock>    \ create 6 word block with 1st location named %Blk6
+
+
+            0x0500    <org>       \ org memory to 0x500
+
+%Var02      0xDEAD    <dword>     \ create  1 word variable named %Var02 = 0xDEAD
+%BlkA            0xA  <dblock>    \ create 10 word memory block with 1st location named %Blk8
+%Var03      0xBEEF    <dword>     \ create  1 word variable named %Var02 = 0xBEEF
 ';
 
 
@@ -125,6 +145,9 @@ my %dict;          # word dictionary - hash of defined words/subroutines
               'tcode,'       => [  [ \&writecode, [ ] ]       ],
               '|or|'         => [  [ \&orFunction, [ ] ]    ],
               '|s-12b|'      => [  [ \&signed12bSub, [ ] ]    ],
+              '<org>'        => [  [ \&asmOrg, [ ] ]    ],
+              '<dblock>'     => [  [ \&asmDblock, [ ] ]    ],
+              '<dword>'      => [  [ \&writecode, [ ] ]       ],
 );
 
 
@@ -133,7 +156,7 @@ my %dict;          # word dictionary - hash of defined words/subroutines
 ######################################
 
 #
-#  Label Symbol Table
+#  Constants & Label Symbol Table
 #    %LabSymTab{Label}  =  [ $DefinedLineNumber, $addr {, $usedaddr}*n ]
 my %LabSymTab;   # Symbol table hash for %labels
                  # All label names begin with a '%'
@@ -405,6 +428,13 @@ sub BslashComment {
 #---------------------------------#
 sub writecode {
   my ($hnum,$haddr);
+  
+  unless ( exists($Stk[0]) ) {
+    print "*** Stack underflow in writecode\n";
+    if ($debug) { print "*** Stack underflow in writecode\n" }
+    return 0;
+  }
+  
   $haddr  =  sprintf("%5.5X", $addr++);
   $hnum   =  sprintf("%5.5X", $Stk[0]);
   
@@ -412,12 +442,7 @@ sub writecode {
     print $logfile "  << writecode  TOS<$hnum> >>\n";
   }
   
-  unless ( exists($Stk[0]) ) {
-    print "*** Stack underflow in writecode\n";
-    if ($debug) { print "*** Stack underflow in writecode\n" }
-    return 0;
-  }
-  shift(@Stk);
+  shift(@Stk);  # pop stack
   
        # Write to output file on Assembler Pass 2
   if ( $ASMpass == 2 ) {
@@ -428,6 +453,71 @@ sub writecode {
   }
   return 1;
 }  # end writecode
+
+
+#------------------------------------#
+#            asmOrg                  #
+#  org assembler pseudo op           #
+#  sets memory address to TOS value  #
+#------------------------------------#
+sub asmOrg {
+  my ($haddr);
+  
+  unless ( exists($Stk[0]) ) {
+    print "*** Stack underflow in org on line<$lnum>\n";
+    if ($debug) { print "*** Stack underflow in org pseudo op\n" }
+    return 0;
+  }
+  
+  $addr   =  $Stk[0];           # set current memory address to TOS
+  $haddr  =  sprintf("%5.5X", $addr);
+  
+  if ($debug) {
+    print $logfile "  << asmOrg  TOS<$haddr> >>\n";
+  }
+  
+  shift(@Stk);  # pop stack
+  
+       # Write to output file on Assembler Pass 2
+  if ( $ASMpass == 2 ) {
+    print $outHEXfile "          // $haddr $line\n";
+  }
+  return 1;
+}  # end asmOrg
+
+
+#--------------------------------------#
+#         asmDblock                    #
+#  dblock assembler pseudo op          #
+#  reserves TOS value memory locations #
+#  sets memory address to current      #
+#  address + TOS                       #
+#--------------------------------------#
+sub asmDblock {
+  my ($haddr,$DbSize);
+  
+  unless ( exists($Stk[0]) ) {
+    print "*** Stack underflow in asmDblock on line<$lnum>\n";
+    if ($debug) { print "*** Stack underflow in dblock pseudo op\n" }
+    return 0;
+  }
+  
+  $DbSize =  $Stk[0];                  # DataBlock size is in TOS
+  $haddr  =  sprintf("%5.5X", $addr);  # addr is starting address of DataBlock
+  $addr  +=  $DbSize;                  # set addr to address following DataBlock
+  
+  if ($debug) {
+    print $logfile "  << asmDblock  TOS<$DbSize> >>\n";
+  }
+  
+  shift(@Stk);  # pop stack
+  
+       # Write to output file on Assembler Pass 2
+  if ( $ASMpass == 2 ) {
+    print $outHEXfile "          // $haddr $line\n";
+  }
+  return 1;
+}  # end asmDblock
 
 
 #---------------------------------#
@@ -453,7 +543,7 @@ sub printdict {
 sub printlabsymtab {
 my ($ln,$ad,$used,$i);
   
-  print $logfile "\n  Label Symbol Table :\n";
+  print $logfile "  Label Symbol Table :\n";
   for my $word ( sort keys(%LabSymTab) ) {
     $ln  =  $LabSymTab{$word}[0];
     $ad  =  $LabSymTab{$word}[1];
@@ -629,7 +719,7 @@ if ($opt_b) {
      # open Forth basewords input File
   open ($inFile, "<", $ForthFileName)  or die  "$ForthFileName : $! \n";
   print $logfile " >>OPENING File <$ForthFileName>\n";
-  $inFileName  =  $ForthFileName;
+  $inFileName  =  $ForthFileName;  # GetToken & GetLine write name to log file
 }
 else { print $invokemessage; exit(1);}
 
@@ -642,7 +732,7 @@ if ($opt_o) { # open output if specified
   $hexOutFileName = $opt_o;
 }
 else  { # otherwise write hex output to j1a.hex
-  $hexOutFileName = "j1a.hex";
+  $hexOutFileName = "asm.dat";
 }
 
 if ($opt_d) { $debug = 1 }
@@ -673,19 +763,22 @@ PARSEBASETOKENS: while (&GetToken) {
   
 } # end PARSEBASETOKENS
 
-if ($debug) { &printdict }
-print "\n-- Done GenForthSubs\n\n";
+if ($debug) {
+  print $logfile "\n-- Done Process Basewords\n\n";
+  &printdict;
+}
+print "\n-- Done Process Basewords\n\n";
 close $inFile;   #  close Forth basewords input file
 
 
 
   # read the asm source file and
-  # create the asm hex output file
+  # create the asm hex dat output file
 
-   # open asm input File
-$inFileName  =  $asmInFileName;  # GetToken reads from asm input file
-open ($inFile, "<", $asmInFileName)  or die  "$asmInFileName : $! \n";
-print $logfile " >>OPENING File <$asmInFileName>\n";
+   # # open asm input File
+# $inFileName  =  $asmInFileName;  # GetToken & GetLine write name to log file
+# open ($inFile, "<", $asmInFileName)  or die  "$asmInFileName : $! \n";
+# print $logfile " >>OPENING File <$asmInFileName>\n";
 
    # open asm hex output File
 open ($outHEXfile, ">", $hexOutFileName)  or die  "$hexOutFileName : $! \n";
@@ -701,6 +794,7 @@ $ASMpass  = 1;     # initialize Assembler to pass 1
   @Tokens   =  ();   # initialize @Tokens
 
      # open asm input File
+  $inFileName  =  $asmInFileName;  # GetToken & GetLine write name to log file
   open ($inFile, "<", $asmInFileName)  or die  "$asmInFileName : $! \n";
   print $logfile " >>OPENING File <$asmInFileName>\n";
   
@@ -781,6 +875,8 @@ $ASMpass  = 1;     # initialize Assembler to pass 1
       print $outHEXfile "          //      $line\n";
       next PARSEASMTOKENS;
     }
+    
+    # else $TOKEN is either "" or a Label
 
     while (scalar(@Tokens)) {
       $TOKEN  =  shift(@Tokens);

@@ -1,4 +1,9 @@
-\       this example has a relative branch in Big Delay
+\        example has a relative branch in Big Delay
+\        example has a relative subroutine call in LoopStrt
+\        example has an <org> that moves the subroutines to 0x400
+\        example has a <dblock> that reserves named loctions
+
+
 $mSecDly       500                \ milliseconds Delay value for Big Delay
 $mSecCnt      2666                \ milliseconds Count value for Small Delay
 
@@ -21,7 +26,10 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
             %BigDly   scallr      \ call %BigDly
              
             %LoopStrt ubranch     \ branch to %LoopStrt
-  
+
+
+            0x0400    <org>       \ org memory to 0x400
+
 %SmallDly   0x0000    imm         \ Small DELAY subroutine Push 0000
                       invert          
                       +
@@ -41,3 +49,13 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
                       =           \ compare BigDly loopcount to 0
             %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
 %RetBD                pexit       \ return from sub with stack pop
+
+%Var01             1  <dblock>    \ creat  1 word memory block named %Var01
+%Blk6              6  <dblock>    \ create 6 word block with 1st location named %Blk6
+
+
+            0x0500    <org>       \ org memory to 0x500
+
+%Var02      0xDEAD    <dword>     \ create  1 word variable named %Var02 = 0xDEAD
+%BlkA            0xA  <dblock>    \ create 10 word memory block with 1st location named %Blk8
+%Var03      0xBEEF    <dword>     \ create  1 word variable named %Var02 = 0xBEEF
