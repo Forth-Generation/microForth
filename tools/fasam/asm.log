@@ -1,0 +1,2993 @@
+ >>OPENING File <f18_asm_primatives.fs>
+  dictionary keys :
+    (
+    :
+    ::
+    ;
+    <dblock>
+    <dword>
+    <org>
+    \
+    h#
+    tcode,
+    {
+    |or|
+    |s-12b|
+----- end dictionary keys -----
+
+Read next line b<f18_asm_primatives.fs> l<1>
+ line> \  j1a  assembler base word definitions
+{\}  {j1a}  {assembler}  {base}  {word}  {definitions}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<2>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<3>
+ line> : T          0x00000 ;
+{:}  {T}  {0x00000}  {;}  
+  << Execute(:) >>
+<< AddWord <T> >>
+  >> TOKEN<0x00000>
+  << validNum(0x00000) >>
+    << found number t(0x) n(0)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<4>
+ line> : N          0x00100 ;
+{:}  {N}  {0x00100}  {;}  
+  << Execute(:) >>
+<< AddWord <N> >>
+  >> TOKEN<0x00100>
+  << validNum(0x00100) >>
+    << found number t(0x) n(256)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<5>
+ line> : T+N        0x00200 ;
+{:}  {T+N}  {0x00200}  {;}  
+  << Execute(:) >>
+<< AddWord <T+N> >>
+  >> TOKEN<0x00200>
+  << validNum(0x00200) >>
+    << found number t(0x) n(512)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<6>
+ line> : T&N        0x00300 ;
+{:}  {T&N}  {0x00300}  {;}  
+  << Execute(:) >>
+<< AddWord <T&N> >>
+  >> TOKEN<0x00300>
+  << validNum(0x00300) >>
+    << found number t(0x) n(768)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<7>
+ line> : T|N        0x00400 ;
+{:}  {T|N}  {0x00400}  {;}  
+  << Execute(:) >>
+<< AddWord <T|N> >>
+  >> TOKEN<0x00400>
+  << validNum(0x00400) >>
+    << found number t(0x) n(1024)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<8>
+ line> : T^N        0x00500 ;
+{:}  {T^N}  {0x00500}  {;}  
+  << Execute(:) >>
+<< AddWord <T^N> >>
+  >> TOKEN<0x00500>
+  << validNum(0x00500) >>
+    << found number t(0x) n(1280)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<9>
+ line> : ~T         0x00600 ;
+{:}  {~T}  {0x00600}  {;}  
+  << Execute(:) >>
+<< AddWord <~T> >>
+  >> TOKEN<0x00600>
+  << validNum(0x00600) >>
+    << found number t(0x) n(1536)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<10>
+ line> : N==T       0x00700 ;
+{:}  {N==T}  {0x00700}  {;}  
+  << Execute(:) >>
+<< AddWord <N==T> >>
+  >> TOKEN<0x00700>
+  << validNum(0x00700) >>
+    << found number t(0x) n(1792)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<11>
+ line> : N<T        0x00800 ;
+{:}  {N<T}  {0x00800}  {;}  
+  << Execute(:) >>
+<< AddWord <N<T> >>
+  >> TOKEN<0x00800>
+  << validNum(0x00800) >>
+    << found number t(0x) n(2048)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<12>
+ line> : T2/        0x00900 ;
+{:}  {T2/}  {0x00900}  {;}  
+  << Execute(:) >>
+<< AddWord <T2/> >>
+  >> TOKEN<0x00900>
+  << validNum(0x00900) >>
+    << found number t(0x) n(2304)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<13>
+ line> : T2*        0x00a00 ;
+{:}  {T2*}  {0x00a00}  {;}  
+  << Execute(:) >>
+<< AddWord <T2*> >>
+  >> TOKEN<0x00a00>
+  << validNum(0x00a00) >>
+    << found number t(0x) n(2560)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<14>
+ line> : rT         0x00b00 ;
+{:}  {rT}  {0x00b00}  {;}  
+  << Execute(:) >>
+<< AddWord <rT> >>
+  >> TOKEN<0x00b00>
+  << validNum(0x00b00) >>
+    << found number t(0x) n(2816)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<15>
+ line> : N-T        0x00c00 ;
+{:}  {N-T}  {0x00c00}  {;}  
+  << Execute(:) >>
+<< AddWord <N-T> >>
+  >> TOKEN<0x00c00>
+  << validNum(0x00c00) >>
+    << found number t(0x) n(3072)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<16>
+ line> : io[T]      0x00d00 ;
+{:}  {io[T]}  {0x00d00}  {;}  
+  << Execute(:) >>
+<< AddWord <io[T]> >>
+  >> TOKEN<0x00d00>
+  << validNum(0x00d00) >>
+    << found number t(0x) n(3328)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<17>
+ line> : status     0x00e00 ;
+{:}  {status}  {0x00e00}  {;}  
+  << Execute(:) >>
+<< AddWord <status> >>
+  >> TOKEN<0x00e00>
+  << validNum(0x00e00) >>
+    << found number t(0x) n(3584)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<18>
+ line> : Nu<T       0x00f00 ;
+{:}  {Nu<T}  {0x00f00}  {;}  
+  << Execute(:) >>
+<< AddWord <Nu<T> >>
+  >> TOKEN<0x00f00>
+  << validNum(0x00f00) >>
+    << found number t(0x) n(3840)
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<19>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<20>
+ line> : T->N       0x00010 |or| ;
+{:}  {T->N}  {0x00010}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <T->N> >>
+  >> TOKEN<0x00010>
+  << validNum(0x00010) >>
+    << found number t(0x) n(16)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<21>
+ line> : T->R       0x00020 |or| ;
+{:}  {T->R}  {0x00020}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <T->R> >>
+  >> TOKEN<0x00020>
+  << validNum(0x00020) >>
+    << found number t(0x) n(32)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<22>
+ line> : N->[T]     0x00030 |or| ;
+{:}  {N->[T]}  {0x00030}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <N->[T]> >>
+  >> TOKEN<0x00030>
+  << validNum(0x00030) >>
+    << found number t(0x) n(48)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<23>
+ line> : N->io[T]   0x00040 |or| ;
+{:}  {N->io[T]}  {0x00040}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <N->io[T]> >>
+  >> TOKEN<0x00040>
+  << validNum(0x00040) >>
+    << found number t(0x) n(64)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<24>
+ line> : _IORD_     0x00050 |or| ;
+{:}  {_IORD_}  {0x00050}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <_IORD_> >>
+  >> TOKEN<0x00050>
+  << validNum(0x00050) >>
+    << found number t(0x) n(80)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<25>
+ line> : RET        0x00080 |or| ;
+{:}  {RET}  {0x00080}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <RET> >>
+  >> TOKEN<0x00080>
+  << validNum(0x00080) >>
+    << found number t(0x) n(128)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<26>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<27>
+ line> : d-1        0x00003 |or| ;
+{:}  {d-1}  {0x00003}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <d-1> >>
+  >> TOKEN<0x00003>
+  << validNum(0x00003) >>
+    << found number t(0x) n(3)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<28>
+ line> : d+1        0x00001 |or| ;
+{:}  {d+1}  {0x00001}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <d+1> >>
+  >> TOKEN<0x00001>
+  << validNum(0x00001) >>
+    << found number t(0x) n(1)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<29>
+ line> : r-1        0x0000c |or| ;
+{:}  {r-1}  {0x0000c}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r-1> >>
+  >> TOKEN<0x0000c>
+  << validNum(0x0000c) >>
+    << found number t(0x) n(12)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<30>
+ line> : r-2        0x00008 |or| ;
+{:}  {r-2}  {0x00008}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r-2> >>
+  >> TOKEN<0x00008>
+  << validNum(0x00008) >>
+    << found number t(0x) n(8)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<31>
+ line> : r+1        0x00004 |or| ;
+{:}  {r+1}  {0x00004}  {|or|}  {;}  
+  << Execute(:) >>
+<< AddWord <r+1> >>
+  >> TOKEN<0x00004>
+  << validNum(0x00004) >>
+    << found number t(0x) n(4)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<32>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<33>
+ line> : imm                0x00000 |or| tcode, ;
+{:}  {imm}  {0x00000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <imm> >>
+  >> TOKEN<0x00000>
+  << validNum(0x00000) >>
+    << found number t(0x) n(0)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<34>
+ line> : alu                0x16000 |or| tcode, ;
+{:}  {alu}  {0x16000}  {|or|}  {tcode,}  {;}  
+  << Execute(:) >>
+<< AddWord <alu> >>
+  >> TOKEN<0x16000>
+  << validNum(0x16000) >>
+    << found number t(0x) n(90112)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<35>
+ line> : ubranch            0x10000 |or| tcode, ;   \ unconditional absolute branch
+{:}  {ubranch}  {0x10000}  {|or|}  {tcode,}  {;}  {\}  {unconditional}  {absolute}  {branch}  
+  << Execute(:) >>
+<< AddWord <ubranch> >>
+  >> TOKEN<0x10000>
+  << validNum(0x10000) >>
+    << found number t(0x) n(65536)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<36>
+ line> : ubranchr   |s-12b| 0x18000 |or| tcode, ;   \ unconditional relative branch
+{:}  {ubranchr}  {|s-12b|}  {0x18000}  {|or|}  {tcode,}  {;}  {\}  {unconditional}  {relative}  {branch}  
+  << Execute(:) >>
+<< AddWord <ubranchr> >>
+  >> TOKEN<|s-12b|>
+  << validNum(|s-12b|) >>
+    |s-12b| in dictionary
+  >> TOKEN<0x18000>
+  << validNum(0x18000) >>
+    << found number t(0x) n(98304)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<37>
+ line> : 0branch            0x12000 |or| tcode, ;   \ conditional absolute branch
+{:}  {0branch}  {0x12000}  {|or|}  {tcode,}  {;}  {\}  {conditional}  {absolute}  {branch}  
+  << Execute(:) >>
+<< AddWord <0branch> >>
+  >> TOKEN<0x12000>
+  << validNum(0x12000) >>
+    << found number t(0x) n(73728)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<38>
+ line> : 0branchr   |s-12b| 0x1A000 |or| tcode, ;   \ conditional relative branch
+{:}  {0branchr}  {|s-12b|}  {0x1A000}  {|or|}  {tcode,}  {;}  {\}  {conditional}  {relative}  {branch}  
+  << Execute(:) >>
+<< AddWord <0branchr> >>
+  >> TOKEN<|s-12b|>
+  << validNum(|s-12b|) >>
+    |s-12b| in dictionary
+  >> TOKEN<0x1A000>
+  << validNum(0x1A000) >>
+    << found number t(0x) n(106496)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<39>
+ line> : scall              0x14000 |or| tcode, ;   \ subroutine call absolute
+{:}  {scall}  {0x14000}  {|or|}  {tcode,}  {;}  {\}  {subroutine}  {call}  {absolute}  
+  << Execute(:) >>
+<< AddWord <scall> >>
+  >> TOKEN<0x14000>
+  << validNum(0x14000) >>
+    << found number t(0x) n(81920)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<40>
+ line> : scallr     |s-12b| 0x1C000 |or| tcode, ;   \ subroutine call relative
+{:}  {scallr}  {|s-12b|}  {0x1C000}  {|or|}  {tcode,}  {;}  {\}  {subroutine}  {call}  {relative}  
+  << Execute(:) >>
+<< AddWord <scallr> >>
+  >> TOKEN<|s-12b|>
+  << validNum(|s-12b|) >>
+    |s-12b| in dictionary
+  >> TOKEN<0x1C000>
+  << validNum(0x1C000) >>
+    << found number t(0x) n(114688)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<41>
+ line> : @imm               0x20000 |or| tcode, ;   \ fetch immediate
+{:}  {@imm}  {0x20000}  {|or|}  {tcode,}  {;}  {\}  {fetch}  {immediate}  
+  << Execute(:) >>
+<< AddWord <@imm> >>
+  >> TOKEN<0x20000>
+  << validNum(0x20000) >>
+    << found number t(0x) n(131072)
+  >> TOKEN<|or|>
+  << validNum(|or|) >>
+    |or| in dictionary
+  >> TOKEN<tcode,>
+  << validNum(tcode,) >>
+    tcode, in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<42>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<43>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<44>
+ line> :: noop      T                       alu ;
+{::}  {noop}  {T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <noop> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<45>
+ line> :: +         T+N                 d-1 alu ;
+{::}  {+}  {T+N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <+> >>
+  >> TOKEN<T+N>
+  << validNum(T+N) >>
+    T+N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<46>
+ line> :: -         N-T                 d-1 alu ;
+{::}  {-}  {N-T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <-> >>
+  >> TOKEN<N-T>
+  << validNum(N-T) >>
+    N-T in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<47>
+ line> :: xor       T^N                 d-1 alu ;
+{::}  {xor}  {T^N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <xor> >>
+  >> TOKEN<T^N>
+  << validNum(T^N) >>
+    T^N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<48>
+ line> :: and       T&N                 d-1 alu ;
+{::}  {and}  {T&N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <and> >>
+  >> TOKEN<T&N>
+  << validNum(T&N) >>
+    T&N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<49>
+ line> :: or        T|N                 d-1 alu ;
+{::}  {or}  {T|N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <or> >>
+  >> TOKEN<T|N>
+  << validNum(T|N) >>
+    T|N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<50>
+ line> :: invert    ~T                      alu ;
+{::}  {invert}  {~T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <invert> >>
+  >> TOKEN<~T>
+  << validNum(~T) >>
+    ~T in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<51>
+ line> :: =         N==T                d-1 alu ;
+{::}  {=}  {N==T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <=> >>
+  >> TOKEN<N==T>
+  << validNum(N==T) >>
+    N==T in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<52>
+ line> :: <         N<T                 d-1 alu ;
+{::}  {<}  {N<T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <<> >>
+  >> TOKEN<N<T>
+  << validNum(N<T) >>
+    N<T in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<53>
+ line> :: u<        Nu<T                d-1 alu ;
+{::}  {u<}  {Nu<T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <u<> >>
+  >> TOKEN<Nu<T>
+  << validNum(Nu<T) >>
+    Nu<T in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<54>
+ line> :: swap      N     T->N              alu ;
+{::}  {swap}  {N}  {T->N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <swap> >>
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<55>
+ line> :: dup       T     T->N          d+1 alu ;
+{::}  {dup}  {T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <dup> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<56>
+ line> :: drop      N                   d-1 alu ;
+{::}  {drop}  {N}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <drop> >>
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<57>
+ line> :: over      N     T->N          d+1 alu ;
+{::}  {over}  {N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over> >>
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<58>
+ line> :: nip       T                   d-1 alu ;
+{::}  {nip}  {T}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <nip> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<59>
+ line> :: >r        N     T->R      r+1 d-1 alu ;
+{::}  {>r}  {N}  {T->R}  {r+1}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <>r> >>
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<T->R>
+  << validNum(T->R) >>
+    T->R in dictionary
+  >> TOKEN<r+1>
+  << validNum(r+1) >>
+    r+1 in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<60>
+ line> :: r>        rT    T->N      r-1 d+1 alu ;
+{::}  {r>}  {rT}  {T->N}  {r-1}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <r>> >>
+  >> TOKEN<rT>
+  << validNum(rT) >>
+    rT in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<r-1>
+  << validNum(r-1) >>
+    r-1 in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<61>
+ line> :: r@        rT    T->N          d+1 alu ;
+{::}  {r@}  {rT}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <r@> >>
+  >> TOKEN<rT>
+  << validNum(rT) >>
+    rT in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<62>
+ line> :: io@       T     _IORD_            alu
+{::}  {io@}  {T}  {_IORD_}  {alu}  
+  << Execute(::) >>
+<< AddWord <io@> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<_IORD_>
+  << validNum(_IORD_) >>
+    _IORD_ in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+
+Read next line b<f18_asm_primatives.fs> l<63>
+ line>              io[T]                   alu ;
+{io[T]}  {alu}  {;}  
+  >> TOKEN<io[T]>
+  << validNum(io[T]) >>
+    io[T] in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<64>
+ line> :: !         
+{::}  {!}  
+  << Execute(::) >>
+<< AddWord <!> >>
+
+Read next line b<f18_asm_primatives.fs> l<65>
+ line>              T     N->[T]        d-1 alu
+{T}  {N->[T]}  {d-1}  {alu}  
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<N->[T]>
+  << validNum(N->[T]) >>
+    N->[T] in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+
+Read next line b<f18_asm_primatives.fs> l<66>
+ line>              N                   d-1 alu ;
+{N}  {d-1}  {alu}  {;}  
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<67>
+ line> :: io!       
+{::}  {io!}  
+  << Execute(::) >>
+<< AddWord <io!> >>
+
+Read next line b<f18_asm_primatives.fs> l<68>
+ line>              T     N->io[T]      d-1 alu
+{T}  {N->io[T]}  {d-1}  {alu}  
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<N->io[T]>
+  << validNum(N->io[T]) >>
+    N->io[T] in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+
+Read next line b<f18_asm_primatives.fs> l<69>
+ line>              N                   d-1 alu ;
+{N}  {d-1}  {alu}  {;}  
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<70>
+ line> :: 2/        T2/                     alu ;
+{::}  {2/}  {T2/}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2/> >>
+  >> TOKEN<T2/>
+  << validNum(T2/) >>
+    T2/ in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<71>
+ line> :: 2*        T2*                     alu ;
+{::}  {2*}  {T2*}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2*> >>
+  >> TOKEN<T2*>
+  << validNum(T2*) >>
+    T2* in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<72>
+ line> :: depth     status T->N         d+1 alu ;
+{::}  {depth}  {status}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <depth> >>
+  >> TOKEN<status>
+  << validNum(status) >>
+    status in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<73>
+ line> :: exit      T  RET              r-1 alu ;
+{::}  {exit}  {T}  {RET}  {r-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <exit> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<RET>
+  << validNum(RET) >>
+    RET in dictionary
+  >> TOKEN<r-1>
+  << validNum(r-1) >>
+    r-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<74>
+ line> :: pexit     N  RET          d-1 r-1 alu ;  \ pop return
+{::}  {pexit}  {N}  {RET}  {d-1}  {r-1}  {alu}  {;}  {\}  {pop}  {return}  
+  << Execute(::) >>
+<< AddWord <pexit> >>
+  >> TOKEN<N>
+  << validNum(N) >>
+    N in dictionary
+  >> TOKEN<RET>
+  << validNum(RET) >>
+    RET in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<r-1>
+  << validNum(r-1) >>
+    r-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<75>
+ line> :: hack      T      N->io[T]         alu ;
+{::}  {hack}  {T}  {N->io[T]}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <hack> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<N->io[T]>
+  << validNum(N->io[T]) >>
+    N->io[T] in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<76>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<77>
+ line> \ Elided words
+{\}  {Elided}  {words}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<78>
+ line> \ These words are supported by the hardware but are not
+{\}  {These}  {words}  {are}  {supported}  {by}  {the}  {hardware}  {but}  {are}  {not}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<79>
+ line> \ part of ANS Forth.  They are named after the word-pair
+{\}  {part}  {of}  {ANS}  {Forth.}  {They}  {are}  {named}  {after}  {the}  {word-pair}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<80>
+ line> \ that matches their effect  
+{\}  {that}  {matches}  {their}  {effect}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<81>
+ line> \ Using these elided words instead of
+{\}  {Using}  {these}  {elided}  {words}  {instead}  {of}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<82>
+ line> \ the pair saves one cycle and one instruction.
+{\}  {the}  {pair}  {saves}  {one}  {cycle}  {and}  {one}  {instruction.}  
+  << Execute(\) >>
+  << BslashComment >>
+
+Read next line b<f18_asm_primatives.fs> l<83>
+ line> 
+
+
+Read next line b<f18_asm_primatives.fs> l<84>
+ line> :: 2dupand   T&N   T->N          d+1 alu ;
+{::}  {2dupand}  {T&N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupand> >>
+  >> TOKEN<T&N>
+  << validNum(T&N) >>
+    T&N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<85>
+ line> :: 2dup<     N<T   T->N          d+1 alu ;
+{::}  {2dup<}  {N<T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup<> >>
+  >> TOKEN<N<T>
+  << validNum(N<T) >>
+    N<T in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<86>
+ line> :: 2dup=     N==T  T->N          d+1 alu ;
+{::}  {2dup=}  {N==T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup=> >>
+  >> TOKEN<N==T>
+  << validNum(N==T) >>
+    N==T in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<87>
+ line> :: 2dupor    T|N   T->N          d+1 alu ;
+{::}  {2dupor}  {T|N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupor> >>
+  >> TOKEN<T|N>
+  << validNum(T|N) >>
+    T|N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<88>
+ line> :: 2dup+     T+N   T->N          d+1 alu ;
+{::}  {2dup+}  {T+N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dup+> >>
+  >> TOKEN<T+N>
+  << validNum(T+N) >>
+    T+N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<89>
+ line> :: 2dupu<    Nu<T  T->N          d+1 alu ;
+{::}  {2dupu<}  {Nu<T}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupu<> >>
+  >> TOKEN<Nu<T>
+  << validNum(Nu<T) >>
+    Nu<T in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<90>
+ line> :: 2dupxor   T^N   T->N          d+1 alu ;
+{::}  {2dupxor}  {T^N}  {T->N}  {d+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <2dupxor> >>
+  >> TOKEN<T^N>
+  << validNum(T^N) >>
+    T^N in dictionary
+  >> TOKEN<T->N>
+  << validNum(T->N) >>
+    T->N in dictionary
+  >> TOKEN<d+1>
+  << validNum(d+1) >>
+    d+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<91>
+ line> :: dup>r     T     T->R      r+1     alu ;
+{::}  {dup>r}  {T}  {T->R}  {r+1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <dup>r> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<T->R>
+  << validNum(T->R) >>
+    T->R in dictionary
+  >> TOKEN<r+1>
+  << validNum(r+1) >>
+    r+1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<92>
+ line> :: overand   T&N                     alu ;
+{::}  {overand}  {T&N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overand> >>
+  >> TOKEN<T&N>
+  << validNum(T&N) >>
+    T&N in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<93>
+ line> :: over>     N<T                     alu ;
+{::}  {over>}  {N<T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over>> >>
+  >> TOKEN<N<T>
+  << validNum(N<T) >>
+    N<T in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<94>
+ line> :: over=     N==T                    alu ;
+{::}  {over=}  {N==T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over=> >>
+  >> TOKEN<N==T>
+  << validNum(N==T) >>
+    N==T in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<95>
+ line> :: overor    T|N                     alu ;
+{::}  {overor}  {T|N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overor> >>
+  >> TOKEN<T|N>
+  << validNum(T|N) >>
+    T|N in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<96>
+ line> :: over+     T+N                     alu ;
+{::}  {over+}  {T+N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <over+> >>
+  >> TOKEN<T+N>
+  << validNum(T+N) >>
+    T+N in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<97>
+ line> :: overu>    Nu<T                    alu ;
+{::}  {overu>}  {Nu<T}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overu>> >>
+  >> TOKEN<Nu<T>
+  << validNum(Nu<T) >>
+    Nu<T in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<98>
+ line> :: overxor   T^N                     alu ;
+{::}  {overxor}  {T^N}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <overxor> >>
+  >> TOKEN<T^N>
+  << validNum(T^N) >>
+    T^N in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<99>
+ line> :: rdrop     T                   r-1 alu ;
+{::}  {rdrop}  {T}  {r-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <rdrop> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<r-1>
+  << validNum(r-1) >>
+    r-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+Read next line b<f18_asm_primatives.fs> l<100>
+ line> :: tuck!     T     N->[T]        d-1 alu ;
+{::}  {tuck!}  {T}  {N->[T]}  {d-1}  {alu}  {;}  
+  << Execute(::) >>
+<< AddWord <tuck!> >>
+  >> TOKEN<T>
+  << validNum(T) >>
+    T in dictionary
+  >> TOKEN<N->[T]>
+  << validNum(N->[T]) >>
+    N->[T] in dictionary
+  >> TOKEN<d-1>
+  << validNum(d-1) >>
+    d-1 in dictionary
+  >> TOKEN<alu>
+  << validNum(alu) >>
+    alu in dictionary
+  >> TOKEN<;>
+
+-- Done Process Basewords
+
+  dictionary keys :
+    !
+    (
+    +
+    -
+    0branch
+    0branchr
+    2*
+    2/
+    2dup+
+    2dup<
+    2dup=
+    2dupand
+    2dupor
+    2dupu<
+    2dupxor
+    :
+    ::
+    ;
+    <
+    <dblock>
+    <dword>
+    <org>
+    =
+    >r
+    @imm
+    N
+    N->[T]
+    N->io[T]
+    N-T
+    N<T
+    N==T
+    Nu<T
+    RET
+    T
+    T&N
+    T+N
+    T->N
+    T->R
+    T2*
+    T2/
+    T^N
+    T|N
+    \
+    _IORD_
+    alu
+    and
+    d+1
+    d-1
+    depth
+    drop
+    dup
+    dup>r
+    exit
+    h#
+    hack
+    imm
+    invert
+    io!
+    io@
+    io[T]
+    nip
+    noop
+    or
+    over
+    over+
+    over=
+    over>
+    overand
+    overor
+    overu>
+    overxor
+    pexit
+    r+1
+    r-1
+    r-2
+    r>
+    r@
+    rT
+    rdrop
+    scall
+    scallr
+    status
+    swap
+    tcode,
+    tuck!
+    u<
+    ubranch
+    ubranchr
+    xor
+    {
+    |or|
+    |s-12b|
+    ~T
+----- end dictionary keys -----
+ >>OPENING File <AssemblerExample2.dat>
+ >>OPENING File <AssemblerExample2.asm>
+
+########## Assembler pass <1>
+
+
+ReadGL next line b<AssemblerExample2.asm> l<7>
+ line> $mSecDly       500                \ milliseconds Delay value for Big Delay
+{$mSecDly}  {500}  {\}  {milliseconds}  {Delay}  {value}  {for}  {Big}  {Delay}  
+>a> TOKEN1<$mSecDly> addr<0>
+ >> found label/constant <$mSecDly> on line<7>
+  << validNum(500) >>
+    << found number t() n(500)
+ >> constant <$mSecDly> added to SymTable l<7> v<500>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<8>
+ line> $mSecCnt      2666                \ milliseconds Count value for Small Delay
+{$mSecCnt}  {2666}  {\}  {milliseconds}  {Count}  {value}  {for}  {Small}  {Delay}  
+>a> TOKEN1<$mSecCnt> addr<0>
+ >> found label/constant <$mSecCnt> on line<8>
+  << validNum(2666) >>
+    << found number t() n(2666)
+ >> constant <$mSecCnt> added to SymTable l<8> v<2666>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<10>
+ line>             0x00FF    imm         \ push GP_out data (FF)
+{}  {0x00FF}  {imm}  {\}  {push}  {GP_out}  {data}  {(FF)}  
+>a> TOKEN1<> addr<0>
+  << validNum(0x00FF) >>
+    << found number t(0x) n(255)
+  Stk :  00FF
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  00FF
+  << Execute(|or|) >>
+  Stk :  00FF
+  << Execute(tcode,) >>
+  << writecode  TOS<000FF> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<11>
+ line>             0x0032    imm         \ push GP_out address (32)
+{}  {0x0032}  {imm}  {\}  {push}  {GP_out}  {address}  {(32)}  
+>a> TOKEN1<> addr<1>
+  << validNum(0x0032) >>
+    << found number t(0x) n(50)
+  Stk :  0032
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0032
+  << Execute(|or|) >>
+  Stk :  0032
+  << Execute(tcode,) >>
+  << writecode  TOS<00032> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<12>
+ line>                       io!         \ store AA to I/O address 30
+{}  {io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<2>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<14>
+ line> %LoopStrt   0x00AA    imm         \ push GP_out data (AA)
+{%LoopStrt}  {0x00AA}  {imm}  {\}  {push}  {GP_out}  {data}  {(AA)}  
+>a> TOKEN1<%LoopStrt> addr<4>
+ >> found label/constant <%LoopStrt> on line<14>
+ >> label <%LoopStrt> added to SymTable l<14> a<4>
+  << validNum(0x00AA) >>
+    << found number t(0x) n(170)
+  Stk :  00AA
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  00AA
+  << Execute(|or|) >>
+  Stk :  00AA
+  << Execute(tcode,) >>
+  << writecode  TOS<000AA> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<15>
+ line>             0x0030    imm         \ push GP_out address (30)
+{}  {0x0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+>a> TOKEN1<> addr<5>
+  << validNum(0x0030) >>
+    << found number t(0x) n(48)
+  Stk :  0030
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0030
+  << Execute(|or|) >>
+  Stk :  0030
+  << Execute(tcode,) >>
+  << writecode  TOS<00030> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<16>
+ line>                       io!         \ store AA to I/O address 30
+{}  {io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<6>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<18>
+ line>             0x01F4    imm         \ Push 0D500 on the stack
+{}  {0x01F4}  {imm}  {\}  {Push}  {0D500}  {on}  {the}  {stack}  
+>a> TOKEN1<> addr<8>
+  << validNum(0x01F4) >>
+    << found number t(0x) n(500)
+  Stk :  01F4
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  01F4
+  << Execute(|or|) >>
+  Stk :  01F4
+  << Execute(tcode,) >>
+  << writecode  TOS<001F4> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<19>
+ line>             %BigDly   scall       \ call Big Delay
+{}  {%BigDly}  {scall}  {\}  {call}  {Big}  {Delay}  
+>a> TOKEN1<> addr<9>
+  << validNum(%BigDly) >>
+  Stk :  0000
+>a> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  14000  0000
+  << Execute(|or|) >>
+  Stk :  14000
+  << Execute(tcode,) >>
+  << writecode  TOS<14000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<21>
+ line>             0x0055    imm         \ push GP_out data (55)
+{}  {0x0055}  {imm}  {\}  {push}  {GP_out}  {data}  {(55)}  
+>a> TOKEN1<> addr<10>
+  << validNum(0x0055) >>
+    << found number t(0x) n(85)
+  Stk :  0055
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0055
+  << Execute(|or|) >>
+  Stk :  0055
+  << Execute(tcode,) >>
+  << writecode  TOS<00055> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<22>
+ line>             0x0030    imm         \ push GP_out address (30)
+{}  {0x0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+>a> TOKEN1<> addr<11>
+  << validNum(0x0030) >>
+    << found number t(0x) n(48)
+  Stk :  0030
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0030
+  << Execute(|or|) >>
+  Stk :  0030
+  << Execute(tcode,) >>
+  << writecode  TOS<00030> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<23>
+ line>                       io!         \ store 55 to I/O address 30
+{}  {io!}  {\}  {store}  {55}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<12>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<25>
+ line>             $mSecDly  imm         \ Push $mSecDly on the stack
+{}  {$mSecDly}  {imm}  {\}  {Push}  {$mSecDly}  {on}  {the}  {stack}  
+>a> TOKEN1<> addr<14>
+  << validNum($mSecDly) >>
+  Stk :  01F4
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  01F4
+  << Execute(|or|) >>
+  Stk :  01F4
+  << Execute(tcode,) >>
+  << writecode  TOS<001F4> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<26>
+ line>             %BigDly   scallr      \ call %BigDly
+{}  {%BigDly}  {scallr}  {\}  {call}  {%BigDly}  
+>a> TOKEN1<> addr<15>
+  << validNum(%BigDly) >>
+  Stk :  0000
+>a> TOKEN<scallr>
+  << Execute(scallr) >>
+  << Execute(|s-12b|) >>
+  Stk :  1FF1
+  Stk :  1C000  1FF1
+  << Execute(|or|) >>
+  Stk :  1DFF1
+  << Execute(tcode,) >>
+  << writecode  TOS<1DFF1> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<28>
+ line>             %LoopStrt ubranch     \ branch to %LoopStrt
+{}  {%LoopStrt}  {ubranch}  {\}  {branch}  {to}  {%LoopStrt}  
+>a> TOKEN1<> addr<16>
+  << validNum(%LoopStrt) >>
+  Stk :  0004
+>a> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  10000  0004
+  << Execute(|or|) >>
+  Stk :  10004
+  << Execute(tcode,) >>
+  << writecode  TOS<10004> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<31>
+ line>             0x0400    <org>       \ org memory to 0x400
+{}  {0x0400}  {<org>}  {\}  {org}  {memory}  {to}  {0x400}  
+>a> TOKEN1<> addr<17>
+  << validNum(0x0400) >>
+    << found number t(0x) n(1024)
+  Stk :  0400
+>a> TOKEN<<org>>
+  << Execute(<org>) >>
+  << asmOrg  TOS<00400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<33>
+ line> %SmallDly   0x0000    imm         \ Small DELAY subroutine Push 0000
+{%SmallDly}  {0x0000}  {imm}  {\}  {Small}  {DELAY}  {subroutine}  {Push}  {0000}  
+>a> TOKEN1<%SmallDly> addr<1024>
+ >> found label/constant <%SmallDly> on line<33>
+ >> label <%SmallDly> added to SymTable l<33> a<1024>
+  << validNum(0x0000) >>
+    << found number t(0x) n(0)
+  Stk :  0000
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0000
+  << Execute(|or|) >>
+  Stk :  0000
+  << Execute(tcode,) >>
+  << writecode  TOS<00000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<34>
+ line>                       invert          
+{}  {invert}  
+>a> TOKEN1<> addr<1025>
+>a> TOKEN<invert>
+  << Execute(invert) >>
+  << Execute(~T) >>
+  Stk :  0600
+  << Execute(alu) >>
+  Stk :  16000  0600
+  << Execute(|or|) >>
+  Stk :  16600
+  << Execute(tcode,) >>
+  << writecode  TOS<16600> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<35>
+ line>                       +
+{}  {+}  
+>a> TOKEN1<> addr<1026>
+>a> TOKEN<+>
+  << Execute(+) >>
+  << Execute(T+N) >>
+  Stk :  0200
+  << Execute(d-1) >>
+  Stk :  0003  0200
+  << Execute(|or|) >>
+  Stk :  0203
+  << Execute(alu) >>
+  Stk :  16000  0203
+  << Execute(|or|) >>
+  Stk :  16203
+  << Execute(tcode,) >>
+  << writecode  TOS<16203> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<36>
+ line>                       dup
+{}  {dup}  
+>a> TOKEN1<> addr<1027>
+>a> TOKEN<dup>
+  << Execute(dup) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(T->N) >>
+  Stk :  0010  0000
+  << Execute(|or|) >>
+  Stk :  0010
+  << Execute(d+1) >>
+  Stk :  0001  0010
+  << Execute(|or|) >>
+  Stk :  0011
+  << Execute(alu) >>
+  Stk :  16000  0011
+  << Execute(|or|) >>
+  Stk :  16011
+  << Execute(tcode,) >>
+  << writecode  TOS<16011> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<37>
+ line>             %RetSD    0branch     \ branch to %RetSD
+{}  {%RetSD}  {0branch}  {\}  {branch}  {to}  {%RetSD}  
+>a> TOKEN1<> addr<1028>
+  << validNum(%RetSD) >>
+  Stk :  0000
+>a> TOKEN<0branch>
+  << Execute(0branch) >>
+  Stk :  12000  0000
+  << Execute(|or|) >>
+  Stk :  12000
+  << Execute(tcode,) >>
+  << writecode  TOS<12000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<38>
+ line>             %SmallDly ubranch     \ ubranch to %SmallDly
+{}  {%SmallDly}  {ubranch}  {\}  {ubranch}  {to}  {%SmallDly}  
+>a> TOKEN1<> addr<1029>
+  << validNum(%SmallDly) >>
+  Stk :  0400
+>a> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  10000  0400
+  << Execute(|or|) >>
+  Stk :  10400
+  << Execute(tcode,) >>
+  << writecode  TOS<10400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<39>
+ line> %RetSD                pexit       \ return from sub with stack pop
+{%RetSD}  {pexit}  {\}  {return}  {from}  {sub}  {with}  {stack}  {pop}  
+>a> TOKEN1<%RetSD> addr<1030>
+ >> found label/constant <%RetSD> on line<39>
+ >> label <%RetSD> used before defined
+ >>   add DefinedLine<39> address<1030>
+>a> TOKEN<pexit>
+  << Execute(pexit) >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(RET) >>
+  Stk :  0080  0100
+  << Execute(|or|) >>
+  Stk :  0180
+  << Execute(d-1) >>
+  Stk :  0003  0180
+  << Execute(|or|) >>
+  Stk :  0183
+  << Execute(r-1) >>
+  Stk :  000C  0183
+  << Execute(|or|) >>
+  Stk :  018F
+  << Execute(alu) >>
+  Stk :  16000  018F
+  << Execute(|or|) >>
+  Stk :  1618F
+  << Execute(tcode,) >>
+  << writecode  TOS<1618F> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<41>
+ line> %BigDly     0x0001    imm         \ Big DELAY subroutine Push 0001
+{%BigDly}  {0x0001}  {imm}  {\}  {Big}  {DELAY}  {subroutine}  {Push}  {0001}  
+>a> TOKEN1<%BigDly> addr<1031>
+ >> found label/constant <%BigDly> on line<41>
+ >> label <%BigDly> used before defined
+ >>   add DefinedLine<41> address<1031>
+  << validNum(0x0001) >>
+    << found number t(0x) n(1)
+  Stk :  0001
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0001
+  << Execute(|or|) >>
+  Stk :  0001
+  << Execute(tcode,) >>
+  << writecode  TOS<00001> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<42>
+ line>                       -           \ Subtract 1 from BigDly loopcount
+{}  {-}  {\}  {Subtract}  {1}  {from}  {BigDly}  {loopcount}  
+>a> TOKEN1<> addr<1032>
+>a> TOKEN<->
+  << Execute(-) >>
+  << Execute(N-T) >>
+  Stk :  0C00
+  << Execute(d-1) >>
+  Stk :  0003  0C00
+  << Execute(|or|) >>
+  Stk :  0C03
+  << Execute(alu) >>
+  Stk :  16000  0C03
+  << Execute(|or|) >>
+  Stk :  16C03
+  << Execute(tcode,) >>
+  << writecode  TOS<16C03> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<44>
+ line>             $mSecCnt  imm         \ push 0d2666 (1 millisecond)
+{}  {$mSecCnt}  {imm}  {\}  {push}  {0d2666}  {(1}  {millisecond)}  
+>a> TOKEN1<> addr<1033>
+  << validNum($mSecCnt) >>
+  Stk :  0A6A
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0A6A
+  << Execute(|or|) >>
+  Stk :  0A6A
+  << Execute(tcode,) >>
+  << writecode  TOS<00A6A> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<45>
+ line>             %SmallDly scall       \ call %SmallDly
+{}  {%SmallDly}  {scall}  {\}  {call}  {%SmallDly}  
+>a> TOKEN1<> addr<1034>
+  << validNum(%SmallDly) >>
+  Stk :  0400
+>a> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  14000  0400
+  << Execute(|or|) >>
+  Stk :  14400
+  << Execute(tcode,) >>
+  << writecode  TOS<14400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<47>
+ line>                       dup         \ dup BigDly loopcount
+{}  {dup}  {\}  {dup}  {BigDly}  {loopcount}  
+>a> TOKEN1<> addr<1035>
+>a> TOKEN<dup>
+  << Execute(dup) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(T->N) >>
+  Stk :  0010  0000
+  << Execute(|or|) >>
+  Stk :  0010
+  << Execute(d+1) >>
+  Stk :  0001  0010
+  << Execute(|or|) >>
+  Stk :  0011
+  << Execute(alu) >>
+  Stk :  16000  0011
+  << Execute(|or|) >>
+  Stk :  16011
+  << Execute(tcode,) >>
+  << writecode  TOS<16011> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<48>
+ line>             0x0000    imm         \ push 0 on stack
+{}  {0x0000}  {imm}  {\}  {push}  {0}  {on}  {stack}  
+>a> TOKEN1<> addr<1036>
+  << validNum(0x0000) >>
+    << found number t(0x) n(0)
+  Stk :  0000
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0000
+  << Execute(|or|) >>
+  Stk :  0000
+  << Execute(tcode,) >>
+  << writecode  TOS<00000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<49>
+ line>                       =           \ compare BigDly loopcount to 0
+{}  {=}  {\}  {compare}  {BigDly}  {loopcount}  {to}  {0}  
+>a> TOKEN1<> addr<1037>
+>a> TOKEN<=>
+  << Execute(=) >>
+  << Execute(N==T) >>
+  Stk :  0700
+  << Execute(d-1) >>
+  Stk :  0003  0700
+  << Execute(|or|) >>
+  Stk :  0703
+  << Execute(alu) >>
+  Stk :  16000  0703
+  << Execute(|or|) >>
+  Stk :  16703
+  << Execute(tcode,) >>
+  << writecode  TOS<16703> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<50>
+ line>             %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
+{}  {%BigDly}  {0branchr}  {\}  {branch}  {to}  {%BigDly}  {if}  {loopcount}  {not}  {0}  
+>a> TOKEN1<> addr<1038>
+  << validNum(%BigDly) >>
+  Stk :  0407
+>a> TOKEN<0branchr>
+  << Execute(0branchr) >>
+  << Execute(|s-12b|) >>
+  Stk :  1FF9
+  Stk :  1A000  1FF9
+  << Execute(|or|) >>
+  Stk :  1BFF9
+  << Execute(tcode,) >>
+  << writecode  TOS<1BFF9> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<51>
+ line> %RetBD                pexit       \ return from sub with stack pop
+{%RetBD}  {pexit}  {\}  {return}  {from}  {sub}  {with}  {stack}  {pop}  
+>a> TOKEN1<%RetBD> addr<1039>
+ >> found label/constant <%RetBD> on line<51>
+ >> label <%RetBD> added to SymTable l<51> a<1039>
+>a> TOKEN<pexit>
+  << Execute(pexit) >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(RET) >>
+  Stk :  0080  0100
+  << Execute(|or|) >>
+  Stk :  0180
+  << Execute(d-1) >>
+  Stk :  0003  0180
+  << Execute(|or|) >>
+  Stk :  0183
+  << Execute(r-1) >>
+  Stk :  000C  0183
+  << Execute(|or|) >>
+  Stk :  018F
+  << Execute(alu) >>
+  Stk :  16000  018F
+  << Execute(|or|) >>
+  Stk :  1618F
+  << Execute(tcode,) >>
+  << writecode  TOS<1618F> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<53>
+ line> %Var01             1  <dblock>    \ creat  1 word memory block named %Var01
+{%Var01}  {1}  {<dblock>}  {\}  {creat}  {1}  {word}  {memory}  {block}  {named}  {%Var01}  
+>a> TOKEN1<%Var01> addr<1040>
+ >> found label/constant <%Var01> on line<53>
+ >> label <%Var01> added to SymTable l<53> a<1040>
+  << validNum(1) >>
+    << found number t() n(1)
+  Stk :  0001
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<1> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<54>
+ line> %Blk6              6  <dblock>    \ create 6 word block with 1st location named %Blk6
+{%Blk6}  {6}  {<dblock>}  {\}  {create}  {6}  {word}  {block}  {with}  {1st}  {location}  {named}  {%Blk6}  
+>a> TOKEN1<%Blk6> addr<1041>
+ >> found label/constant <%Blk6> on line<54>
+ >> label <%Blk6> added to SymTable l<54> a<1041>
+  << validNum(6) >>
+    << found number t() n(6)
+  Stk :  0006
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<6> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<57>
+ line>             0x0500    <org>       \ org memory to 0x500
+{}  {0x0500}  {<org>}  {\}  {org}  {memory}  {to}  {0x500}  
+>a> TOKEN1<> addr<1047>
+  << validNum(0x0500) >>
+    << found number t(0x) n(1280)
+  Stk :  0500
+>a> TOKEN<<org>>
+  << Execute(<org>) >>
+  << asmOrg  TOS<00500> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<59>
+ line> %Var02      0xDEAD    <dword>     \ create  1 word variable named %Var02 = 0xDEAD
+{%Var02}  {0xDEAD}  {<dword>}  {\}  {create}  {1}  {word}  {variable}  {named}  {%Var02}  {=}  {0xDEAD}  
+>a> TOKEN1<%Var02> addr<1280>
+ >> found label/constant <%Var02> on line<59>
+ >> label <%Var02> added to SymTable l<59> a<1280>
+  << validNum(0xDEAD) >>
+    << found number t(0x) n(57005)
+  Stk :  DEAD
+>a> TOKEN<<dword>>
+  << Execute(<dword>) >>
+  << writecode  TOS<0DEAD> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<60>
+ line> %BlkA            0xA  <dblock>    \ create 10 word memory block with 1st location named %Blk8
+{%BlkA}  {0xA}  {<dblock>}  {\}  {create}  {10}  {word}  {memory}  {block}  {with}  {1st}  {location}  {named}  {%Blk8}  
+>a> TOKEN1<%BlkA> addr<1281>
+ >> found label/constant <%BlkA> on line<60>
+ >> label <%BlkA> added to SymTable l<60> a<1281>
+  << validNum(0xA) >>
+    << found number t(0x) n(10)
+  Stk :  000A
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<10> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<61>
+ line> %Var03      0xBEEF    <dword>     \ create  1 word variable named %Var02 = 0xBEEF
+{%Var03}  {0xBEEF}  {<dword>}  {\}  {create}  {1}  {word}  {variable}  {named}  {%Var02}  {=}  {0xBEEF}  
+>a> TOKEN1<%Var03> addr<1291>
+ >> found label/constant <%Var03> on line<61>
+ >> label <%Var03> added to SymTable l<61> a<1291>
+  << validNum(0xBEEF) >>
+    << found number t(0x) n(48879)
+  Stk :  BEEF
+>a> TOKEN<<dword>>
+  << Execute(<dword>) >>
+  << writecode  TOS<0BEEF> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+  Label Symbol Table :
+    $mSecCnt  a<0A6A> d<8> u<44>
+    $mSecDly  a<01F4> d<7> u<25>
+    %BigDly  a<0407> d<41> u<19, 26, 50>
+    %Blk6  a<0411> d<54> u<>
+    %BlkA  a<0501> d<60> u<>
+    %LoopStrt  a<0004> d<14> u<28>
+    %RetBD  a<040F> d<51> u<>
+    %RetSD  a<0406> d<39> u<37>
+    %SmallDly  a<0400> d<33> u<38, 45>
+    %Var01  a<0410> d<53> u<>
+    %Var02  a<0500> d<59> u<>
+    %Var03  a<050B> d<61> u<>
+----- end  Label Symbol Table -----
+
+ >>OPENING File <AssemblerExample2.asm>
+
+########## Assembler pass <2>
+
+
+ReadGL next line b<AssemblerExample2.asm> l<7>
+ line> $mSecDly       500                \ milliseconds Delay value for Big Delay
+{$mSecDly}  {500}  {\}  {milliseconds}  {Delay}  {value}  {for}  {Big}  {Delay}  
+>a> TOKEN1<$mSecDly> addr<0>
+
+ReadGL next line b<AssemblerExample2.asm> l<8>
+ line> $mSecCnt      2666                \ milliseconds Count value for Small Delay
+{$mSecCnt}  {2666}  {\}  {milliseconds}  {Count}  {value}  {for}  {Small}  {Delay}  
+>a> TOKEN1<$mSecCnt> addr<0>
+
+ReadGL next line b<AssemblerExample2.asm> l<10>
+ line>             0x00FF    imm         \ push GP_out data (FF)
+{}  {0x00FF}  {imm}  {\}  {push}  {GP_out}  {data}  {(FF)}  
+>a> TOKEN1<> addr<0>
+  << validNum(0x00FF) >>
+    << found number t(0x) n(255)
+  Stk :  00FF
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  00FF
+  << Execute(|or|) >>
+  Stk :  00FF
+  << Execute(tcode,) >>
+  << writecode  TOS<000FF> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<11>
+ line>             0x0032    imm         \ push GP_out address (32)
+{}  {0x0032}  {imm}  {\}  {push}  {GP_out}  {address}  {(32)}  
+>a> TOKEN1<> addr<1>
+  << validNum(0x0032) >>
+    << found number t(0x) n(50)
+  Stk :  0032
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0032
+  << Execute(|or|) >>
+  Stk :  0032
+  << Execute(tcode,) >>
+  << writecode  TOS<00032> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<12>
+ line>                       io!         \ store AA to I/O address 30
+{}  {io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<2>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<14>
+ line> %LoopStrt   0x00AA    imm         \ push GP_out data (AA)
+{%LoopStrt}  {0x00AA}  {imm}  {\}  {push}  {GP_out}  {data}  {(AA)}  
+>a> TOKEN1<%LoopStrt> addr<4>
+  << validNum(0x00AA) >>
+    << found number t(0x) n(170)
+  Stk :  00AA
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  00AA
+  << Execute(|or|) >>
+  Stk :  00AA
+  << Execute(tcode,) >>
+  << writecode  TOS<000AA> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<15>
+ line>             0x0030    imm         \ push GP_out address (30)
+{}  {0x0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+>a> TOKEN1<> addr<5>
+  << validNum(0x0030) >>
+    << found number t(0x) n(48)
+  Stk :  0030
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0030
+  << Execute(|or|) >>
+  Stk :  0030
+  << Execute(tcode,) >>
+  << writecode  TOS<00030> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<16>
+ line>                       io!         \ store AA to I/O address 30
+{}  {io!}  {\}  {store}  {AA}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<6>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<18>
+ line>             0x01F4    imm         \ Push 0D500 on the stack
+{}  {0x01F4}  {imm}  {\}  {Push}  {0D500}  {on}  {the}  {stack}  
+>a> TOKEN1<> addr<8>
+  << validNum(0x01F4) >>
+    << found number t(0x) n(500)
+  Stk :  01F4
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  01F4
+  << Execute(|or|) >>
+  Stk :  01F4
+  << Execute(tcode,) >>
+  << writecode  TOS<001F4> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<19>
+ line>             %BigDly   scall       \ call Big Delay
+{}  {%BigDly}  {scall}  {\}  {call}  {Big}  {Delay}  
+>a> TOKEN1<> addr<9>
+  << validNum(%BigDly) >>
+  Stk :  0407
+>a> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  14000  0407
+  << Execute(|or|) >>
+  Stk :  14407
+  << Execute(tcode,) >>
+  << writecode  TOS<14407> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<21>
+ line>             0x0055    imm         \ push GP_out data (55)
+{}  {0x0055}  {imm}  {\}  {push}  {GP_out}  {data}  {(55)}  
+>a> TOKEN1<> addr<10>
+  << validNum(0x0055) >>
+    << found number t(0x) n(85)
+  Stk :  0055
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0055
+  << Execute(|or|) >>
+  Stk :  0055
+  << Execute(tcode,) >>
+  << writecode  TOS<00055> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<22>
+ line>             0x0030    imm         \ push GP_out address (30)
+{}  {0x0030}  {imm}  {\}  {push}  {GP_out}  {address}  {(30)}  
+>a> TOKEN1<> addr<11>
+  << validNum(0x0030) >>
+    << found number t(0x) n(48)
+  Stk :  0030
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0030
+  << Execute(|or|) >>
+  Stk :  0030
+  << Execute(tcode,) >>
+  << writecode  TOS<00030> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<23>
+ line>                       io!         \ store 55 to I/O address 30
+{}  {io!}  {\}  {store}  {55}  {to}  {I/O}  {address}  {30}  
+>a> TOKEN1<> addr<12>
+>a> TOKEN<io!>
+  << Execute(io!) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(N->io[T]) >>
+  Stk :  0040  0000
+  << Execute(|or|) >>
+  Stk :  0040
+  << Execute(d-1) >>
+  Stk :  0003  0040
+  << Execute(|or|) >>
+  Stk :  0043
+  << Execute(alu) >>
+  Stk :  16000  0043
+  << Execute(|or|) >>
+  Stk :  16043
+  << Execute(tcode,) >>
+  << writecode  TOS<16043> >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(d-1) >>
+  Stk :  0003  0100
+  << Execute(|or|) >>
+  Stk :  0103
+  << Execute(alu) >>
+  Stk :  16000  0103
+  << Execute(|or|) >>
+  Stk :  16103
+  << Execute(tcode,) >>
+  << writecode  TOS<16103> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<25>
+ line>             $mSecDly  imm         \ Push $mSecDly on the stack
+{}  {$mSecDly}  {imm}  {\}  {Push}  {$mSecDly}  {on}  {the}  {stack}  
+>a> TOKEN1<> addr<14>
+  << validNum($mSecDly) >>
+  Stk :  01F4
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  01F4
+  << Execute(|or|) >>
+  Stk :  01F4
+  << Execute(tcode,) >>
+  << writecode  TOS<001F4> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<26>
+ line>             %BigDly   scallr      \ call %BigDly
+{}  {%BigDly}  {scallr}  {\}  {call}  {%BigDly}  
+>a> TOKEN1<> addr<15>
+  << validNum(%BigDly) >>
+  Stk :  0407
+>a> TOKEN<scallr>
+  << Execute(scallr) >>
+  << Execute(|s-12b|) >>
+  Stk :  03F8
+  Stk :  1C000  03F8
+  << Execute(|or|) >>
+  Stk :  1C3F8
+  << Execute(tcode,) >>
+  << writecode  TOS<1C3F8> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<28>
+ line>             %LoopStrt ubranch     \ branch to %LoopStrt
+{}  {%LoopStrt}  {ubranch}  {\}  {branch}  {to}  {%LoopStrt}  
+>a> TOKEN1<> addr<16>
+  << validNum(%LoopStrt) >>
+  Stk :  0004
+>a> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  10000  0004
+  << Execute(|or|) >>
+  Stk :  10004
+  << Execute(tcode,) >>
+  << writecode  TOS<10004> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<31>
+ line>             0x0400    <org>       \ org memory to 0x400
+{}  {0x0400}  {<org>}  {\}  {org}  {memory}  {to}  {0x400}  
+>a> TOKEN1<> addr<17>
+  << validNum(0x0400) >>
+    << found number t(0x) n(1024)
+  Stk :  0400
+>a> TOKEN<<org>>
+  << Execute(<org>) >>
+  << asmOrg  TOS<00400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<33>
+ line> %SmallDly   0x0000    imm         \ Small DELAY subroutine Push 0000
+{%SmallDly}  {0x0000}  {imm}  {\}  {Small}  {DELAY}  {subroutine}  {Push}  {0000}  
+>a> TOKEN1<%SmallDly> addr<1024>
+  << validNum(0x0000) >>
+    << found number t(0x) n(0)
+  Stk :  0000
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0000
+  << Execute(|or|) >>
+  Stk :  0000
+  << Execute(tcode,) >>
+  << writecode  TOS<00000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<34>
+ line>                       invert          
+{}  {invert}  
+>a> TOKEN1<> addr<1025>
+>a> TOKEN<invert>
+  << Execute(invert) >>
+  << Execute(~T) >>
+  Stk :  0600
+  << Execute(alu) >>
+  Stk :  16000  0600
+  << Execute(|or|) >>
+  Stk :  16600
+  << Execute(tcode,) >>
+  << writecode  TOS<16600> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<35>
+ line>                       +
+{}  {+}  
+>a> TOKEN1<> addr<1026>
+>a> TOKEN<+>
+  << Execute(+) >>
+  << Execute(T+N) >>
+  Stk :  0200
+  << Execute(d-1) >>
+  Stk :  0003  0200
+  << Execute(|or|) >>
+  Stk :  0203
+  << Execute(alu) >>
+  Stk :  16000  0203
+  << Execute(|or|) >>
+  Stk :  16203
+  << Execute(tcode,) >>
+  << writecode  TOS<16203> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<36>
+ line>                       dup
+{}  {dup}  
+>a> TOKEN1<> addr<1027>
+>a> TOKEN<dup>
+  << Execute(dup) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(T->N) >>
+  Stk :  0010  0000
+  << Execute(|or|) >>
+  Stk :  0010
+  << Execute(d+1) >>
+  Stk :  0001  0010
+  << Execute(|or|) >>
+  Stk :  0011
+  << Execute(alu) >>
+  Stk :  16000  0011
+  << Execute(|or|) >>
+  Stk :  16011
+  << Execute(tcode,) >>
+  << writecode  TOS<16011> >>
+
+ReadGL next line b<AssemblerExample2.asm> l<37>
+ line>             %RetSD    0branch     \ branch to %RetSD
+{}  {%RetSD}  {0branch}  {\}  {branch}  {to}  {%RetSD}  
+>a> TOKEN1<> addr<1028>
+  << validNum(%RetSD) >>
+  Stk :  0406
+>a> TOKEN<0branch>
+  << Execute(0branch) >>
+  Stk :  12000  0406
+  << Execute(|or|) >>
+  Stk :  12406
+  << Execute(tcode,) >>
+  << writecode  TOS<12406> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<38>
+ line>             %SmallDly ubranch     \ ubranch to %SmallDly
+{}  {%SmallDly}  {ubranch}  {\}  {ubranch}  {to}  {%SmallDly}  
+>a> TOKEN1<> addr<1029>
+  << validNum(%SmallDly) >>
+  Stk :  0400
+>a> TOKEN<ubranch>
+  << Execute(ubranch) >>
+  Stk :  10000  0400
+  << Execute(|or|) >>
+  Stk :  10400
+  << Execute(tcode,) >>
+  << writecode  TOS<10400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<39>
+ line> %RetSD                pexit       \ return from sub with stack pop
+{%RetSD}  {pexit}  {\}  {return}  {from}  {sub}  {with}  {stack}  {pop}  
+>a> TOKEN1<%RetSD> addr<1030>
+>a> TOKEN<pexit>
+  << Execute(pexit) >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(RET) >>
+  Stk :  0080  0100
+  << Execute(|or|) >>
+  Stk :  0180
+  << Execute(d-1) >>
+  Stk :  0003  0180
+  << Execute(|or|) >>
+  Stk :  0183
+  << Execute(r-1) >>
+  Stk :  000C  0183
+  << Execute(|or|) >>
+  Stk :  018F
+  << Execute(alu) >>
+  Stk :  16000  018F
+  << Execute(|or|) >>
+  Stk :  1618F
+  << Execute(tcode,) >>
+  << writecode  TOS<1618F> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<41>
+ line> %BigDly     0x0001    imm         \ Big DELAY subroutine Push 0001
+{%BigDly}  {0x0001}  {imm}  {\}  {Big}  {DELAY}  {subroutine}  {Push}  {0001}  
+>a> TOKEN1<%BigDly> addr<1031>
+  << validNum(0x0001) >>
+    << found number t(0x) n(1)
+  Stk :  0001
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0001
+  << Execute(|or|) >>
+  Stk :  0001
+  << Execute(tcode,) >>
+  << writecode  TOS<00001> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<42>
+ line>                       -           \ Subtract 1 from BigDly loopcount
+{}  {-}  {\}  {Subtract}  {1}  {from}  {BigDly}  {loopcount}  
+>a> TOKEN1<> addr<1032>
+>a> TOKEN<->
+  << Execute(-) >>
+  << Execute(N-T) >>
+  Stk :  0C00
+  << Execute(d-1) >>
+  Stk :  0003  0C00
+  << Execute(|or|) >>
+  Stk :  0C03
+  << Execute(alu) >>
+  Stk :  16000  0C03
+  << Execute(|or|) >>
+  Stk :  16C03
+  << Execute(tcode,) >>
+  << writecode  TOS<16C03> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<44>
+ line>             $mSecCnt  imm         \ push 0d2666 (1 millisecond)
+{}  {$mSecCnt}  {imm}  {\}  {push}  {0d2666}  {(1}  {millisecond)}  
+>a> TOKEN1<> addr<1033>
+  << validNum($mSecCnt) >>
+  Stk :  0A6A
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0A6A
+  << Execute(|or|) >>
+  Stk :  0A6A
+  << Execute(tcode,) >>
+  << writecode  TOS<00A6A> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<45>
+ line>             %SmallDly scall       \ call %SmallDly
+{}  {%SmallDly}  {scall}  {\}  {call}  {%SmallDly}  
+>a> TOKEN1<> addr<1034>
+  << validNum(%SmallDly) >>
+  Stk :  0400
+>a> TOKEN<scall>
+  << Execute(scall) >>
+  Stk :  14000  0400
+  << Execute(|or|) >>
+  Stk :  14400
+  << Execute(tcode,) >>
+  << writecode  TOS<14400> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<47>
+ line>                       dup         \ dup BigDly loopcount
+{}  {dup}  {\}  {dup}  {BigDly}  {loopcount}  
+>a> TOKEN1<> addr<1035>
+>a> TOKEN<dup>
+  << Execute(dup) >>
+  << Execute(T) >>
+  Stk :  0000
+  << Execute(T->N) >>
+  Stk :  0010  0000
+  << Execute(|or|) >>
+  Stk :  0010
+  << Execute(d+1) >>
+  Stk :  0001  0010
+  << Execute(|or|) >>
+  Stk :  0011
+  << Execute(alu) >>
+  Stk :  16000  0011
+  << Execute(|or|) >>
+  Stk :  16011
+  << Execute(tcode,) >>
+  << writecode  TOS<16011> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<48>
+ line>             0x0000    imm         \ push 0 on stack
+{}  {0x0000}  {imm}  {\}  {push}  {0}  {on}  {stack}  
+>a> TOKEN1<> addr<1036>
+  << validNum(0x0000) >>
+    << found number t(0x) n(0)
+  Stk :  0000
+>a> TOKEN<imm>
+  << Execute(imm) >>
+  Stk :  0000  0000
+  << Execute(|or|) >>
+  Stk :  0000
+  << Execute(tcode,) >>
+  << writecode  TOS<00000> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<49>
+ line>                       =           \ compare BigDly loopcount to 0
+{}  {=}  {\}  {compare}  {BigDly}  {loopcount}  {to}  {0}  
+>a> TOKEN1<> addr<1037>
+>a> TOKEN<=>
+  << Execute(=) >>
+  << Execute(N==T) >>
+  Stk :  0700
+  << Execute(d-1) >>
+  Stk :  0003  0700
+  << Execute(|or|) >>
+  Stk :  0703
+  << Execute(alu) >>
+  Stk :  16000  0703
+  << Execute(|or|) >>
+  Stk :  16703
+  << Execute(tcode,) >>
+  << writecode  TOS<16703> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<50>
+ line>             %BigDly   0branchr    \ branch to %BigDly if loopcount not 0
+{}  {%BigDly}  {0branchr}  {\}  {branch}  {to}  {%BigDly}  {if}  {loopcount}  {not}  {0}  
+>a> TOKEN1<> addr<1038>
+  << validNum(%BigDly) >>
+  Stk :  0407
+>a> TOKEN<0branchr>
+  << Execute(0branchr) >>
+  << Execute(|s-12b|) >>
+  Stk :  1FF9
+  Stk :  1A000  1FF9
+  << Execute(|or|) >>
+  Stk :  1BFF9
+  << Execute(tcode,) >>
+  << writecode  TOS<1BFF9> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<51>
+ line> %RetBD                pexit       \ return from sub with stack pop
+{%RetBD}  {pexit}  {\}  {return}  {from}  {sub}  {with}  {stack}  {pop}  
+>a> TOKEN1<%RetBD> addr<1039>
+>a> TOKEN<pexit>
+  << Execute(pexit) >>
+  << Execute(N) >>
+  Stk :  0100
+  << Execute(RET) >>
+  Stk :  0080  0100
+  << Execute(|or|) >>
+  Stk :  0180
+  << Execute(d-1) >>
+  Stk :  0003  0180
+  << Execute(|or|) >>
+  Stk :  0183
+  << Execute(r-1) >>
+  Stk :  000C  0183
+  << Execute(|or|) >>
+  Stk :  018F
+  << Execute(alu) >>
+  Stk :  16000  018F
+  << Execute(|or|) >>
+  Stk :  1618F
+  << Execute(tcode,) >>
+  << writecode  TOS<1618F> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<53>
+ line> %Var01             1  <dblock>    \ creat  1 word memory block named %Var01
+{%Var01}  {1}  {<dblock>}  {\}  {creat}  {1}  {word}  {memory}  {block}  {named}  {%Var01}  
+>a> TOKEN1<%Var01> addr<1040>
+  << validNum(1) >>
+    << found number t() n(1)
+  Stk :  0001
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<1> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<54>
+ line> %Blk6              6  <dblock>    \ create 6 word block with 1st location named %Blk6
+{%Blk6}  {6}  {<dblock>}  {\}  {create}  {6}  {word}  {block}  {with}  {1st}  {location}  {named}  {%Blk6}  
+>a> TOKEN1<%Blk6> addr<1041>
+  << validNum(6) >>
+    << found number t() n(6)
+  Stk :  0006
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<6> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<57>
+ line>             0x0500    <org>       \ org memory to 0x500
+{}  {0x0500}  {<org>}  {\}  {org}  {memory}  {to}  {0x500}  
+>a> TOKEN1<> addr<1047>
+  << validNum(0x0500) >>
+    << found number t(0x) n(1280)
+  Stk :  0500
+>a> TOKEN<<org>>
+  << Execute(<org>) >>
+  << asmOrg  TOS<00500> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<59>
+ line> %Var02      0xDEAD    <dword>     \ create  1 word variable named %Var02 = 0xDEAD
+{%Var02}  {0xDEAD}  {<dword>}  {\}  {create}  {1}  {word}  {variable}  {named}  {%Var02}  {=}  {0xDEAD}  
+>a> TOKEN1<%Var02> addr<1280>
+  << validNum(0xDEAD) >>
+    << found number t(0x) n(57005)
+  Stk :  DEAD
+>a> TOKEN<<dword>>
+  << Execute(<dword>) >>
+  << writecode  TOS<0DEAD> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<60>
+ line> %BlkA            0xA  <dblock>    \ create 10 word memory block with 1st location named %Blk8
+{%BlkA}  {0xA}  {<dblock>}  {\}  {create}  {10}  {word}  {memory}  {block}  {with}  {1st}  {location}  {named}  {%Blk8}  
+>a> TOKEN1<%BlkA> addr<1281>
+  << validNum(0xA) >>
+    << found number t(0x) n(10)
+  Stk :  000A
+>a> TOKEN<<dblock>>
+  << Execute(<dblock>) >>
+  << asmDblock  TOS<10> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
+
+ReadGL next line b<AssemblerExample2.asm> l<61>
+ line> %Var03      0xBEEF    <dword>     \ create  1 word variable named %Var02 = 0xBEEF
+{%Var03}  {0xBEEF}  {<dword>}  {\}  {create}  {1}  {word}  {variable}  {named}  {%Var02}  {=}  {0xBEEF}  
+>a> TOKEN1<%Var03> addr<1291>
+  << validNum(0xBEEF) >>
+    << found number t(0x) n(48879)
+  Stk :  BEEF
+>a> TOKEN<<dword>>
+  << Execute(<dword>) >>
+  << writecode  TOS<0BEEF> >>
+>a> TOKEN<\>
+  << Execute(\) >>
+  << BslashComment >>
