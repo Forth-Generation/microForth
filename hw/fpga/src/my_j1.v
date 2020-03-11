@@ -99,7 +99,8 @@ module my_j1 #(
     casez ({insn[17:13],resetq})                      // Added reset to case(jmt)
     6'b00_???_1,
     6'b10_???_1:   {dstkW, dspI} = {1'b1,      2'b01};        // push fetch/immediate literal on Dstack (prb)
-    6'b01_001_1:   {dstkW, dspI} = {1'b0,      2'b11};        // conditional jump pop Dstack (prb)
+    6'b01_001_1,
+	 6'b01_101_1:   {dstkW, dspI} = {1'b0,      2'b11};        // conditional jump pop Dstack (prb)
     6'b01_011_1:   {dstkW, dspI} = {func_T_N,  {insn[1:0]}};  // alu function, write Dstack if func_T_N (prb)
     default:    {dstkW, dspI} = {1'b0,      2'b00};
     endcase
@@ -108,7 +109,8 @@ module my_j1 #(
         // determine return stack write and incr/decr value (prb)
     casez ({insn[17:13], resetq})                   //Added reset to case (jmt)
    // 5'b1_???_1:   {rstkW, rspI} = {1'b0,      2'b11};        // "fetch" return - pop Rstack (prb)
-    6'b01_010_1:   {rstkW, rspI} = {1'b1,      2'b01};        // call or fetch - push Rstack (prb)
+    6'b01_010_1,
+	 6'b01_110_1:   {rstkW, rspI} = {1'b1,      2'b01};        // call or fetch - push Rstack (prb)
     6'b01_011_1:   {rstkW, rspI} = {func_T_R,  insn[3:2]};    // alu (prb)
     default:    {rstkW, rspI} = {1'b0,      2'b00};
     endcase
