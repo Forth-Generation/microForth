@@ -1,48 +1,48 @@
-         //      $xloc_addr 0x1000
-         //      $yloc_addr 0x1001
-         //      $frame_delay  13
-         //      
-         //      
+          //      $xloc_addr 0x1000
+          //      $yloc_addr 0x1001
+          //      $frame_delay  13
+          //      
+          //      
 00000     // 00000               0x0000        imm    \ push x initial loc
-         //        
-16011     // 00001   %Loop                     dup
+          //        
+16011     // 00001 %Loop                       dup
 01000     // 00002               $xloc_addr    imm    \ push write x loc address
 16043     // 00003                             io!
 16103     // 00004 
-         //      
+          //      
 001F4     // 00005                500          imm    \ push y initial loc
 01001     // 00006               $yloc_addr    imm    \ push write y loc address
 16043     // 00007                             io! 
 16103     // 00008 
-         //                                          
+          //                                          
 0000D     // 00009               $frame_delay   imm    \ push delay value
-14000     // 0000A               %ScreenDelay  scall  \ call screen delay
+14018     // 0000A               %ScreenDelay  scall  \ call screen delay
 00001     // 0000B               0x0001        imm    \ increment x loc by 1
 16203     // 0000C                             +
 16011     // 0000D                             dup
 004EC     // 0000E               1260          imm     \ push screen width 
 16703     // 0000F                             =       \ compare location to screen width
-12000     // 00010               %Loop         0branch \ restart loop if not at edge of screen
-         //                    
-         //      
-         //      
-         //      
-         //      
+12001     // 00010               %Loop         0branch \ restart loop if not at edge of screen
+          //                    
+          //      
+          //      
+          //      
+          //      
 00000     // 00011               0x0000    imm         \ Small DELAY subroutine Push 0000
 16600     // 00012                         invert
 16203     // 00013                         +
 16011     // 00014                         dup
-1A002     // 00015               0x0002    0branchr    \ branchr to skip
-18FFB     // 00016               0x0FFB   ubranchr     \ ubranchr -5 to Small Delay 
+1A002     // 00015               0x0017    0branchr    \ branchr to skip
+19FFB     // 00016               0x0011    ubranchr     \ ubranchr -5 to Small Delay 
 1618F     // 00017                         pexit       \ return from sub with stack pop
-         //      
-00000     // 00018  %ScreenDelay 0x0000    imm         \ Big DELAY subroutine Push 0000
+          //      
+00000     // 00018 %ScreenDelay  0x0000    imm         \ Big DELAY subroutine Push 0000
 16600     // 00019                         invert          
 16203     // 0001A                         +
 16011     // 0001B                         dup
-         //                    
-00A6A     // 0001C               0x0A6A    imm        \ push 0D2666 (1 millisecond)
-1C011     // 0001D               0x0011    scallr     \ callr -12 Small delay
-1A002     // 0001E               0x0002    0branchr    \ branchr to skip
-18FF9     // 0001F               0x0FF9    ubranchr   \ ubranchr -7 to Big Delay
+          //                    
+00A6A     // 0001C                 2666    imm        \ push 0D2666 (1 millisecond)
+1DFF4     // 0001D               0x0011    scallr     \ callr -12 Small delay
+1A002     // 0001E               0x0020    0branchr    \ branchr to skip
+19FF9     // 0001F               0x0018    ubranchr   \ ubranchr -7 to Big Delay
 1618F     // 00020                         pexit      \ return from sub with stack pop

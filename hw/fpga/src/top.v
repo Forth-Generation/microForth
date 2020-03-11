@@ -264,6 +264,15 @@ vga_sync_gen #(
 	.VS_WIDTH		(3),
 	.V_BP_WIDTH 	(38),
 	.VA_WIDTH		(1024)
+	/*.HS_FP_WIDTH	(1),
+	.HS_WIDTH		(2),
+	.H_BP_WIDTH		(1),
+	.HA_WIDTH		(10),
+	
+	.VS_FP_WIDTH	(1),
+	.VS_WIDTH		(2),
+	.V_BP_WIDTH 	(1),
+	.VA_WIDTH		(10)*/
 ) display (
 	.px_clk			(px_clk),
 	.rst 				(rst),

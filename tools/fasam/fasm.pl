@@ -366,7 +366,7 @@ sub LparenComment {
 #         LbraceComment           #
 #  consumes tokens from @Tokens   #
 #  until a token that ends with   #
-#  '}' is found                   #Stack underflow in or
+#  '}' is found                   #
 #---------------------------------#
 sub LbraceComment {
   if ($debug) {

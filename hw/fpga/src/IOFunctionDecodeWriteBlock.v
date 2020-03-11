@@ -35,24 +35,30 @@ assign io_decode_en = ~sync_reg[2] & sync_reg[1];
 always @(posedge clk) begin
 	
 	if(rst) begin
-		io_addr <= {BLOCK_SIZE{1'b0}};
-	end
+		io_addr <= {BLOCK_SIZE{1'b0}}; delayed_strobe <= 0;
+	end else begin
 	
-	if(io_block_decode) begin
-		io_dout <= cpu_din;
-		io_addr <= cpu_addr[BLOCK_SIZE - 1:0];
+		if(io_block_decode) begin
+			io_dout <= cpu_din;
+			io_addr <= cpu_addr[BLOCK_SIZE - 1:0];
+		end
+		
 		delayed_strobe <= io_block_decode;
 	end
 	
 end
 
 always @(posedge px_clk) begin
-    
+    if(rst) begin
+		we_0 <= 0; we_1 <= 0; sync_reg <= 3'b0;
+	 end
+	 else begin
 		sync_reg[0] <= delayed_strobe;
 		sync_reg[2:1] <= sync_reg[1:0];
 		
 		we_0 <= io_decode_en & (io_addr == {BLOCK_SIZE{1'b0}});
 		we_1 <= io_decode_en & (io_addr == {{(BLOCK_SIZE-1){1'b0}},1'b1});
+		end
 end
 
 endmodule
