@@ -191,53 +191,53 @@ sram #(
 );
 
 // control/status registers
-csr csr1 (
-  .clk                ( clk                 ),
-  .rst                ( rst                 ),
-  .j1_mem_addr        ( j1_mem_addr         ),
-  .j1_dout            ( j1_dout             ),
-  .j1_io_wr           ( j1_io_wr            ),
-  .j1_io_rd           ( j1_io_rd            ),
-  .j1_io_din          ( j1_io_din           ),
-  .uart_tx_wr         ( uart_tx_wr          ),
-  .uart_tx_wdata      ( uart_tx_wdata       ),
-  .uart_tx_tbr_valid  ( uart_tx_tbr_valid   ),
-  .uart_rx_rd         ( uart_rx_rd          ),
-  .uart_rx_rdata      ( uart_rx_rdata       ),
-  .uart_rx_d_valid    ( uart_rx_d_valid     ),
-  .uart_rx_overflow   ( uart_rx_overflow    ),
-  .uart_rx_clr_ovrflw ( uart_rx_clr_ovrflw  ),
-  .led                ( ), // led           ),
-  .gpio_in            ( gpio_in             ),
-  .gpio_out           ( gpio_out            ),
-  .gpio_oe            ( gpio_oe             )
-);
-   
-
-   
-// recieve uart
-UART_Rcvr_top uart_rcvr_top (
-  .CLOCK              ( clk                 ),
-  .reset              ( rst                 ),
-  .Rx_raw             ( uart_rxd            ),
-  .Rd_en              ( uart_rx_rd          ),
-  .clr_ovrflw         ( uart_rx_clr_ovrflw  ),
-  .rx_data_out        ( uart_rx_rdata       ),
-  .SFE                ( uart_rx_sfe         ),
-  .d_valid            ( uart_rx_d_valid     ),
-  .overflow           ( uart_rx_overflow    )
-);
-
-
-// transmit uart
-UART_Tr_top uart_tr_top (
-  .clk                ( clk                 ),
-  .reset              ( rst                 ),
-  .Tx                 ( uart_txd            ),
-  .Data_in            ( uart_tx_wdata       ),
-  .TBR_en             ( uart_tx_wr          ),
-  .TBR_Valid          ( uart_tx_tbr_valid   )
-);
+//csr csr1 (
+//  .clk                ( clk                 ),
+//  .rst                ( rst                 ),
+//  .j1_mem_addr        ( j1_mem_addr         ),
+//  .j1_dout            ( j1_dout             ),
+//  .j1_io_wr           ( j1_io_wr            ),
+//  .j1_io_rd           ( j1_io_rd            ),
+//  .j1_io_din          ( j1_io_din           ),
+//  .uart_tx_wr         ( uart_tx_wr          ),
+//  .uart_tx_wdata      ( uart_tx_wdata       ),
+//  .uart_tx_tbr_valid  ( uart_tx_tbr_valid   ),
+//  .uart_rx_rd         ( uart_rx_rd          ),
+//  .uart_rx_rdata      ( uart_rx_rdata       ),
+//  .uart_rx_d_valid    ( uart_rx_d_valid     ),
+//  .uart_rx_overflow   ( uart_rx_overflow    ),
+//  .uart_rx_clr_ovrflw ( uart_rx_clr_ovrflw  ),
+//  .led                ( ), // led           ), //Use this signal for the semaphore
+//  .gpio_in            ( gpio_in             ),
+//  .gpio_out           ( gpio_out            ),
+//  .gpio_oe            ( gpio_oe             )
+//);
+//   
+//
+//   
+//// recieve uart
+//UART_Rcvr_top uart_rcvr_top (
+//  .CLOCK              ( clk                 ),
+//  .reset              ( rst                 ),
+//  .Rx_raw             ( uart_rxd            ),
+//  .Rd_en              ( uart_rx_rd          ),
+//  .clr_ovrflw         ( uart_rx_clr_ovrflw  ),
+//  .rx_data_out        ( uart_rx_rdata       ),
+//  .SFE                ( uart_rx_sfe         ),
+//  .d_valid            ( uart_rx_d_valid     ),
+//  .overflow           ( uart_rx_overflow    )
+//);
+//
+//
+//// transmit uart
+//UART_Tr_top uart_tr_top (
+//  .clk                ( clk                 ),
+//  .reset              ( rst                 ),
+//  .Tx                 ( uart_txd            ),
+//  .Data_in            ( uart_tx_wdata       ),
+//  .TBR_en             ( uart_tx_wr          ),
+//  .TBR_Valid          ( uart_tx_tbr_valid   )
+//);
 
 //VGA interface
 `ifdef SIM
@@ -262,7 +262,7 @@ vga_sync_gen #(
 	
 	.VS_FP_WIDTH	(2),
 	.VS_WIDTH		(3),
-	.V_BP_WIDTH 	(38),
+	.V_BP_WIDTH 	(38),module PongSprite
 	.VA_WIDTH		(1024)
 	/*.HS_FP_WIDTH	(1),
 	.HS_WIDTH		(2),
@@ -280,7 +280,7 @@ vga_sync_gen #(
 	.vsync			(VGA_VS),
 	.h_addr			(h_addr),
 	.v_addr			(v_addr),
-	.screenbegin   (screenbegin)
+	.screenbegin   (screenbegin) //route to csr block to generate 1 16MHz wide clock pulse to clear semaphore
 );
 
 wire sprite_on;
@@ -302,12 +302,15 @@ PongSprite #(
 	.data_in			(sprite_din),
 	.x_N_loc_en		(ball_xloc_wr),
 	.y_N_loc_en		(ball_yloc_wr),
-	.screenbegin	( screenbegin),
+	.screenbegin	( screenbegin), 
 	.h_addr			({4'b0,h_addr}),
 	.v_addr			({5'b0,v_addr}),
 	.sprite_on		(sprite_on)
 );
 
+
+//Put dual port ram and fsm here
+//Change so f18 writes to the ram in here
 IOFunctionDecodeWriteBlock IO_Decode_Blk1(
 	//inputs
 	.cpu_din(j1_dout),
