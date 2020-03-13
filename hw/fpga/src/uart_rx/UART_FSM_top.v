@@ -37,7 +37,7 @@ module UART_FSM_top (
    assign load_buffer =	Out[7];
    
 //FSM   
-always @(posedge CLOCK or posedge reset)
+always @(posedge CLOCK)
   begin
      if(reset)
        state_reg <= RST;
