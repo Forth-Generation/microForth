@@ -1,6 +1,8 @@
 DEPTH = 512;
 WIDTH = 16;
 
+-- Everything from address 0 to address 9f is sprite map for scores
+
 ADDRESS_RADIX = HEX;
 DATA_RADIX = HEX;
 
@@ -166,15 +168,15 @@ BEGIN
  9d: 0fff;
  9e: 0fff;
  9f: 0fff;
- [a0..af]: ffff;
- [b0..bf]: c000;
- [c0..cf]: 0003;
- [d0..1ef]:  0000;
- 1f0: 0000;
- 1f1: 0000;
- 1f2: 0000;
- 1f3: 0000;
- 1f4: 0000;
- 1f5: 0000;
- [1f6..1ff]: 0000;
+ [a0..af]: ffff; -- sprite map for ball
+ [b0..bf]: c000; -- sprite map for left paddle
+ [c0..cf]: 0003; -- sprite map for right paddle
+ [d0..1ef]:  0000; -- unused reserved locations for other sprites if we want
+ 1f0: 0000; -- ball x location
+ 1f1: 0000; -- ball y location
+ 1f2: 0000; -- left paddle y location
+ 1f3: 0000; -- right paddle y location
+ 1f4: 0000; -- left score memory address (use 00, 10, 20, ... , 90)
+ 1f5: 0000; -- right score memory address (use 00, 10, 20, ... , 90)
+ [1f6..1ff]: 0000; -- unused locations reserved for other info
 END;
