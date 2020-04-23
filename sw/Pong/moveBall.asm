@@ -1,5 +1,5 @@
-$xloc_addr 0x1000
-$yloc_addr 0x1001
+$xloc_addr 0x1F0
+$yloc_addr 0x1F1
 $frame_delay  13
 
 

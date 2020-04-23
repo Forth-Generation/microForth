@@ -1,0 +1,49 @@
+module load_sprite_image(
+		input clk, rst,
+		input load_loc_done,
+		
+		output [8:0] mem_addr_0, mem_addr_1, mem_addr_2, mem_addr_3, mem_addr_4,
+		output reg [4:0] load_en
+);
+reg [2:0] cnt;
+reg state_reg;
+
+wire eq_max, shft_en;
+
+parameter IDLE = 1'h0;
+parameter LOAD = 1'h1;
+
+assign eq_max = (cnt == 3'd5);
+
+always @(posedge clk) begin
+	if(rst) begin
+		mem_addr_0 <= 9'b0; mem_addr_1 <= 9'b0;mem_addr_2 <= 9'b0;mem_addr_3 <= 9'b0;mem_addr_4 <= 9'b0; cnt<= 3'b0;
+	end 
+	else begin
+		case(state_reg)
+			IDLE : begin
+						if(load_loc_done) state_reg <= LOAD;
+						else state_reg <= IDLE;
+			end
+			LOAD :  begin
+						if(eq_max) state_reg <= IDLE;
+					   else state_reg <= LOAD;
+						shft_en <= 1'b1;		
+						end
+	end
+	
+	//counter
+	if(state_reg == LOAD) cnt <= cnt+1;
+	else cnt <= 3'b0;
+	
+	//shft reg
+		if(shft_en) begin
+			if(~(|load_en)) load_en[0] <= 1'b1;
+			else load_en[0] <= 1'b0;
+		load_en[4:1] <= load_en[3:0];
+	end
+	
+end
+
+
+endmodule

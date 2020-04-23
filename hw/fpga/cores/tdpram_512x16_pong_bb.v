@@ -1,10 +1,10 @@
-// megafunction wizard: %RAM: 2-PORT%
+// megafunction wizard: %RAM: 2-PORT%VBB%
 // GENERATION: STANDARD
 // VERSION: WM1.0
 // MODULE: altsyncram 
 
 // ============================================================
-// File Name: tdp_ram512x16_Pong.v
+// File Name: tdpram_512x16_pong.v
 // Megafunction Name(s):
 // 			altsyncram
 //
@@ -16,7 +16,6 @@
 //
 // 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 // ************************************************************
-
 
 //Copyright (C) 2018  Intel Corporation. All rights reserved.
 //Your use of Intel Corporation's design tools, logic functions 
@@ -32,11 +31,7 @@
 //Intel and sold by Intel or its authorized distributors.  Please
 //refer to the applicable agreement for further details.
 
-
-// synopsys translate_off
-`timescale 1 ps / 1 ps
-// synopsys translate_on
-module tdp_ram512x16_Pong (
+module tdpram_512x16_pong (
 	address_a,
 	address_b,
 	clock_a,
@@ -48,8 +43,8 @@ module tdp_ram512x16_Pong (
 	q_a,
 	q_b);
 
-	input	[4:0]  address_a;
-	input	[4:0]  address_b;
+	input	[8:0]  address_a;
+	input	[8:0]  address_b;
 	input	  clock_a;
 	input	  clock_b;
 	input	[15:0]  data_a;
@@ -68,63 +63,6 @@ module tdp_ram512x16_Pong (
 // synopsys translate_on
 `endif
 
-	wire [15:0] sub_wire0;
-	wire [15:0] sub_wire1;
-	wire [15:0] q_a = sub_wire0[15:0];
-	wire [15:0] q_b = sub_wire1[15:0];
-
-	altsyncram	altsyncram_component (
-				.address_a (address_a),
-				.address_b (address_b),
-				.clock0 (clock_a),
-				.clock1 (clock_b),
-				.data_a (data_a),
-				.data_b (data_b),
-				.wren_a (wren_a),
-				.wren_b (wren_b),
-				.q_a (sub_wire0),
-				.q_b (sub_wire1),
-				.aclr0 (1'b0),
-				.aclr1 (1'b0),
-				.addressstall_a (1'b0),
-				.addressstall_b (1'b0),
-				.byteena_a (1'b1),
-				.byteena_b (1'b1),
-				.clocken0 (1'b1),
-				.clocken1 (1'b1),
-				.clocken2 (1'b1),
-				.clocken3 (1'b1),
-				.eccstatus (),
-				.rden_a (1'b1),
-				.rden_b (1'b1));
-	defparam
-		altsyncram_component.address_reg_b = "CLOCK1",
-		altsyncram_component.clock_enable_input_a = "BYPASS",
-		altsyncram_component.clock_enable_input_b = "BYPASS",
-		altsyncram_component.clock_enable_output_a = "BYPASS",
-		altsyncram_component.clock_enable_output_b = "BYPASS",
-		altsyncram_component.indata_reg_b = "CLOCK1",
-		altsyncram_component.intended_device_family = "MAX 10",
-		altsyncram_component.lpm_type = "altsyncram",
-		altsyncram_component.numwords_a = 32,
-		altsyncram_component.numwords_b = 32,
-		altsyncram_component.operation_mode = "BIDIR_DUAL_PORT",
-		altsyncram_component.outdata_aclr_a = "NONE",
-		altsyncram_component.outdata_aclr_b = "NONE",
-		altsyncram_component.outdata_reg_a = "UNREGISTERED",
-		altsyncram_component.outdata_reg_b = "UNREGISTERED",
-		altsyncram_component.power_up_uninitialized = "FALSE",
-		altsyncram_component.read_during_write_mode_port_a = "NEW_DATA_WITH_NBE_READ",
-		altsyncram_component.read_during_write_mode_port_b = "NEW_DATA_WITH_NBE_READ",
-		altsyncram_component.widthad_a = 5,
-		altsyncram_component.widthad_b = 5,
-		altsyncram_component.width_a = 16,
-		altsyncram_component.width_b = 16,
-		altsyncram_component.width_byteena_a = 1,
-		altsyncram_component.width_byteena_b = 1,
-		altsyncram_component.wrcontrol_wraddress_reg_b = "CLOCK1";
-
-
 endmodule
 
 // ============================================================
@@ -137,7 +75,7 @@ endmodule
 // Retrieval info: PRIVATE: BYTE_ENABLE_A NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE_B NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "8"
-// Retrieval info: PRIVATE: BlankMemory NUMERIC "1"
+// Retrieval info: PRIVATE: BlankMemory NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_B NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_OUTPUT_A NUMERIC "0"
@@ -160,9 +98,9 @@ endmodule
 // Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 // Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 // Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
-// Retrieval info: PRIVATE: MEMSIZE NUMERIC "512"
-// Retrieval info: PRIVATE: MEM_IN_BITS NUMERIC "1"
-// Retrieval info: PRIVATE: MIFfilename STRING ""
+// Retrieval info: PRIVATE: MEMSIZE NUMERIC "8192"
+// Retrieval info: PRIVATE: MEM_IN_BITS NUMERIC "0"
+// Retrieval info: PRIVATE: MIFfilename STRING "forth sprites.mif"
 // Retrieval info: PRIVATE: OPERATION_MODE NUMERIC "3"
 // Retrieval info: PRIVATE: OUTDATA_ACLR_B NUMERIC "0"
 // Retrieval info: PRIVATE: OUTDATA_REG_B NUMERIC "0"
@@ -196,10 +134,11 @@ endmodule
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_B STRING "BYPASS"
 // Retrieval info: CONSTANT: INDATA_REG_B STRING "CLOCK1"
+// Retrieval info: CONSTANT: INIT_FILE STRING "forth sprites.mif"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "MAX 10"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
-// Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "32"
-// Retrieval info: CONSTANT: NUMWORDS_B NUMERIC "32"
+// Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "512"
+// Retrieval info: CONSTANT: NUMWORDS_B NUMERIC "512"
 // Retrieval info: CONSTANT: OPERATION_MODE STRING "BIDIR_DUAL_PORT"
 // Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
 // Retrieval info: CONSTANT: OUTDATA_ACLR_B STRING "NONE"
@@ -208,15 +147,15 @@ endmodule
 // Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
 // Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_A STRING "NEW_DATA_WITH_NBE_READ"
 // Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_B STRING "NEW_DATA_WITH_NBE_READ"
-// Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "5"
-// Retrieval info: CONSTANT: WIDTHAD_B NUMERIC "5"
+// Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "9"
+// Retrieval info: CONSTANT: WIDTHAD_B NUMERIC "9"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "16"
 // Retrieval info: CONSTANT: WIDTH_B NUMERIC "16"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_B NUMERIC "1"
 // Retrieval info: CONSTANT: WRCONTROL_WRADDRESS_REG_B STRING "CLOCK1"
-// Retrieval info: USED_PORT: address_a 0 0 5 0 INPUT NODEFVAL "address_a[4..0]"
-// Retrieval info: USED_PORT: address_b 0 0 5 0 INPUT NODEFVAL "address_b[4..0]"
+// Retrieval info: USED_PORT: address_a 0 0 9 0 INPUT NODEFVAL "address_a[8..0]"
+// Retrieval info: USED_PORT: address_b 0 0 9 0 INPUT NODEFVAL "address_b[8..0]"
 // Retrieval info: USED_PORT: clock_a 0 0 0 0 INPUT VCC "clock_a"
 // Retrieval info: USED_PORT: clock_b 0 0 0 0 INPUT NODEFVAL "clock_b"
 // Retrieval info: USED_PORT: data_a 0 0 16 0 INPUT NODEFVAL "data_a[15..0]"
@@ -225,8 +164,8 @@ endmodule
 // Retrieval info: USED_PORT: q_b 0 0 16 0 OUTPUT NODEFVAL "q_b[15..0]"
 // Retrieval info: USED_PORT: wren_a 0 0 0 0 INPUT GND "wren_a"
 // Retrieval info: USED_PORT: wren_b 0 0 0 0 INPUT GND "wren_b"
-// Retrieval info: CONNECT: @address_a 0 0 5 0 address_a 0 0 5 0
-// Retrieval info: CONNECT: @address_b 0 0 5 0 address_b 0 0 5 0
+// Retrieval info: CONNECT: @address_a 0 0 9 0 address_a 0 0 9 0
+// Retrieval info: CONNECT: @address_b 0 0 9 0 address_b 0 0 9 0
 // Retrieval info: CONNECT: @clock0 0 0 0 0 clock_a 0 0 0 0
 // Retrieval info: CONNECT: @clock1 0 0 0 0 clock_b 0 0 0 0
 // Retrieval info: CONNECT: @data_a 0 0 16 0 data_a 0 0 16 0
@@ -235,10 +174,10 @@ endmodule
 // Retrieval info: CONNECT: @wren_b 0 0 0 0 wren_b 0 0 0 0
 // Retrieval info: CONNECT: q_a 0 0 16 0 @q_a 0 0 16 0
 // Retrieval info: CONNECT: q_b 0 0 16 0 @q_b 0 0 16 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL tdp_ram512x16_Pong_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL tdpram_512x16_pong_bb.v TRUE
 // Retrieval info: LIB_FILE: altera_mf

@@ -6,12 +6,12 @@
 00000     // 00000               0x0000        imm    \ push x initial loc
           //        
 16011     // 00001 %Loop                       dup
-01000     // 00002               $xloc_addr    imm    \ push write x loc address
+001F0     // 00002               $xloc_addr    imm    \ push write x loc address
 16043     // 00003                             io!
 16103     // 00004 
           //      
 001F4     // 00005                500          imm    \ push y initial loc
-01001     // 00006               $yloc_addr    imm    \ push write y loc address
+001F1     // 00006               $yloc_addr    imm    \ push write y loc address
 16043     // 00007                             io! 
 16103     // 00008 
           //                                          

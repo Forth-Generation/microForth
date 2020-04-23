@@ -1,4 +1,4 @@
-set runtime    "15 us"
+set runtime    "30 us"
 
 set exitstatus 0
 

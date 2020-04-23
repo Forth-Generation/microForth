@@ -1,0 +1,320 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/peter/microForth/hw/fpga/sim/top/run
+vcpu_vga_interface
+Z1 !s110 1586724517
+!i10b 1
+!s100 Mmzj6[0czKFbO5Fzed<L61
+I0ZD0Rg@XKZ7VafkWn>]FE2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1586485581
+8../../../src/VGA/cpu_vga_interface.v
+F../../../src/VGA/cpu_vga_interface.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1586724517.000000
+Z5 !s107 ../tb/tb.v|
+Z6 !s90 -reportprogress|300|-work|work|+libext+.v|+libext+.sv|-work|work|-novopt|-noincr|../tb/tb.v|+incdir+../../../src|+incdir+../../../inc|+incdir+../tb|-y|../../../src|-y|../../../cores|-y|../../../src/uart_tx|-y|../../../src/uart_rx|-y|../../../src/VGA|-y|../tb|+define+SIMULATION=1|
+!i113 1
+Z7 o-work work +libext+.v +libext+.sv -work work
+Z8 !s92 -work work +libext+.v +libext+.sv -work work +incdir+../../../src +incdir+../../../inc +incdir+../tb -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb +define+SIMULATION=1
+Z9 tCvgOpt 0
+vIOFunctionDecodeWriteBlock
+R1
+!i10b 1
+!s100 8g]R7FR;fKcLRMA@9aW[73
+Inng^l>BHVJT??US[SonlG2
+R2
+R0
+w1585692220
+8../../../src/IOFunctionDecodeWriteBlock.v
+F../../../src/IOFunctionDecodeWriteBlock.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+n@i@o@function@decode@write@block
+vload_sprite_image
+R1
+!i10b 1
+!s100 5MkP60C>AGked@j[0Tbag1
+I7z37[FWGE:g1`=k4f<BbN3
+R2
+R0
+w1586724513
+8../../../src/VGA/load_sprite_image.v
+F../../../src/VGA/load_sprite_image.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vmy_j1
+R1
+!i10b 1
+!s100 6oV`FiPH5cM`08Uoc8k;L2
+IRfGJRW2FlVDl76JlF1I<11
+R2
+R0
+w1583887292
+8../../../src/my_j1.v
+F../../../src/my_j1.v
+L0 4
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vPongSprite
+R1
+!i10b 1
+!s100 PoN5;GAL^C1]b4dc3U2:[1
+I2R95;71ooRRaW[D8SC]c]1
+R2
+R0
+w1586487661
+8../../../src/VGA/PongSprite.v
+F../../../src/VGA/PongSprite.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+n@pong@sprite
+vram_512x16
+R1
+!i10b 1
+!s100 VgPdF[aa??@XC9HTSZQ?c1
+IRi<<EcLX]30YS3`bB3jWV2
+R2
+R0
+Z10 w1579668490
+8../../../cores/ram_512x16.v
+F../../../cores/ram_512x16.v
+Z11 L0 40
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vram_stack3
+R1
+!i10b 1
+!s100 a^JiH?c0J]R2K]>=F0J]62
+IkSd1nR8k:S<<Y`;<Bb^U13
+R2
+R0
+R10
+8../../../src/ram_stack3.v
+F../../../src/ram_stack3.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vsdpram_8kx16
+R1
+!i10b 1
+!s100 >UCcNQC6nX0A?ToJRo6=c0
+I4dTSdaNc99VbK[2^ae:[h3
+R2
+R0
+w1573172159
+8../../../cores/sdpram_8kx16.v
+F../../../cores/sdpram_8kx16.v
+R11
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vsram
+R1
+!i10b 1
+!s100 3?8YFU8cRBzmW_Q[4i?g=3
+IF5ea`Kf=3lM>E?6LMWA3L3
+R2
+R0
+w1586473240
+8../../../src/sram.v
+F../../../src/sram.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vtb
+R1
+!i10b 1
+!s100 5dVmY_bKV]Fg2a]6]>?m<0
+IOb7QT8ZL<8ohmFb:YmOe71
+R2
+R0
+w1583530814
+8../tb/tb.v
+F../tb/tb.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vtdpram_512x16_pong
+R1
+!i10b 1
+!s100 YG`ZEU7`z:E[aI0_CDM?m3
+IJQNA422Xh2I^PEL?=Y]7n3
+R2
+R0
+w1586473824
+8../../../cores/tdpram_512x16_pong.v
+F../../../cores/tdpram_512x16_pong.v
+Z12 L0 39
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vtdpram_8kx18
+R1
+!i10b 1
+!s100 flVOKn:O^N:;fCU_GEGnP3
+IYJgn@4<n];`dUnH2odESk3
+R2
+R0
+w1582506364
+8../../../cores/tdpram_8kx18.v
+F../../../cores/tdpram_8kx18.v
+R12
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vtop
+R1
+!i10b 1
+!s100 @3OTk^gaV5o^Yk6f<]QU50
+I2JDj:n9n94gdV?7M0E4B=2
+R2
+R0
+w1586724363
+8../../../src/top.v
+F../../../src/top.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
+vvga_sync_gen
+R1
+!i10b 1
+!s100 8o@:iW0L1^Dg@ZR3nfd9f1
+Iz@e2m_ZXIPTVO^aAB=WL>2
+R2
+R0
+w1586486965
+8../../../src/VGA/vga_sync_gen.v
+F../../../src/VGA/vga_sync_gen.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9

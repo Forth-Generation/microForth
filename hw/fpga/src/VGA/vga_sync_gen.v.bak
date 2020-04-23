@@ -15,12 +15,8 @@ module vga_sync_gen#(
 	output reg hsync,
 	output reg vsync,
 	output wire screenbegin,
-	output wire linebegin,
-	output wire [12:0] h_addrN,
-	output wire [10:0] v_addrN,
-	output reg [12:0] h_addr,
-	output reg [10:0] v_addr,
-	output reg onScreen
+	output reg [11:0] h_addr,
+	output reg [10:0] v_addr
 );
 
 localparam HS_STA = HS_FP_WIDTH;
@@ -32,23 +28,20 @@ localparam VA_END = VA_WIDTH;
 localparam LINE = HS_STA+HS_WIDTH+H_BP_WIDTH+HA_WIDTH;
 localparam SCREEN = VA_WIDTH-1+VS_FP_WIDTH+VS_WIDTH+V_BP_WIDTH;
 
-
+wire [11:0] h_addrN;
+wire [10:0] v_addrN;
 wire hsyncN, vsyncN;
-wire onScreenN;
 reg [11:0] h_count;
 reg [11:0] v_count;
 
 assign hsyncN = ~((h_count >= HS_STA) & (h_count < HS_END));
 assign vsyncN = ~((v_count >= VS_STA) & (v_count < VS_END));
 
-assign h_addrN = h_count - HA_STA;
-//assign h_addrN = (h_count < HA_STA) ? 0 : (h_count - HA_STA);
-assign v_addrN = (v_count >= VA_END) ? 0 : (VA_END-1-v_count);
+assign h_addrN = (h_count < HA_STA) ? 0 : (h_count - HA_STA);
+assign v_addrN = (v_count >= VA_END) ? (1'b0) : (VA_END-1-v_count);
 
-assign screenbegin = (v_count == 12'b0) & linebegin;
-assign linebegin = (h_count == 12'b1);
+assign screenbegin = ((v_count == 12'b0) & (h_count == 12'b1));
 
-assign onScreenN = (h_count > HA_STA) && (h_count < LINE) && (v_count > 0) && (v_count < VA_WIDTH);
 
 always @ (posedge px_clk)
 begin
@@ -65,7 +58,6 @@ begin
 		vsync <= vsyncN;
 		h_addr <= h_addrN;
 		v_addr <= v_addrN;
-		onScreen <= onScreenN;
 		if(h_count == LINE)
 		begin
 			h_count <= 0;

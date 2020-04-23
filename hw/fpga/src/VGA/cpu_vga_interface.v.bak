@@ -12,11 +12,9 @@ parameter INFER = 0
 	input io_wr,
 	input screenbegin,
 	input v_sync,
-	input [8:0] sprite_addr,
 
 	output [DATA_WIDTH-1:0] reg_data,
-	output loading_loc,
-	output reg [5:0] en,
+	output reg [3:0] en,
 	output reg clr_sem
 );
 
@@ -25,31 +23,29 @@ parameter INFER = 0
 	wire wren_a;
 	reg pulseGenS, sclr,c_en;
 	reg clr_sem_slow;
-	reg [1:0] state_reg;
-	reg addr_sel;
-	reg shft_en;
+	reg [2:0] state_reg;
 
-localparam IDLE = 2'h0;
-localparam LOAD = 2'h1;
-localparam CLR_SEM = 2'h2;
+localparam IDLE = 3'h0;
+localparam LOAD0 = 3'h1;
+localparam LOAD1 = 3'h2;
+localparam LOAD2 = 3'h3;
+localparam CLR_SEM = 3'h4;
 
-assign addr_b = addr_sel ? sprite_addr : {5'h1F,cnt};
-assign loading_loc = ~addr_sel;
+assign addr_b = {5'h1F,cnt};
 
 always @(posedge px_clk) begin
 	if(px_rst) begin
-		 state_reg <= IDLE; en <= 0;
+		
 	end else
 	//state machine
 		case(state_reg)
 			IDLE : begin
-				if(screenbegin) state_reg <= LOAD;
+				if(screenbegin) state_reg <= LOAD0;
 				else state_reg <= IDLE;
 			end
-			LOAD : begin
-						if(en[5]) state_reg <= CLR_SEM;
-						else state_reg <= LOAD;
-					end
+			LOAD0 : state_reg <= LOAD1;
+			LOAD1 : state_reg <= LOAD2;
+			LOAD2 : state_reg <= CLR_SEM;
 			CLR_SEM : state_reg <= IDLE;
 			default : state_reg <= IDLE;
 		endcase
@@ -57,13 +53,8 @@ always @(posedge px_clk) begin
 	if(c_en) cnt <= (cnt + 4'b1);
 	else cnt <= 4'b0;
 
-	//enable shft reg
-	if(shft_en) begin
-		if(~(|en)) en[0] <= 1'b1;
-		else en[0] <= 1'b0;
-		en[5:1] <= en[4:0];
-	end
 	
+
 end
 
 always @(posedge clk) begin
@@ -77,19 +68,16 @@ end
 
 always @(*) begin
 	//state machine logic
-	addr_sel = 0;
 	case(state_reg)
 			IDLE : begin
-				if(screenbegin) {shft_en,sclr,c_en} = {1'b0,1'b0, 1'b0};
-				else {shft_en,sclr,c_en,addr_sel} = {1'b0,1'b0, 1'b0,1'b1}; 
+				if(screenbegin) {en,sclr,c_en} = {4'b0001,1'b0, 1'b1};
+				else {en,sclr,c_en} = {4'b0000,1'b0, 1'b0}; 
 			end
-			LOAD :   	begin
-								if(en[5]|en[4]) c_en = 1'b0;
-								else c_en = 1'b1;
-								{shft_en,sclr} = {1'b1,1'b0};
-							end
-			CLR_SEM : {shft_en,sclr,c_en} = {1'b0,1'b1, 1'b0};
-			default : {shft_en,sclr,c_en} = {1'b0,1'b0, 1'b0};
+			LOAD0 : {en,sclr,c_en} = {4'b0010,1'b0, 1'b1};
+			LOAD1 : {en,sclr,c_en} = {4'b0100,1'b0, 1'b1};
+			LOAD2 : {en,sclr,c_en} = {4'b1000,1'b0, 1'b0};
+			CLR_SEM : {en,sclr,c_en} = {4'b0000,1'b1, 1'b0};
+			default : {en,sclr,c_en} = {4'b0000,1'b0, 1'b0};
 	endcase
 		
 	//latches
@@ -128,7 +116,7 @@ sram #(
    .TYPE("true_dual_port")
 )
 tdp_ram512x16 (
-		.addr_a(cpu_addr[ADDRESS_WIDTH-8:0]),
+		.addr_a(cpu_addr[ADDRESS_WIDTH-12:0]),
 		.addr_b(addr_b),	
 		.clk_a(clk),
 		.clk_b(px_clk),
