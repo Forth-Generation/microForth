@@ -1,16 +1,16 @@
 # ERROR: No extended dataflow license exists
 # vsim top.mpf 
-# Start time: 13:46:27 on Apr 12,2020
+# Start time: 15:53:29 on Apr 23,2020
 # ** Error (suppressible): (vsim-19) Failed to access library 'top' at "top".
 # No such file or directory. (errno = ENOENT)
 # Error loading design
-# End time: 13:46:28 on Apr 12,2020, Elapsed time: 0:00:01
+# End time: 15:53:29 on Apr 23,2020, Elapsed time: 0:00:00
 # Errors: 1, Warnings: 0
 do a
 # 30 us
 # 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:46:31 on Apr 12,2020
+# Start time: 15:53:35 on Apr 23,2020
 # vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
 # -- Compiling module tb
 # -- Scanning library directory '../../../src'
@@ -28,6 +28,7 @@ do a
 # -- Scanning library directory '../../../src/VGA'
 # -- Compiling module vga_sync_gen
 # -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
 # -- Compiling module cpu_vga_interface
 # -- Compiling module load_sprite_image
 # -- Scanning library directory '../tb'
@@ -44,10 +45,10 @@ do a
 # 
 # Top level modules:
 # 	tb
-# End time: 13:46:31 on Apr 12,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# End time: 15:53:35 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
 # vsim tb -novopt "+nowarnTFMPC" 
-# Start time: 13:46:31 on Apr 12,2020
+# Start time: 15:53:35 on Apr 23,2020
 # Loading work.tb
 # Loading work.top
 # Loading work.my_j1
@@ -58,27 +59,35 @@ do a
 # Loading work.cpu_vga_interface
 # Loading work.IOFunctionDecodeWriteBlock
 # Loading work.load_sprite_image
-# ** Warning: (vsim-3015) ../../../src/top.v(310): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(366): [PCDPC] - Port size (6) does not match connection size (7) for port 'en'. The port definition is at: ../../../src/VGA/cpu_vga_interface.v(19).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/top/interface File: ../../../src/VGA/cpu_vga_interface.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # initializing...
-add wave -position 32  sim:/tb/top/image_loader/img_load_done
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/peter/microForth/hw/fpga/sim/top/run/wave.do
 do a
 # 30 us
 # 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:47:25 on Apr 12,2020
+# Start time: 16:07:56 on Apr 23,2020
 # vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
 # -- Compiling module tb
 # -- Scanning library directory '../../../src'
@@ -96,6 +105,7 @@ do a
 # -- Scanning library directory '../../../src/VGA'
 # -- Compiling module vga_sync_gen
 # -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
 # -- Compiling module cpu_vga_interface
 # -- Compiling module load_sprite_image
 # -- Scanning library directory '../tb'
@@ -112,12 +122,12 @@ do a
 # 
 # Top level modules:
 # 	tb
-# End time: 13:47:25 on Apr 12,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 13:47:26 on Apr 12,2020, Elapsed time: 0:00:55
-# Errors: 0, Warnings: 7
+# End time: 16:07:56 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:07:56 on Apr 23,2020, Elapsed time: 0:14:21
+# Errors: 0, Warnings: 13
 # vsim tb -novopt "+nowarnTFMPC" 
-# Start time: 13:47:26 on Apr 12,2020
+# Start time: 16:07:56 on Apr 23,2020
 # Loading work.tb
 # Loading work.top
 # Loading work.my_j1
@@ -128,18 +138,28 @@ do a
 # Loading work.cpu_vga_interface
 # Loading work.IOFunctionDecodeWriteBlock
 # Loading work.load_sprite_image
-# ** Warning: (vsim-3015) ../../../src/top.v(310): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(366): [PCDPC] - Port size (6) does not match connection size (7) for port 'en'. The port definition is at: ../../../src/VGA/cpu_vga_interface.v(19).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/top/interface File: ../../../src/VGA/cpu_vga_interface.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
 # WARNING: No extended dataflow license exists
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # initializing...
@@ -147,7 +167,7 @@ do a
 # 30 us
 # 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:48:37 on Apr 12,2020
+# Start time: 16:09:03 on Apr 23,2020
 # vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
 # -- Compiling module tb
 # -- Scanning library directory '../../../src'
@@ -165,6 +185,7 @@ do a
 # -- Scanning library directory '../../../src/VGA'
 # -- Compiling module vga_sync_gen
 # -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
 # -- Compiling module cpu_vga_interface
 # -- Compiling module load_sprite_image
 # -- Scanning library directory '../tb'
@@ -181,12 +202,12 @@ do a
 # 
 # Top level modules:
 # 	tb
-# End time: 13:48:37 on Apr 12,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 13:48:37 on Apr 12,2020, Elapsed time: 0:01:11
-# Errors: 0, Warnings: 8
+# End time: 16:09:03 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:09:04 on Apr 23,2020, Elapsed time: 0:01:08
+# Errors: 0, Warnings: 14
 # vsim tb -novopt "+nowarnTFMPC" 
-# Start time: 13:48:37 on Apr 12,2020
+# Start time: 16:09:04 on Apr 23,2020
 # Loading work.tb
 # Loading work.top
 # Loading work.my_j1
@@ -197,18 +218,592 @@ do a
 # Loading work.cpu_vga_interface
 # Loading work.IOFunctionDecodeWriteBlock
 # Loading work.load_sprite_image
-# ** Warning: (vsim-3015) ../../../src/top.v(310): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(329): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(348): [PCDPC] - Port size (12) does not match connection size (16) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
 #    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
-# ** Warning: (vsim-3015) ../../../src/top.v(366): [PCDPC] - Port size (6) does not match connection size (7) for port 'en'. The port definition is at: ../../../src/VGA/cpu_vga_interface.v(19).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/top/interface File: ../../../src/VGA/cpu_vga_interface.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:11:25 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:11:25 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:11:26 on Apr 23,2020, Elapsed time: 0:02:22
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:11:26 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:37 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:19:38 on Apr 23,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# End time: 16:19:38 on Apr 23,2020, Elapsed time: 0:08:12
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:19:38 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:24:39 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:24:39 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:24:40 on Apr 23,2020, Elapsed time: 0:05:02
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:24:40 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:26:33 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:26:34 on Apr 23,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# End time: 16:26:34 on Apr 23,2020, Elapsed time: 0:01:54
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:26:34 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+add wave -position 28  sim:/tb/top/paddle_left/y_scale_cnt
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/peter/microForth/hw/fpga/sim/top/run/wave.do
+add wave -position 29  sim:/tb/top/paddle_left/inc_y
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/peter/microForth/hw/fpga/sim/top/run/wave.do
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:28:03 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:28:03 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:28:03 on Apr 23,2020, Elapsed time: 0:01:29
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:28:03 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:30:41 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:30:41 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:30:42 on Apr 23,2020, Elapsed time: 0:02:39
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:30:42 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# WARNING: No extended dataflow license exists
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# initializing...
+do a
+# 30 us
+# 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:34:35 on Apr 23,2020
+# vlog -reportprogress 300 -work work "+libext+.v" "+libext+.sv" -work work -novopt -noincr ../tb/tb.v "+incdir+../../../src" "+incdir+../../../inc" "+incdir+../tb" -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb "+define+SIMULATION=1" 
+# -- Compiling module tb
+# -- Scanning library directory '../../../src'
+# -- Compiling module top
+# -- Compiling module my_j1
+# -- Compiling module sram
+# -- Compiling module ram_stack3
+# -- Scanning library directory '../../../cores'
+# -- Compiling module sdpram_8kx16
+# -- Compiling module tdpram_8kx18
+# -- Compiling module ram_512x16
+# -- Compiling module tdpram_512x16_pong
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Compiling module vga_sync_gen
+# -- Compiling module PongSprite
+# ** Warning: ../../../src/VGA/PongSprite.v(92): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module cpu_vga_interface
+# -- Compiling module load_sprite_image
+# -- Scanning library directory '../tb'
+# -- Scanning library directory '../../../src'
+# -- Compiling module IOFunctionDecodeWriteBlock
+# -- Scanning library directory '../../../cores'
+# -- Scanning library directory '../../../src/uart_tx'
+# -- Scanning library directory '../../../src/uart_rx'
+# -- Scanning library directory '../../../src/VGA'
+# -- Scanning library directory '../tb'
+# 
+# Referenced (but uncompiled) modules or primitives:
+# 	altsyncram
+# 
+# Top level modules:
+# 	tb
+# End time: 16:34:35 on Apr 23,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# End time: 16:34:36 on Apr 23,2020, Elapsed time: 0:03:54
+# Errors: 0, Warnings: 14
+# vsim tb -novopt "+nowarnTFMPC" 
+# Start time: 16:34:36 on Apr 23,2020
+# Loading work.tb
+# Loading work.top
+# Loading work.my_j1
+# Loading work.ram_stack3
+# Loading work.sram
+# Loading work.vga_sync_gen
+# Loading work.PongSprite
+# Loading work.cpu_vga_interface
+# Loading work.IOFunctionDecodeWriteBlock
+# Loading work.load_sprite_image
+# ** Warning: (vsim-3015) ../../../src/top.v(321): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/ball File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(341): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(361): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/paddle_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(381): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_left File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'x_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(13).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (1) does not match connection size (32) for port 'y_loc_en'. The port definition is at: ../../../src/VGA/PongSprite.v(14).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
+# ** Warning: (vsim-3015) ../../../src/top.v(402): [PCDPC] - Port size (12) does not match connection size (13) for port 'h_addr'. The port definition is at: ../../../src/VGA/PongSprite.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb/top/score_right File: ../../../src/VGA/PongSprite.v
 # WARNING: No extended dataflow license exists
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # initializing...

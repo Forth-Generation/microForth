@@ -28,6 +28,8 @@ add wave -noupdate -radix hexadecimal /tb/top/paddle_left/x_rel_addr
 add wave -noupdate -radix hexadecimal /tb/top/paddle_left/y_rel_addr
 add wave -noupdate -radix hexadecimal /tb/top/paddle_left/sprite_data_y_sel
 add wave -noupdate -radix hexadecimal /tb/top/paddle_left/sprite_data_x_sel
+add wave -noupdate -radix hexadecimal /tb/top/paddle_left/y_scale_cnt
+add wave -noupdate /tb/top/paddle_left/inc_y
 add wave -noupdate -divider {Image Loader}
 add wave -noupdate /tb/top/image_loader/state_reg
 add wave -noupdate -radix hexadecimal /tb/top/image_loader/mem_addr_out
@@ -63,4 +65,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {29850206 ps} {29911689 ps}
+WaveRestoreZoom {17537557 ps} {17585504 ps}

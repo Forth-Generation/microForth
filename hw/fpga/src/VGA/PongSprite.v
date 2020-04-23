@@ -97,9 +97,12 @@ module PongSprite
 				else sprite_data_x_sel <= sprite_data_x_sel;
 			end
 			
-			if(inY && (linebegin == 1)) begin
-				if(inc_y)  y_scale_cnt <= 3'b0;	
-				else y_scale_cnt <= y_scale_cnt +1;
+			if(inY) begin
+				if(linebegin == 1) begin
+					if(inc_y)  y_scale_cnt <= 3'b0;	
+					else y_scale_cnt <= y_scale_cnt +1;
+				end
+				else y_scale_cnt <= y_scale_cnt;
 			end
 			else y_scale_cnt <= 3'b0;
 			
@@ -108,8 +111,8 @@ module PongSprite
 			
 			
 			//sprite_mem_start <= 9'h0a0;
-			if(mem_addr_wren) sprite_mem_start <= data_in[8:0];	
-			else sprite_mem_start <= sprite_mem_start;
+			//if(mem_addr_wren) sprite_mem_start <= data_in[8:0];	
+			//else sprite_mem_start <= sprite_mem_start;
 //			if(screenbegin) begin
 //				x_loc <= update_x ? x_N_loc : x_loc;
 //				y_loc <= update_y ? y_N_loc : y_loc;

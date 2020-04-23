@@ -17,6 +17,7 @@ wire eq_max;
 reg shft_en;
 reg loading_loc1;
 wire f_edge;
+reg img_load_doneN;
 
 parameter IDLE = 1'b0;
 parameter LOAD = 1'b1;
@@ -26,19 +27,21 @@ assign f_edge = loading_loc1 & ~loading_loc;
 
 always @(posedge clk) begin
 	if(rst) begin
-		state_reg <= 1'b0;cnt<= 3'b0; load_en <= 5'b0; loading_loc1 <= 0; img_load_done <= 0; shft_en <= 0;
+		state_reg <= 1'b0;cnt<= 3'b0; load_en <= 5'b0; loading_loc1 <= 0; img_load_doneN <= 0; shft_en <= 0; img_load_done <= 0;
 	end 
 	else begin
+	img_load_done <= img_load_doneN;
 		case(state_reg)
 			IDLE : begin
 						casez({loading_loc,linebegin, f_edge})
 								3'b1??			:  begin state_reg <= IDLE; shft_en <=0; end
-								3'b01?			:  begin state_reg <= LOAD; shft_en <=1; end
+								3'b01?			:  begin state_reg <= LOAD; shft_en <=0; end
 								3'b000			:  begin state_reg <= IDLE; shft_en <=0; end
-								3'b001         :  begin state_reg <= LOAD; shft_en <=1; end
+								3'b001         :  begin state_reg <= LOAD; shft_en <=0; end
 								default			:  begin state_reg <= IDLE; shft_en <=0; end
 						endcase
-						img_load_done <= 0;
+						img_load_doneN <= 0;
+						
 //						if(load_loc_done) begin
 //							shft_en <= 1;
 //							state_reg <= LOAD;
@@ -51,12 +54,12 @@ always @(posedge clk) begin
 			end
 			LOAD :  begin
 							if(eq_max) begin
-								shft_en <= 0; state_reg <= IDLE;
-								img_load_done  <= 1;
+								shft_en <= 1; state_reg <= IDLE;
+								img_load_doneN  <= 1;
 							end
 							else begin
 								shft_en <= 1; state_reg <= LOAD;
-								img_load_done <= 0;
+								img_load_doneN <= 0;
 							end
 						end
 			endcase

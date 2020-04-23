@@ -266,7 +266,7 @@ always @(posedge px_clk) begin
 end
 
 vga_sync_gen #(
-	 .HS_FP_WIDTH	(48),
+	.HS_FP_WIDTH	(48),
 	.HS_WIDTH		(112),
 	.H_BP_WIDTH		(248),
 	.HA_WIDTH		(1280),
@@ -283,7 +283,7 @@ vga_sync_gen #(
 	.VS_FP_WIDTH	(2),
 	.VS_WIDTH		(3),
 	.V_BP_WIDTH 	(38),
-	.VA_WIDTH		(1024)
+	.VA_WIDTH		(1024)*/
 	/*.HS_FP_WIDTH	(5),
 	.HS_WIDTH		(10),
 	.H_BP_WIDTH		(5),
