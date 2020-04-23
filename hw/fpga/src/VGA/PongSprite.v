@@ -14,7 +14,7 @@ module PongSprite
 	input wire  y_loc_en,
 	input wire  mem_addr_wren,
 	input wire  linebegin,
-	input wire  [12:0] h_addr, 
+	input wire  [11:0] h_addr, 
 	input wire  [10:0] v_addr,
 	input wire  line_en,
 	
@@ -25,8 +25,8 @@ module PongSprite
 	reg [8:0] sprite_mem_start;
 	reg [11:0] x_loc;
 	reg [10:0] y_loc;
-	wire[12:0] x_rel_addr;
-	wire[11:0] y_rel_addr;
+	wire[11:0] x_rel_addr;
+	wire[10:0] y_rel_addr;
 	wire sprite_onN;
 	wire inBox;
 	wire inX;
@@ -39,33 +39,23 @@ module PongSprite
 	reg[2:0] y_scale_cnt;
 	reg[3:0] sprite_data_x_sel;
 	reg[3:0] sprite_data_y_sel;
-	reg[3:0] sprite_data_y_sel_actual;
-	reg [12:0] total_size;
 	
-	
-	assign x_rel_addr = h_addr - {1'b0,x_loc};
-	assign y_rel_addr = v_addr - {1'b0,y_loc};
+	assign x_rel_addr = h_addr - x_loc;
+	assign y_rel_addr = v_addr - y_loc;
 	assign inc_x = (x_scale_cnt == (SCALE-1));
 	assign inc_y = (y_scale_cnt == (SCALE-1));
 	
+	assign inX = ((x_rel_addr < XSIZE*SCALE) && ~x_rel_addr[11]);
+	assign inY = ((y_rel_addr < YSIZE*SCALE) && ~y_rel_addr[10]);
 	
-	assign inX = ((x_rel_addr < XSIZE*SCALE) && ~x_rel_addr[12]);
-	assign inY = ((y_rel_addr < YSIZE*SCALE) && ~y_rel_addr[11]);
 	
-	//assign inX = x_rel_addr < testvar;
-	//assign inY = ~y_rel_addr[11];
-		
-	//assign inBox = inX & inY;
-	assign inBox = inX;
-
-	//assign sprite_onN = inBox & line[sprite_data_y_sel];
-	//assign sprite_onN = inBox & testvar[sprite_data_y_sel];
-	assign sprite_onN = inBox;
+	assign inBox = inX & inY;
 	
-	assign mem_addr = sprite_mem_start + sprite_data_y_sel_actual;
+	assign sprite_onN = inBox & line[sprite_data_x_sel];
+	
+	assign mem_addr = sprite_mem_start + {5'b0,sprite_data_y_sel};
 	
 	always @(posedge px_clk) begin
-		total_size <= 13'd1234;
 		if(rst) begin
 			x_scale_cnt <= 3'b0; y_scale_cnt <= 3'b0;
 			sprite_on <= 1'b0; 
@@ -77,13 +67,12 @@ module PongSprite
 			y_loc <= YLOC_INITIAL;
 			sprite_data_y_sel <= 0;
 			sprite_data_x_sel <= 15;
-			sprite_data_y_sel_actual <= 0;
 		end else begin
 		
-			
 			if(line_en) begin
 				line <= data_in;
-			end else begin
+			end
+			else begin
 				line <= line;
 			end
 			sprite_on <= sprite_onN;
@@ -115,13 +104,8 @@ module PongSprite
 			else y_scale_cnt <= 3'b0;
 			
 			if(~inY) sprite_data_y_sel <= 0;
-			else sprite_data_y_sel <= sprite_data_y_sel + {{3{1'b0}},(((y_rel_addr%SCALE) == 0) &&(linebegin == 1))};
+			else sprite_data_y_sel <= sprite_data_y_sel + {{3{1'b0}},((inc_y) && (linebegin == 1))};
 			
-			if(~inY) sprite_data_y_sel_actual <= 0;
-			else begin
-				if(linebegin & inc_y) sprite_data_y_sel_actual <= sprite_data_y_sel_actual + 1;
-				else sprite_data_y_sel_actual <= sprite_data_y_sel_actual;
-			end 
 			
 			//sprite_mem_start <= 9'h0a0;
 			if(mem_addr_wren) sprite_mem_start <= data_in[8:0];	
@@ -148,7 +132,7 @@ module PongSprite
 
 	end
 
-	
+
 
 /*
 vga1280x1024 display (
@@ -171,4 +155,3 @@ vga1280x1024 display (
     assign VGA_B[3] = sq_c;         // square c is blue
 */
 endmodule
-

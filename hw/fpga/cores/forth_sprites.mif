@@ -166,7 +166,7 @@ BEGIN
  9d: 0fff;
  9e: 0fff;
  9f: 0fff;
- [a0..af]: 5555;
+ [a0..af]: ffff;
  [b0..bf]: c000;
  [c0..cf]: 0003;
  [d0..1ef]:  0000;

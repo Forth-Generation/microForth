@@ -317,7 +317,7 @@ wire img_load_done;
 
 PongSprite #(
 	.SPRITE_MEM_LOC(9'h0a0),
-	.SCALE(3)
+	.SCALE(4)
 	) ball 	(
 
 	.px_clk			(px_clk),
