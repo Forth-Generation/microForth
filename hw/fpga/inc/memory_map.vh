@@ -36,5 +36,11 @@ localparam CSR_GPIO_IN              = 16'h0031;   // GPIO input
 
 localparam CSR_GPIO_OE              = 16'h0032;   // GPIO output enables
 
-localparam CSR_LED                  = 16'h0033;   // 1 bit LED control
+
+
+//-----------------------------------------------------------------------------
+// VGA SEM
+//-----------------------------------------------------------------------------
+
+localparam CSR_VGA_SEM                  = 16'h0033;   // 1 bit VGA Semaphore. Cleared internally, set in software
 

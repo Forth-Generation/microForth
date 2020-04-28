@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/peter/microForth/hw/fpga/sim/top/run
 vcpu_vga_interface
-Z1 !s110 1587684875
+Z1 !s110 1588102286
 !i10b 1
-!s100 Mmzj6[0czKFbO5Fzed<L61
-I0ZD0Rg@XKZ7VafkWn>]FE2
+!s100 GhJ3R2kMmL]H=4B?0n7Q23
+IDY8V=1KUVY^Dc]g>]WadG1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1586485581
+w1588102273
 8../../../src/VGA/cpu_vga_interface.v
 F../../../src/VGA/cpu_vga_interface.v
 L0 1
@@ -23,13 +23,36 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1587684875.000000
-Z5 !s107 ../tb/tb.v|
+Z4 !s108 1588102286.000000
+Z5 !s107 ../../../inc/memory_map.vh|../tb/tb.v|
 Z6 !s90 -reportprogress|300|-work|work|+libext+.v|+libext+.sv|-work|work|-novopt|-noincr|../tb/tb.v|+incdir+../../../src|+incdir+../../../inc|+incdir+../tb|-y|../../../src|-y|../../../cores|-y|../../../src/uart_tx|-y|../../../src/uart_rx|-y|../../../src/VGA|-y|../tb|+define+SIMULATION=1|
 !i113 1
 Z7 o-work work +libext+.v +libext+.sv -work work
 Z8 !s92 -work work +libext+.v +libext+.sv -work work +incdir+../../../src +incdir+../../../inc +incdir+../tb -y ../../../src -y ../../../cores -y ../../../src/uart_tx -y ../../../src/uart_rx -y ../../../src/VGA -y ../tb +define+SIMULATION=1
 Z9 tCvgOpt 0
+vcsr
+R1
+!i10b 1
+!s100 <Y_<mZ_Xd[gH@B=GXn8^23
+I9_mED=o0B[f]gXcNgQ88B1
+R2
+R0
+Z10 w1573172159
+8../../../src/csr.v
+F../../../src/csr.v
+F../../../inc/memory_map.vh
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
 vIOFunctionDecodeWriteBlock
 R1
 !i10b 1
@@ -127,10 +150,10 @@ R1
 IRi<<EcLX]30YS3`bB3jWV2
 R2
 R0
-Z10 w1579668490
+Z11 w1579668490
 8../../../cores/ram_512x16.v
 F../../../cores/ram_512x16.v
-Z11 L0 40
+Z12 L0 40
 R3
 r1
 !s85 0
@@ -149,7 +172,7 @@ R1
 IkSd1nR8k:S<<Y`;<Bb^U13
 R2
 R0
-R10
+R11
 8../../../src/ram_stack3.v
 F../../../src/ram_stack3.v
 L0 9
@@ -171,10 +194,10 @@ R1
 I4dTSdaNc99VbK[2^ae:[h3
 R2
 R0
-w1573172159
+R10
 8../../../cores/sdpram_8kx16.v
 F../../../cores/sdpram_8kx16.v
-R11
+R12
 R3
 r1
 !s85 0
@@ -240,7 +263,7 @@ R0
 w1586473824
 8../../../cores/tdpram_512x16_pong.v
 F../../../cores/tdpram_512x16_pong.v
-Z12 L0 39
+Z13 L0 39
 R3
 r1
 !s85 0
@@ -262,7 +285,7 @@ R0
 w1582506364
 8../../../cores/tdpram_8kx18.v
 F../../../cores/tdpram_8kx18.v
-R12
+R13
 R3
 r1
 !s85 0
@@ -277,11 +300,11 @@ R9
 vtop
 R1
 !i10b 1
-!s100 @L]@`[Jc`_<>;b<RRUn^M0
-INcJ4f?h`Wd?o4G9_cm_RI3
+!s100 Q:CQY>^WzTQY>Pod3ejEH0
+IlojF]Q]94hYa`]n@HcnbX3
 R2
 R0
-w1587683973
+w1588102246
 8../../../src/top.v
 F../../../src/top.v
 L0 9
@@ -303,7 +326,7 @@ R1
 I1=Y?LZPilLh_4PRWg0kK41
 R2
 R0
-w1586999133
+w1588098782
 8../../../src/VGA/vga_sync_gen.v
 F../../../src/VGA/vga_sync_gen.v
 L0 1

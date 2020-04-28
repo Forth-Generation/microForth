@@ -37,8 +37,9 @@ module csr (
   output reg    [7:0] gpio_out,
   output reg    [7:0] gpio_oe,
 
-  // led
-  output reg          led
+  // vga sem
+  input  wire 			 clr_sem,
+  output reg          vga_sem
 );
 
 `include "memory_map.vh"
@@ -62,23 +63,26 @@ assign uart_tx_wdata = j1_dout[7:0];
 // Control registers
 //-----------------------------------------------------------------------------
 
-always @ (posedge clk or posedge rst)
+always @ (posedge clk or posedge rst) begin
   if (rst)
     begin
       gpio_out           <= 8'h00;
       gpio_oe            <= 8'h00;
-      led                <= 1'b0;
+      vga_sem                <= 1'b0;
       uart_rx_clr_ovrflw <= 1'b0;
     end
   else
     begin
+	 if(clr_sem) begin
+		vga_sem <= 1'b0;
+	 end
       if (j1_io_wr)
         case (j1_mem_addr)
           CSR_UART_RX_OVERFLOW : uart_rx_clr_ovrflw <= j1_dout[0];
 
           CSR_GPIO_OUT         : gpio_out           <= j1_dout[7:0];
           CSR_GPIO_OE          : gpio_oe            <= j1_dout[7:0];
-          CSR_LED              : led                <= j1_dout[0];
+          CSR_VGA_SEM              : vga_sem                <= j1_dout[0];
 
           default              : begin end
         endcase
@@ -87,6 +91,7 @@ always @ (posedge clk or posedge rst)
         // autoclear the overflow clear bit
         uart_rx_clr_ovrflw <= 1'b0;
     end
+end
 
 //-----------------------------------------------------------------------------
 // Status (readback) registers
@@ -106,7 +111,7 @@ always @ ( * )
       CSR_GPIO_OUT           : j1_io_din = {  8'd0 , gpio_out };
       CSR_GPIO_OE            : j1_io_din = {  8'd0 , gpio_oe  };
 
-      CSR_LED                : j1_io_din = { 15'd0 , led  };
+      CSR_VGA_SEM                : j1_io_din = { 15'd0 , vga_sem  };
 
       default                : j1_io_din = 16'hbada;  // undefined read returns bad a
     endcase

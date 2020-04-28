@@ -67,9 +67,9 @@ wire             [7:0]  gpio_oe             /*synthesis keep*/ ;
 //wire 							px_clk					/*synthesis keep*/;
 wire							locked 					/*synthesis keep*/;
 
-wire             [12:0] h_addr               /*synthesis keep*/;
+wire             [11:0] h_addr               /*synthesis keep*/;
 wire             [10:0] v_addr               /*synthesis keep*/;
-wire             [12:0] h_addrN               /*synthesis keep*/;
+wire             [11:0] h_addrN               /*synthesis keep*/;
 wire             [10:0] v_addrN               /*synthesis keep*/;
 //wire						screenend				 /*synthesis keep*/;
 wire							screenbegin				 /*synthesis keep*/;
@@ -194,27 +194,28 @@ sram #(
 );
 
 // control/status registers
-//csr csr1 (
-//  .clk                ( clk                 ),
-//  .rst                ( rst                 ),
-//  .j1_mem_addr        ( j1_mem_addr         ),
-//  .j1_dout            ( j1_dout             ),
-//  .j1_io_wr           ( j1_io_wr            ),
-//  .j1_io_rd           ( j1_io_rd            ),
-//  .j1_io_din          ( j1_io_din           ),
-//  .uart_tx_wr         ( uart_tx_wr          ),
-//  .uart_tx_wdata      ( uart_tx_wdata       ),
-//  .uart_tx_tbr_valid  ( uart_tx_tbr_valid   ),
-//  .uart_rx_rd         ( uart_rx_rd          ),
-//  .uart_rx_rdata      ( uart_rx_rdata       ),
-//  .uart_rx_d_valid    ( uart_rx_d_valid     ),
-//  .uart_rx_overflow   ( uart_rx_overflow    ),
-//  .uart_rx_clr_ovrflw ( uart_rx_clr_ovrflw  ),
-//  .led                ( ), // led           ), //Use this signal for the semaphore
-//  .gpio_in            ( gpio_in             ),
-//  .gpio_out           ( gpio_out            ),
-//  .gpio_oe            ( gpio_oe             )
-//);
+csr csr1 (
+  .clk                ( clk                 ),
+  .rst                ( rst                 ),
+  .j1_mem_addr        ( j1_mem_addr         ),
+  .j1_dout            ( j1_dout             ),
+  .j1_io_wr           ( j1_io_wr            ),
+  .j1_io_rd           ( j1_io_rd            ),
+  .j1_io_din          ( j1_io_din           ),
+  .uart_tx_wr         ( uart_tx_wr          ),
+  .uart_tx_wdata      ( uart_tx_wdata       ),
+  .uart_tx_tbr_valid  ( uart_tx_tbr_valid   ),
+  .uart_rx_rd         ( uart_rx_rd          ),
+  .uart_rx_rdata      ( uart_rx_rdata       ),
+  .uart_rx_d_valid    ( uart_rx_d_valid     ),
+  .uart_rx_overflow   ( uart_rx_overflow    ),
+  .uart_rx_clr_ovrflw ( uart_rx_clr_ovrflw  ),
+  .vga_sem                ( ),  //Use this signal for the semaphore
+  .clr_sem					(clr_sem),
+  .gpio_in            ( gpio_in             ),
+  .gpio_out           ( gpio_out            ),
+  .gpio_oe            ( gpio_oe             )
+);
 //   
 //
 //   
@@ -266,7 +267,7 @@ always @(posedge px_clk) begin
 end
 
 vga_sync_gen #(
-	.HS_FP_WIDTH	(48),
+	/*.HS_FP_WIDTH	(48),
 	.HS_WIDTH		(112),
 	.H_BP_WIDTH		(248),
 	.HA_WIDTH		(1280),
@@ -284,7 +285,7 @@ vga_sync_gen #(
 	.VS_WIDTH		(3),
 	.V_BP_WIDTH 	(38),
 	.VA_WIDTH		(1024)*/
-	/*.HS_FP_WIDTH	(5),
+	.HS_FP_WIDTH	(5),
 	.HS_WIDTH		(10),
 	.H_BP_WIDTH		(5),
 	.HA_WIDTH		(32),
@@ -292,7 +293,7 @@ vga_sync_gen #(
 	.VS_FP_WIDTH	(1),
 	.VS_WIDTH		(2),
 	.V_BP_WIDTH 	(1),
-	.VA_WIDTH		(32)*/
+	.VA_WIDTH		(32)
 ) display (
 	.px_clk			(px_clk),
 	.rst 				(px_rst),
@@ -427,12 +428,12 @@ interface (
 	.cpu_din			(j1_dout),
 	.io_wr			(j1_io_wr),
 	.screenbegin	(screenbegin),
-	.v_sync			(~vsync),
+	.v_sync			(~VGA_VS),
 	.reg_data		(sprite_din),
 	.en				(pong_data_en),
 	.sprite_addr	(sprite_addr),
-	.loading_loc  (loading_loc)
-//	.clr_sem			(clr_sem)
+	.loading_loc  (loading_loc),
+	.clr_sem			(clr_sem)
 );
 
 load_sprite_image image_loader(

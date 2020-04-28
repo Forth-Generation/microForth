@@ -69,6 +69,7 @@ end
 always @(posedge clk) begin
 	if(rst) begin
 		clr_sem <= 1'b0;
+		//clr_sem_slow <= 1'b0;
 	end else begin
 		if(pulseGenS) clr_sem <= 1'b0;
 		else clr_sem <= clr_sem_slow;
