@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 //
 // File:        top.v
-// Author:      Mark Sapper
+// Author:      Mark Sapper, Peter Baran, Jess Totorica, Kyle Hartman
 // Description: Forth FPGA top level
 //
 //-----------------------------------------------------------------------------
@@ -385,8 +385,8 @@ PongSprite #(
 );
 
 PongSprite #(
-	.SPRITE_MEM_LOC(9'h000),
-	.XLOC_INITIAL	(50),
+	.SPRITE_MEM_LOC(9'h050),
+	.XLOC_INITIAL	(60),
 	.YLOC_INITIAL  (930),
 	.SCALE			(4)
 	) score_left 	(
@@ -406,7 +406,7 @@ PongSprite #(
 );
 
 PongSprite #(
-	.SPRITE_MEM_LOC(9'h000),
+	.SPRITE_MEM_LOC(9'h030),
 	.XLOC_INITIAL	(1135),
 	.YLOC_INITIAL  (930),
 	.SCALE         (4)
