@@ -41,7 +41,7 @@ $Fsem_clr  0x0000                   \ Frame sync semaphore clr value
                 %SkipLeftDown       0branch \ skip
                 %MoveLeftPaddleDown scall   \
 		
-%SkipLeftDown   		    swap    \ start operations on right paddle
+%SkipLeftDown   		    over    \ start operations on right paddle
 		%GetRightJoystick   scall
 		
 		$right_paddle_up    imm     \ push right paddle up indicator
@@ -55,7 +55,7 @@ $Fsem_clr  0x0000                   \ Frame sync semaphore clr value
 		%SkipRightDown      0branch \ skip
 		%MoveRightPaddleDown scall  \
 
-%SkipRightDown			    swap    \ swap left joystick addr back to top of stack
+%SkipRightDown			    over    \ swap left joystick addr back to top of stack
 		$Fsem_set           imm     \ push Fsem set value
                 $Fsem_addr          imm     \ push Fsem address
                                     io!     \ write/set Fsem

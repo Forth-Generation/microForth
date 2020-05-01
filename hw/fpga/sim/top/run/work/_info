@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/peter/microForth/hw/fpga/sim/top/run
 vcpu_vga_interface
-Z1 !s110 1588300194
+Z1 !s110 1588307037
 !i10b 1
 !s100 GhJ3R2kMmL]H=4B?0n7Q23
 IDY8V=1KUVY^Dc]g>]WadG1
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1588300194.000000
+Z4 !s108 1588307037.000000
 Z5 !s107 ../../../inc/memory_map.vh|../tb/tb.v|
 Z6 !s90 -reportprogress|300|-work|work|+libext+.v|+libext+.sv|-work|work|-novopt|-noincr|../tb/tb.v|+incdir+../../../src|+incdir+../../../inc|+incdir+../tb|-y|../../../src|-y|../../../cores|-y|../../../src/uart_tx|-y|../../../src/uart_rx|-y|../../../src/VGA|-y|../tb|+define+SIMULATION=1|
 !i113 1
@@ -257,11 +257,11 @@ R9
 vtb
 R1
 !i10b 1
-!s100 5dVmY_bKV]Fg2a]6]>?m<0
-IOb7QT8ZL<8ohmFb:YmOe71
+!s100 BaGa;]7onUNlakhCZeBMT0
+Ijkh@<N4S:DHYLk0l;6N>g3
 R2
 R0
-w1583530814
+w1588305269
 8../tb/tb.v
 F../tb/tb.v
 L0 9
@@ -323,11 +323,11 @@ R9
 vtop
 R1
 !i10b 1
-!s100 j55OP=88LOPCkBTn`[5O61
-I8LhQJFPd4L3>[?I[Did=b3
+!s100 IafZzM?Fjg16`N2M=Wg=K2
+I;LV3Lb`ofOY3KcCF>19541
 R2
 R0
-w1588296148
+w1588305192
 8../../../src/top.v
 F../../../src/top.v
 L0 9

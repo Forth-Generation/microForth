@@ -144,7 +144,11 @@ top #(
   .uart_rxd               ( uart_rxd ),
   .uart_txd               ( uart_txd ),
   .gpio                   ( gpio     ),
-  .led                    ( led      )
+  .led                    ( led      ),
+  .paddle_left_up	  (0),
+  .paddle_left_down	  (1),
+  .paddle_right_up        (1),
+  .paddle_right_down      (1)
 );
 
 //----------------------------------------------------------------------
