@@ -66,14 +66,10 @@ $ball_x_max  1260
                 %SkipLeftDown       0branch \ skip
                 %MoveLeftPaddleDown scall   \
 		
-<<<<<<< HEAD
-%SkipLeftDown   		            over
 
-		%GetRightJoystick           scall
-=======
 %SkipLeftDown   		    over    \ start operations on right paddle
 		%GetRightJoystick   scall
->>>>>>> master
+
 		
 		$right_paddle_up            imm     \ push right paddle up indicator
                                     =	    \ compare
@@ -114,20 +110,12 @@ $ball_x_max  1260
             %SkipSwitchBallX         0branch \ Skip switch ball direction if x loc is not less than X max
              %SwitchBallX            scall  \
              
-             
-
-<<<<<<< HEAD
+            
 %SkipSwitchBallX    $Fsem_set           imm     \ push Fsem set value
                     $Fsem_addr          imm     \ push Fsem address
                                         io!     \ write/set Fsem
                     %Loop               ubranch    \
-=======
-%SkipRightDown			    over    \ swap left joystick addr back to top of stack
-		$Fsem_set           imm     \ push Fsem set value
-                $Fsem_addr          imm     \ push Fsem address
-                                    io!     \ write/set Fsem
-                %Loop               ubranch    \
->>>>>>> master
+
 
 
 
