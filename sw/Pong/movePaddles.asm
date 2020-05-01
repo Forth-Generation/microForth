@@ -66,7 +66,7 @@ $ball_x_max  1260
                 %SkipLeftDown       0branch \ skip
                 %MoveLeftPaddleDown scall   \
 		
-%SkipLeftDown   		            swap
+%SkipLeftDown   		            over
 
 		%GetRightJoystick           scall
 		
@@ -81,7 +81,7 @@ $ball_x_max  1260
 		%SkipRightDown              0branch \ skip
 		%MoveRightPaddleDown        scall  \
 
-%SkipRightDown			    swap    \ swap left joystick addr back to top of stack
+%SkipRightDown			            over       \ swap left joystick addr back to top of stack
 
             \\ Ball
              $ball_dx_addr_SRAM       imm     \
