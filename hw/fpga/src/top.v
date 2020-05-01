@@ -364,6 +364,7 @@ PongSprite #(
 );
 
 PongSprite #(
+
 	.SPRITE_MEM_LOC(9'h0c0),
 	.XLOC_INITIAL	(1125),
 	.YLOC_INITIAL  (300),

@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/peter/microForth/hw/fpga/sim/top/run
 vcpu_vga_interface
-Z1 !s110 1588291244
+Z1 !s110 1588300194
 !i10b 1
 !s100 GhJ3R2kMmL]H=4B?0n7Q23
 IDY8V=1KUVY^Dc]g>]WadG1
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1588291244.000000
+Z4 !s108 1588300194.000000
 Z5 !s107 ../../../inc/memory_map.vh|../tb/tb.v|
 Z6 !s90 -reportprogress|300|-work|work|+libext+.v|+libext+.sv|-work|work|-novopt|-noincr|../tb/tb.v|+incdir+../../../src|+incdir+../../../inc|+incdir+../tb|-y|../../../src|-y|../../../cores|-y|../../../src/uart_tx|-y|../../../src/uart_rx|-y|../../../src/VGA|-y|../tb|+define+SIMULATION=1|
 !i113 1
@@ -33,11 +33,11 @@ Z9 tCvgOpt 0
 vcsr
 R1
 !i10b 1
-!s100 agdi_EfTJaY5V]03z]nQ63
-I9Xm4e3`QJ7801_H0bA>5N1
+!s100 @BFbLHfb=3o6<FBHK6DE_0
+I_J;oIXmo`k<cO:e12AhYR0
 R2
 R0
-w1588102941
+w1588292364
 8../../../src/csr.v
 F../../../src/csr.v
 F../../../inc/memory_map.vh
@@ -121,7 +121,7 @@ R7
 R8
 R9
 vPaddleControl
-R1
+!s110 1588291244
 !i10b 1
 !s100 Rz49gIXRh4cbmIzhnCSe?1
 Ih0efWI4nfD00P79M7b=`K2
@@ -135,7 +135,7 @@ R3
 r1
 !s85 0
 31
-R4
+!s108 1588291244.000000
 R5
 R6
 !i113 1
@@ -323,11 +323,11 @@ R9
 vtop
 R1
 !i10b 1
-!s100 QR:InlN;mTV4g7ngPB_:<1
-IDJf][A;T:NY7oDXB`ooR10
+!s100 j55OP=88LOPCkBTn`[5O61
+I8LhQJFPd4L3>[?I[Did=b3
 R2
 R0
-w1588284812
+w1588296148
 8../../../src/top.v
 F../../../src/top.v
 L0 9
