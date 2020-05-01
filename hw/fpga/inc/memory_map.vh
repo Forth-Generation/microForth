@@ -44,3 +44,9 @@ localparam CSR_GPIO_OE              = 16'h0032;   // GPIO output enables
 
 localparam CSR_VGA_SEM                  = 16'h0033;   // 1 bit VGA Semaphore. Cleared internally, set in software
 
+
+//-----------------------------------------------------------------------------
+// Paddles
+//-----------------------------------------------------------------------------
+
+localparam CSR_PADDLE_STATUS		=16'h0040;	

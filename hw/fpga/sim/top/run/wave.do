@@ -49,8 +49,12 @@ add wave -noupdate -radix hexadecimal /tb/top/j1/st0
 add wave -noupdate -radix hexadecimal /tb/top/j1/insn
 add wave -noupdate -radix hexadecimal /tb/top/j1/st1
 add wave -noupdate -radix hexadecimal /tb/top/j1/mem_addr
+add wave -noupdate -radix hexadecimal /tb/top/j1/io_din
+add wave -noupdate -divider csr
+add wave -noupdate /tb/top/csr1/clr_sem
+add wave -noupdate /tb/top/csr1/vga_sem
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {13853395 ps} 0}
+WaveRestoreCursors {{Cursor 1} {946418 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 262
 configure wave -valuecolwidth 50
@@ -66,4 +70,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {0 ps} {45480 ps}
+WaveRestoreZoom {836974 ps} {854708 ps}

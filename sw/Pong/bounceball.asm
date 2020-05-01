@@ -5,9 +5,9 @@ $Fsem_set  0x0001                   \ Frame sync semaphore set value
 $Fsem_clr  0x0000                   \ Frame sync semaphore clr value
 
 
-              $Fsem_set     imm     \ push Fsem set value
-              $Fsem_addr    imm     \ push Fsem address
-                            io!     \ write/set Fsem
+              \$Fsem_set     imm     \ push Fsem set value
+              \$Fsem_addr    imm     \ push Fsem address
+               \             io!     \ write/set Fsem
 
               0x0000        imm     \ push x initial loc
 
@@ -25,6 +25,11 @@ $Fsem_clr  0x0000                   \ Frame sync semaphore clr value
                             dup
               1260          imm     \ push screen width 
                             =       \ compare location to screen width
+
+	      $Fsem_set     imm     \ push Fsem set value
+              $Fsem_addr    imm     \ push Fsem address
+                            io!     \ write/set Fsem
+
               %Loop         0branch \ restart loop if not at edge of screen
 
 
