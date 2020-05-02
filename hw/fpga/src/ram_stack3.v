@@ -76,7 +76,8 @@ always @ (posedge clk or posedge rst)
 //-----------------------------------------------------------------------------
 
 assign ram_wdata = wd;
-assign ram_write = push;
+//assign ram_write = push;
+assign ram_write = we;              // Allows 'swap' to overwrite 'st1' without pushing (delta = 0)
 
 assign rd = ram_rdata;
 
