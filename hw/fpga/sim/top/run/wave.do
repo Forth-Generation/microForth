@@ -45,18 +45,18 @@ add wave -noupdate /tb/top/interface/addr_sel
 add wave -noupdate /tb/top/interface/screenbegin
 add wave -noupdate -divider F18
 add wave -noupdate -radix hexadecimal /tb/top/j1/pc
-add wave -noupdate -radix hexadecimal /tb/top/j1/st0
-add wave -noupdate -radix hexadecimal /tb/top/j1/st0N
 add wave -noupdate -radix hexadecimal /tb/top/j1/insn
+add wave -noupdate -radix hexadecimal /tb/top/j1/st0
 add wave -noupdate -radix hexadecimal /tb/top/j1/st1
 add wave -noupdate -radix hexadecimal /tb/top/j1/mem_addr
-add wave -noupdate -radix hexadecimal /tb/top/j1/io_din
+add wave -noupdate -radix hexadecimal /tb/top/j1/rmem_data
+add wave -noupdate /tb/top/j1/mem_wr
 add wave -noupdate -divider csr
 add wave -noupdate -radix hexadecimal /tb/top/paddle_left/y_loc
 add wave -noupdate /tb/top/csr1/clr_sem
 add wave -noupdate /tb/top/csr1/vga_sem
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1211976 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1661535 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 262
 configure wave -valuecolwidth 50
@@ -72,4 +72,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {1126891 ps} {1182210 ps}
+WaveRestoreZoom {1613503 ps} {1680789 ps}

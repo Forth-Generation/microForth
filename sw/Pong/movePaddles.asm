@@ -1,5 +1,5 @@
 $ball_xloc_addr 0x1F0                    \ ball x location address
-$bal_yloc_addr 0x1F1                    \ ball y location address
+$ball_yloc_addr 0x1F1                    \ ball y location address
 $p_left_loc_addr  0x1F2             \ left paddle y location address
 $p_right_loc_addr 0x1F3             \ right paddle y location address
 
@@ -21,7 +21,7 @@ $Fsem_set  0x0001                   \ Frame sync semaphore set value
 $Fsem_clr  0x0000                   \ Frame sync semaphore clr value
 
 $ball_x_min  30                       \
-$ball_x_max  1260
+$ball_x_max  1210
                 
 
                         600         imm    \ INITIAL ball x location
@@ -38,6 +38,7 @@ $ball_x_max  1260
                         600         imm    \ INITIAL ball y location
                         dup
             $ball_yloc_addr         imm    \ ball y location address
+				    io!
             $ball_yloc_addr_SRAM    imm     \ ball y SRAM location
                                     !       \ write location to memory
                                     
@@ -67,7 +68,7 @@ $ball_x_max  1260
                 %MoveLeftPaddleDown scall   \
 		
 
-%SkipLeftDown   		    over    \ start operations on right paddle
+%SkipLeftDown   		    swap    \ start operations on right paddle
 		%GetRightJoystick   scall
 
 		
@@ -82,14 +83,22 @@ $ball_x_max  1260
 		%SkipRightDown              0branch \ skip
 		%MoveRightPaddleDown        scall  \
 
-%SkipRightDown			            over       \ swap left joystick addr back to top of stack
+%SkipRightDown			            swap       \ swap left joystick addr back to top of stack
 
             \\ Ball
-             $ball_dx_addr_SRAM       imm     \
-                                      @imm    \ get x velocity
+             $ball_dx_addr_SRAM        imm     \ This sequence has to be done due to timing constraints
+				      noop	\ This should be changed in hw or assembler
+		1		       @imm
+				      swap
+				      drop
                                       
              $ball_xloc_addr_SRAM    imm    \ push ball x location SRAM address
-                                     @imm   \ get xloc value
+				     noop
+	1			     @imm
+				     swap
+				     drop
+				     
+
 
                                      +       \ add delta x to xloc
                                      dup     \
@@ -98,14 +107,14 @@ $ball_x_max  1260
                                      
              $ball_xloc_addr_SRAM    imm     \ push ball x location SRAM address
                                      !       \ write new location back to SRAM
-             $ball_x_loc_addr        imm     \ push VGA x loc address
+             $ball_xloc_addr         imm     \ push VGA x loc address
                                      io!     \ write new location value to vga
                                      
                                      dup
              $ball_x_max             imm
                                      <
             %SwitchBallX             0branch \ Switch direction if x loc is not less than X maximum
-             $ball_x_min             imm     \
+%ReturnFromSwitch             $ball_x_min             imm     \
                                      <       \
             %SkipSwitchBallX         0branch \ Skip switch ball direction if x loc is not less than X max
              %SwitchBallX            scall  \
@@ -174,3 +183,15 @@ $ball_x_max  1260
                     $p_right_loc_addr       imm     \ right paddle position
                                             io!     \
                                             exit    \
+
+%SwitchBallX        $ball_dx_addr_SRAM      imm     \
+					    noop
+			1	            @imm
+					    swap
+					    drop
+                                            invert
+
+                                      
+             	   $ball_dx_addr_SRAM     imm    \ push ball x location SRAM address
+			                    !
+		%ReturnFromSwitch         ubranch
