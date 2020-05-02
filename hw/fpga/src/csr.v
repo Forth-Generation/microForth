@@ -39,7 +39,13 @@ module csr (
 
   // vga sem
   input  wire 			 clr_sem,
-  output reg          vga_sem
+  output reg          vga_sem,
+  
+  //Paddle states
+  input wire			paddle_left_up,
+  input wire			paddle_left_down,
+  input wire			paddle_right_up,
+  input wire 			paddle_right_down
 );
 
 `include "memory_map.vh"
@@ -112,6 +118,8 @@ always @ ( * )
       CSR_GPIO_OE            : j1_io_din = {  8'd0 , gpio_oe  };
 
       CSR_VGA_SEM                : j1_io_din = { 15'd0 , vga_sem  };
+		
+		CSR_PADDLE_STATUS					: j1_io_din = {12'd0, paddle_right_down, paddle_right_up, paddle_left_down, paddle_left_up};
 
       default                : j1_io_din = 16'hbada;  // undefined read returns bad a
     endcase

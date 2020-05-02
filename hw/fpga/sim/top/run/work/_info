@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/peter/microForth/hw/fpga/sim/top/run
 vcpu_vga_interface
-Z1 !s110 1588102286
+Z1 !s110 1588318912
 !i10b 1
 !s100 GhJ3R2kMmL]H=4B?0n7Q23
 IDY8V=1KUVY^Dc]g>]WadG1
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1588102286.000000
+Z4 !s108 1588318912.000000
 Z5 !s107 ../../../inc/memory_map.vh|../tb/tb.v|
 Z6 !s90 -reportprogress|300|-work|work|+libext+.v|+libext+.sv|-work|work|-novopt|-noincr|../tb/tb.v|+incdir+../../../src|+incdir+../../../inc|+incdir+../tb|-y|../../../src|-y|../../../cores|-y|../../../src/uart_tx|-y|../../../src/uart_rx|-y|../../../src/VGA|-y|../tb|+define+SIMULATION=1|
 !i113 1
@@ -33,11 +33,11 @@ Z9 tCvgOpt 0
 vcsr
 R1
 !i10b 1
-!s100 <Y_<mZ_Xd[gH@B=GXn8^23
-I9_mED=o0B[f]gXcNgQ88B1
+!s100 @BFbLHfb=3o6<FBHK6DE_0
+I_J;oIXmo`k<cO:e12AhYR0
 R2
 R0
-Z10 w1573172159
+w1588292364
 8../../../src/csr.v
 F../../../src/csr.v
 F../../../inc/memory_map.vh
@@ -101,11 +101,11 @@ R9
 vmy_j1
 R1
 !i10b 1
-!s100 6oV`FiPH5cM`08Uoc8k;L2
-IRfGJRW2FlVDl76JlF1I<11
+!s100 WJ:CWOjBzORz`@kD0gz263
+IWLV3k<b:2Z?6jh=G]YYd00
 R2
 R0
-w1583887292
+w1588317168
 8../../../src/my_j1.v
 F../../../src/my_j1.v
 L0 4
@@ -120,6 +120,29 @@ R6
 R7
 R8
 R9
+vPaddleControl
+!s110 1588291244
+!i10b 1
+!s100 Rz49gIXRh4cbmIzhnCSe?1
+Ih0efWI4nfD00P79M7b=`K2
+R2
+R0
+w1588284181
+8../../../src/PaddleControl.v
+F../../../src/PaddleControl.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1588291244.000000
+R5
+R6
+!i113 1
+R7
+R8
+R9
+n@paddle@control
 vPongSprite
 R1
 !i10b 1
@@ -150,10 +173,10 @@ R1
 IRi<<EcLX]30YS3`bB3jWV2
 R2
 R0
-Z11 w1579668490
+Z10 w1579668490
 8../../../cores/ram_512x16.v
 F../../../cores/ram_512x16.v
-Z12 L0 40
+Z11 L0 40
 R3
 r1
 !s85 0
@@ -166,13 +189,13 @@ R7
 R8
 R9
 vram_stack3
-R1
+!s110 1588316689
 !i10b 1
 !s100 a^JiH?c0J]R2K]>=F0J]62
 IkSd1nR8k:S<<Y`;<Bb^U13
 R2
 R0
-R11
+R10
 8../../../src/ram_stack3.v
 F../../../src/ram_stack3.v
 L0 9
@@ -180,7 +203,7 @@ R3
 r1
 !s85 0
 31
-R4
+!s108 1588316689.000000
 R5
 R6
 !i113 1
@@ -194,10 +217,10 @@ R1
 I4dTSdaNc99VbK[2^ae:[h3
 R2
 R0
-R10
+w1573172159
 8../../../cores/sdpram_8kx16.v
 F../../../cores/sdpram_8kx16.v
-R12
+R11
 R3
 r1
 !s85 0
@@ -231,14 +254,36 @@ R6
 R7
 R8
 R9
+vstack2
+R1
+!i10b 1
+!s100 IUHLIZ_Yd3AI12?ZlBYTf0
+I>b2bNR4[4oH]?NDW87EY30
+R2
+R0
+R10
+8../../../src/stack2.v
+F../../../src/stack2.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+R9
 vtb
 R1
 !i10b 1
-!s100 5dVmY_bKV]Fg2a]6]>?m<0
-IOb7QT8ZL<8ohmFb:YmOe71
+!s100 BaGa;]7onUNlakhCZeBMT0
+Ijkh@<N4S:DHYLk0l;6N>g3
 R2
 R0
-w1583530814
+w1588305269
 8../tb/tb.v
 F../tb/tb.v
 L0 9
@@ -263,7 +308,7 @@ R0
 w1586473824
 8../../../cores/tdpram_512x16_pong.v
 F../../../cores/tdpram_512x16_pong.v
-Z13 L0 39
+Z12 L0 39
 R3
 r1
 !s85 0
@@ -285,7 +330,7 @@ R0
 w1582506364
 8../../../cores/tdpram_8kx18.v
 F../../../cores/tdpram_8kx18.v
-R13
+R12
 R3
 r1
 !s85 0
@@ -300,11 +345,11 @@ R9
 vtop
 R1
 !i10b 1
-!s100 Q:CQY>^WzTQY>Pod3ejEH0
-IlojF]Q]94hYa`]n@HcnbX3
+!s100 jFJ3R7BXm6eknC@1[82Y<1
+I;zf`@=JICNK?=?m8=U?I:2
 R2
 R0
-w1588102246
+w1588309150
 8../../../src/top.v
 F../../../src/top.v
 L0 9

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 //
 // File:        top.v
-// Author:      Mark Sapper
+// Author:      Mark Sapper, Peter Baran, Jess Totorica, Kyle Hartman
 // Description: Forth FPGA top level
 //
 //-----------------------------------------------------------------------------
@@ -23,7 +23,12 @@ module top #(
   output wire			VGA_VS,
   output wire  [3:0] VGA_R,
   output wire  [3:0] VGA_G,
-  output wire  [3:0] VGA_B
+  output wire  [3:0] VGA_B,
+  
+  input wire			paddle_left_up,
+  input wire			paddle_left_down,
+  input wire			paddle_right_up,
+  input wire			paddle_right_down
 );
 
 localparam DATA_WIDTH = 16;
@@ -212,6 +217,10 @@ csr csr1 (
   .uart_rx_clr_ovrflw ( uart_rx_clr_ovrflw  ),
   .vga_sem                ( ),  //Use this signal for the semaphore
   .clr_sem					(clr_sem),
+  .paddle_left_up		 (~paddle_left_up),
+  .paddle_left_down	 (~paddle_left_down),
+  .paddle_right_up	 (~paddle_right_up),
+  .paddle_right_down  (~paddle_right_down),
   .gpio_in            ( gpio_in             ),
   .gpio_out           ( gpio_out            ),
   .gpio_oe            ( gpio_oe             )
@@ -267,7 +276,7 @@ always @(posedge px_clk) begin
 end
 
 vga_sync_gen #(
-	/*.HS_FP_WIDTH	(48),
+	.HS_FP_WIDTH	(48),
 	.HS_WIDTH		(112),
 	.H_BP_WIDTH		(248),
 	.HA_WIDTH		(1280),
@@ -285,7 +294,7 @@ vga_sync_gen #(
 	.VS_WIDTH		(3),
 	.V_BP_WIDTH 	(38),
 	.VA_WIDTH		(1024)*/
-	.HS_FP_WIDTH	(5),
+	/*.HS_FP_WIDTH	(5),
 	.HS_WIDTH		(10),
 	.H_BP_WIDTH		(5),
 	.HA_WIDTH		(32),
@@ -293,7 +302,7 @@ vga_sync_gen #(
 	.VS_FP_WIDTH	(1),
 	.VS_WIDTH		(2),
 	.V_BP_WIDTH 	(1),
-	.VA_WIDTH		(32)
+	.VA_WIDTH		(32)*/
 ) display (
 	.px_clk			(px_clk),
 	.rst 				(px_rst),
@@ -318,7 +327,7 @@ wire img_load_done;
 
 PongSprite #(
 	.SPRITE_MEM_LOC(9'h0a0),
-	.SCALE(4)
+	.SCALE(2)
 	) ball 	(
 
 	.px_clk			(px_clk),
@@ -336,7 +345,7 @@ PongSprite #(
 
 PongSprite #(
 	.SPRITE_MEM_LOC(9'h0b0),
-	.XLOC_INITIAL (50),
+	.XLOC_INITIAL (30),
 	.YLOC_INITIAL (0),
 	.SCALE 		  (8)
 	) paddle_left 	(
@@ -355,8 +364,9 @@ PongSprite #(
 );
 
 PongSprite #(
+
 	.SPRITE_MEM_LOC(9'h0c0),
-	.XLOC_INITIAL	(900),
+	.XLOC_INITIAL	(1125),
 	.YLOC_INITIAL  (300),
 	.SCALE 		  (8)
 	) paddle_right 	(
@@ -375,8 +385,8 @@ PongSprite #(
 );
 
 PongSprite #(
-	.SPRITE_MEM_LOC(9'h010),
-	.XLOC_INITIAL	(50),
+	.SPRITE_MEM_LOC(9'h050),
+	.XLOC_INITIAL	(60),
 	.YLOC_INITIAL  (930),
 	.SCALE			(4)
 	) score_left 	(
@@ -396,8 +406,8 @@ PongSprite #(
 );
 
 PongSprite #(
-	.SPRITE_MEM_LOC(9'h000),
-	.XLOC_INITIAL	(1126),
+	.SPRITE_MEM_LOC(9'h030),
+	.XLOC_INITIAL	(1135),
 	.YLOC_INITIAL  (930),
 	.SCALE         (4)
 	) score_right 	(
@@ -452,7 +462,28 @@ load_sprite_image image_loader(
 		.img_load_done (img_load_done)
 		
 );
+//wire paddle_test;
+//wire paddle_test2;
+//wire paddle_test3;
+//wire paddle_test4;
+//PaddleControl paddle1(
+//	.clk(clk),
+//	.paddle_left_up(~paddle_left_up),
+//	.paddle_left_down(~paddle_left_down),
+//	.paddle_right_up(~paddle_right_up),
+//	.paddle_right_down(~paddle_right_down),
+//	.paddle_test(paddle_test),
+//	.paddle_test2(paddle_test2),
+//	.paddle_test3(paddle_test3),
+//	.paddle_test4(paddle_test4)
+//);
 
+
+//assign VGA_B = (paddle_test|paddle_test4) & onScreen ? 4'b1111 : 4'b0000;
+//assign VGA_G = paddle_test2 & onScreen ? 4'b1111 : 4'b0000;
+//assign VGA_R = paddle_test3 & onScreen ? 4'b1111 : 4'b0000;
+//assign VGA_G = onScreen ? 4'b1111 : 4'b0000;
+//assign VGA_R = onScreen ? 4'b1111 : 4'b0000;
 
 
 	assign VGA_B = ((sprite_on_pRight|sprite_on|sprite_on_pLeft|sprite_on_sLeft|sprite_on_sRight) & onScreen) ? 4'b1111 : 4'b0000;
