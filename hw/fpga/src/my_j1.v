@@ -66,10 +66,10 @@ module my_j1 #(
       10'b01_011_?0111: st0N = {WIDTH{(minus == 0)}};                //  =
       10'b01_011_?1000: st0N = {WIDTH{(signedless)}};                //  <
 
-      10'b01_011_?1001: st0N = {st0[WIDTH - 1], st0[WIDTH - 1:1]};
-      10'b01_011_?1010: st0N = {st0[WIDTH - 2:0], 1'b0};
+      10'b01_011_?1001: st0N = {st0[WIDTH - 1], st0[WIDTH - 1:1]};   // arith shift right
+      10'b01_011_?1010: st0N = {st0[WIDTH - 2:0], 1'b0};             // shift left
       10'b01_011_?1011: st0N = rst0;
-      10'b01_011_?1100: st0N = minus[15:0];
+      10'b01_011_?1100: st0N = minus[15:0];                          // - (N - T)
       10'b01_011_?1101: st0N = io_din;
       10'b01_011_?1110: st0N = {{(WIDTH - 4){1'b0}}, dsp};
       10'b01_011_?1111: st0N = {WIDTH{(minus[16])}};                 // u<

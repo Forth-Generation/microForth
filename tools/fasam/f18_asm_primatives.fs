@@ -33,12 +33,13 @@
 : imm                0x00000 |or| tcode, ;
 : alu                0x16000 |or| tcode, ;
 : ubranch            0x10000 |or| tcode, ;   \ unconditional absolute branch
+: ubranchi           0x18000 |or| tcode, ;   \ unconditional indexed branch
 : ubranchr   |s-12b| 0x18000 |or| tcode, ;   \ unconditional relative branch
 : 0branch            0x12000 |or| tcode, ;   \ conditional absolute branch
 : 0branchr   |s-12b| 0x1A000 |or| tcode, ;   \ conditional relative branch
 : scall              0x14000 |or| tcode, ;   \ subroutine call absolute
 : scallr     |s-12b| 0x1C000 |or| tcode, ;   \ subroutine call relative
-: @imm               0x20000 |or| tcode, ;   \ fetch immediate
+: @mem               0x20000      tcode, ;   \ fetch
 
 
 :: noop      T                       alu ;
@@ -46,7 +47,9 @@
 :: -         N-T                 d-1 alu ;
 :: xor       T^N                 d-1 alu ;
 :: and       T&N                 d-1 alu ;
+:: andRET    T&N   RET           d-1 alu ;
 :: or        T|N                 d-1 alu ;
+:: orRET     T|N   RET           d-1 alu ;
 :: invert    ~T                      alu ;
 :: =         N==T                d-1 alu ;
 :: <         N<T                 d-1 alu ;
@@ -59,6 +62,7 @@
 :: >r        N     T->R      r+1 d-1 alu ;
 :: r>        rT    T->N      r-1 d+1 alu ;
 :: r@        rT    T->N          d+1 alu ;
+:: @                                @mem ;
 :: io@       T     _IORD_            alu
              io[T]                   alu ;
 :: !         
@@ -67,12 +71,17 @@
 :: io!       
              T     N->io[T]      d-1 alu
              N                   d-1 alu ;
+:: io!RET    
+             T     N->io[T]      d-1 alu
+             N     RET           d-1 alu ;
 :: 2/        T2/                     alu ;
 :: 2*        T2*                     alu ;
 :: depth     status T->N         d+1 alu ;
-:: exit      T  RET              r-1 alu ;
-:: pexit     N  RET          d-1 r-1 alu ;  \ pop return
-:: hack      T      N->io[T]         alu ;
+:: exit      T     RET           r-1 alu ;
+:: pexit     N     RET       d-1 r-1 alu ;  \ pop return
+:: hack      T      N->io[T]         alu ;  \ io write leave address and data on stack
+:: !ad       N      N->[T}   d-1     alu ;  \ mem write leave address on stack
+:: io!ad     N      N->io[T} d-1     alu ;  \ io write leave address on stack
 
 \ Elided words
 \ These words are supported by the hardware but are not

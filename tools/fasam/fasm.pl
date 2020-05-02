@@ -99,7 +99,7 @@ $mSecCnt      2666                \ milliseconds Count value for Small Delay
             0x0500    <org>       \ org memory to 0x500
 
 %Var02      0xDEAD    <dword>     \ create  1 word variable named %Var02 = 0xDEAD
-%BlkA            0xA  <dblock>    \ create 10 word memory block with 1st location named %Blk8
+%BlkA       0xA       <dblock>    \ create 10 word memory block with 1st location named %Blk8
 %Var03      0xBEEF    <dword>     \ create  1 word variable named %Var02 = 0xBEEF
 ';
 
