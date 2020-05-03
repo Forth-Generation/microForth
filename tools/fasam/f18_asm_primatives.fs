@@ -33,7 +33,6 @@
 : imm                0x00000 |or| tcode, ;
 : alu                0x16000 |or| tcode, ;
 : ubranch            0x10000 |or| tcode, ;   \ unconditional absolute branch
-: ubranchi           0x18000 |or| tcode, ;   \ unconditional indexed branch
 : ubranchr   |s-12b| 0x18000 |or| tcode, ;   \ unconditional relative branch
 : 0branch            0x12000 |or| tcode, ;   \ conditional absolute branch
 : 0branchr   |s-12b| 0x1A000 |or| tcode, ;   \ conditional relative branch
@@ -79,8 +78,8 @@
 :: exit      T     RET           r-1 alu ;
 :: pexit     N     RET       d-1 r-1 alu ;  \ pop return
 :: hack      T      N->io[T]         alu ;  \ io write leave address and data on stack
-:: !ad       N      N->[T}   d-1     alu ;  \ mem write leave address on stack
-:: io!ad     N      N->io[T} d-1     alu ;  \ io write leave address on stack
+:: !ad       N      N->[T]   d-1     alu ;  \ mem write leave address on stack
+:: io!ad     N      N->io[T] d-1     alu ;  \ io write leave address on stack
 
 \ Elided words
 \ These words are supported by the hardware but are not

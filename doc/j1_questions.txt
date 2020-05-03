@@ -1,0 +1,6 @@
+what does @imm do?
+why is a noop needed before an @imm?
+
+choose 18bit instruction word because most FPGA memory is x9/x18
+
+add indexed branch - branch to PC+TOS

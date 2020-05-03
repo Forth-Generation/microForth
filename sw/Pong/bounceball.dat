@@ -1,0 +1,172 @@
+          //      \
+          //      \  Program to bounce/reflect ball off of bounding box walls
+          //      \    going right dX = -dX when ball is > right
+          //      \    going left -dX =  dX when ball is < left
+          //      \    going up    dY = -dY when ball is > top
+          //      \    going up   -dY =  dY when ball is < bottom
+          //      \
+          //      
+          //      
+          //      $vxloc_addr 0x1F0                      \ VGA ball x location address
+          //      $vyloc_addr 0x1F1                      \ VGA ball y location address
+          //      $Fsem_addr  0x033                      \ Frame sync semaphore address
+          //      $Fsem_set   0x0001                     \ Frame sync semaphore set value
+          //      $Fsem_clr   0x0000                     \ Frame sync semaphore clr value
+          //      
+          //      $xadd       0x000A                     \ x add (move right) signed 14.2 value 0A = 2.5
+          //      $xsub       0xFFF6                     \ x sub (move left)  signed 14.2 value
+          //      $yadd       0x000A                     \ y add (move up)    signed 14.2 value 0A = 2.5
+          //      $ysub       0xFFF6                     \ y sub (move down)  signed 14.2 value
+          //      
+          //      $xmin            0                     \ min x val of ball {left}
+          //      $xmax         1263                     \ max x val of ball {right}
+          //      $ymin            0                     \ min y val of ball {bottom}
+          //      $ymax         1007                     \ max y val of ball {top}
+          //      $b0mask     0x0001                     \ bit 0 mask
+          //      $b1mask     0x0002                     \ bit 1 mask
+          //      
+          //      
+1402E     // 00000 %MoveUR       %SetFsem      scall      \ set Fsem                 ( )
+14028     // 00001               %WaitFsem     scall      \ wait until Fsem=0        ( )
+14032     // 00002               %AddX         scall      \ move xloc Right          ( TurnStat )
+1A004     // 00003               %GoRightU     0branchr   \ keep Right if TurnStat=0 ( )
+          //                         \\ hit Right wall - X move left
+14040     // 00004               %AddY         scall      \ move yloc Up             ( TurnStat )
+1A005     // 00005               %MoveUL       0branchr   \ go UL if TurnStat=0      ( )
+18018     // 00006               %MoveDL       ubranchr   \ hit UR corner - go DL    ( )
+          //                         \\ didn't hit Right wall
+14040     // 00007 %GoRightU     %AddY         scall      \ move yloc Up             ( TurnStat )
+1BFF8     // 00008               %MoveUR       0branchr   \ go UR if TurnStat=0      ( )
+1800B     // 00009               %MoveDR       ubranchr   \ hit Top wall - go DR     ( )
+          //      
+          //      
+1402E     // 0000A %MoveUL       %SetFsem      scall      \ set Fsem                 ( )
+14028     // 0000B               %WaitFsem     scall      \ wait until Fsem=0        ( )
+1404E     // 0000C               %SubX         scall      \ move xloc Left           ( TurnStat )
+1A004     // 0000D               %GoLeftU      0branchr   \ keep Left if TurnStat=0  ( )
+          //                         \\ hit Left wall - X move Right
+14040     // 0000E               %AddY         scall      \ move yloc Up             ( TurnStat )
+1BFFB     // 0000F               %MoveUL       0branchr   \ go UL if TurnStat=0      ( )
+18004     // 00010               %MoveDR       ubranchr   \ hit UL corner - go DR    ( )
+          //                         \\ didn't hit Left wall
+14040     // 00011 %GoLeftU      %AddY         scall      \ move yloc Up             ( TurnStat )
+1BFF8     // 00012               %MoveUL       0branchr   \ go UL if TurnStat=0      ( )
+1800B     // 00013               %MoveDL       ubranchr   \ hit Top wall - go DL     ( )
+          //      
+          //      
+1402E     // 00014 %MoveDR       %SetFsem      scall      \ set Fsem                 ( )
+14028     // 00015               %WaitFsem     scall      \ wait until Fsem=0        ( )
+14032     // 00016               %AddX         scall      \ move xloc Right          ( TurnStat )
+1A004     // 00017               %GoRightD     0branchr   \ keep Right if TurnStat=0 ( )
+          //                         \\ hit Right wall - X move left
+1405B     // 00018               %SubY         scall      \ move yloc Down           ( TurnStat )
+1A005     // 00019               %MoveDL       0branchr   \ go UL if TurnStat=0      ( )
+19FE6     // 0001A               %MoveUR       ubranchr   \ hit LR corner - go UR    ( )
+          //                         \\ didn't hit Right wall
+1405B     // 0001B %GoRightD     %SubY         scall      \ move yloc Down           ( TurnStat )
+1BFF8     // 0001C               %MoveDR       0branchr   \ go DR if TurnStat=0      ( )
+19FE3     // 0001D               %MoveUR       ubranchr   \ hit Bottom wall - go UR  ( )
+          //      
+          //      
+1402E     // 0001E %MoveDL       %SetFsem      scall      \ set Fsem                 ( )
+14028     // 0001F               %WaitFsem     scall      \ wait until Fsem=0        ( )
+1404E     // 00020               %SubX         scall      \ move xloc Left           ( TurnStat )
+1A004     // 00021               %GoLeftD       0branchr  \ keep Left if TurnStat=0  ( )
+          //                         \\ hit Left wall - X move Right
+1405B     // 00022               %SubY         scall      \ move yloc Down           ( TurnStat )
+1BFF1     // 00023               %MoveDR       0branchr   \ go DR if TurnStat=0      ( )
+19FDC     // 00024               %MoveUR       ubranchr   \ hit LL corner - go UR    ( )
+          //                         \\ didn't hit Left wall
+1405B     // 00025 %GoLeftD      %SubY         scall      \ move yloc Down           ( TurnStat )
+1BFF8     // 00026               %MoveDL       0branchr   \ go DL if TurnStat=0      ( )
+19FE3     // 00027               %MoveUL       ubranchr   \ hit Bottom wall - go UL  ( )
+          //      
+          //      
+          //      
+          //                         \\ Wait for Frame semaphore clear
+00033     // 00028 %WaitFsem     $Fsem_addr    imm        \ push Fsem address
+16D50     // 00029                             io@        \ read Fsem
+00000     // 0002A               $Fsem_clr     imm        \ push Fsem clr value
+16703     // 0002B                             =          \ check if Fsem == Fsem_clr
+12028     // 0002C               %WaitFsem     0branch    \ continue to wait for Fsem clear
+1608C     // 0002D                             exit       \ return - Fsem clr
+          //      
+          //      
+          //                         \\ Set Frame semaphore
+00001     // 0002E %SetFsem      $Fsem_set     imm        \ push Fsem set value
+00033     // 0002F               $Fsem_addr    imm        \ push Fsem address
+16043     // 00030                             io!RET     \ write/set Fsem & exit
+16183     // 00031 
+          //      
+          //      
+          //                         \\ Add to xloc (go Right)
+          //                         \\ TOS exit value TurnStat ( {0xFFFF=turn} )
+00068     // 00032 %AddX         %xloc         imm        \ push address of xloc     ( %xloc )
+20000     // 00033                             @          \ fetch xloc               ( xloc )
+0000A     // 00034               $xadd         imm        \ push xadd                ( xadd,xloc )
+16203     // 00035                             +          \                          ( xloc+xadd )
+00068     // 00036               %xloc         imm        \ push address of xloc     ( %xloc,xloc+xadd )
+16133     // 00037                             !ad        \ write new xloc to xloc   ( xloc+xadd )
+16900     // 00038                             2/         \ shift right              ( xloc+xadd >> 1 )
+16900     // 00039                             2/         \ shift right              ( xloc+xadd >> 2 )
+001F0     // 0003A               $vxloc_addr   imm        \ push VGA x loc address   ( xloc_add,xloc+xadd )
+16143     // 0003B                             io!ad      \ write new xloc to VGA    ( xloc+xadd >> 2 )
+004EF     // 0003C               $xmax         imm        \ push xmax                ( xmax,new xloc )
+16110     // 0003D                             swap       \                          ( new xloc,xmax )
+16803     // 0003E                             <          \ turn if xmax < xloc      ( 0xFFFF(lt)/0x0000(gt) )
+1608C     // 0003F                             exit       \ return                   ( TurnStat )
+          //      
+          //      
+          //                         \\ Add to yloc (go Up)
+          //                         \\ TOS exit value TurnStat ( {0xFFFF=turn} )
+00069     // 00040 %AddY         %yloc         imm        \ push address of yloc     ( %yloc )
+20000     // 00041                             @          \ fetch yloc               ( yloc )
+0000A     // 00042               $yadd         imm        \ push yadd                ( yadd,yloc )
+16203     // 00043                             +          \                          ( yloc+yadd )
+00069     // 00044               %yloc         imm        \ push address of yloc     ( %yloc,yloc+yadd )
+16133     // 00045                             !ad        \ write new yloc to yloc   ( yloc+yadd )
+16900     // 00046                             2/         \ shift right              ( yloc+yadd >> 1 )
+16900     // 00047                             2/         \ shift right              ( yloc+yadd >> 2 )
+001F1     // 00048               $vyloc_addr   imm        \ push VGA y loc address   ( yloc_add,yloc+yadd )
+16143     // 00049                             io!ad      \ write new yloc to VGA    ( yloc+yadd >> 2 )
+003EF     // 0004A               $ymax         imm        \ push ymax                ( ymax,new yloc )
+16110     // 0004B                             swap       \                          ( new yloc,ymax )
+16803     // 0004C                             <          \ turn if ymax < yloc      ( 0xFFFF(lt)/0x0000(gt) )
+1608C     // 0004D                             exit       \ return                   ( TurnStat )
+          //      
+          //      
+          //                         \\ Sub from xloc (go Left)
+          //                         \\ TOS exit value TurnStat ( {0xFFFF=turn} )
+00068     // 0004E %SubX         %xloc         imm        \ push address of xloc     ( %xloc )
+20000     // 0004F                             @          \ fetch xloc               ( xloc )
+0FFF6     // 00050               $xsub         imm        \ push xsub                ( xsub,xloc )
+16203     // 00051                             +          \                          ( xloc+xsub )
+00068     // 00052               %xloc         imm        \ push address of xloc     ( %xloc,xloc+xsub )
+16133     // 00053                             !ad        \ write new xloc to xloc   ( xloc+xsub )
+16900     // 00054                             2/         \ shift right              ( xloc+xsub >> 1 )
+16900     // 00055                             2/         \ shift right              ( xloc+xsub >> 2 )
+001F0     // 00056               $vxloc_addr   imm        \ push VGA x loc address   ( xloc_add,xloc+xsub )
+16143     // 00057                             io!ad      \ write new xloc to VGA    ( xloc+xsub >> 2 )
+00000     // 00058               $xmin         imm        \ push xmin                ( xmin,new xloc )
+16803     // 00059                             <          \ turn if xmin < xloc      ( 0xFFFF(lt)/0x0000(gt) )
+1608C     // 0005A                             exit       \ return                   ( TurnStat )
+          //      
+          //      
+          //                         \\ Sub from yloc (go Down)
+          //                         \\ TOS exit value TurnStat ( {0xFFFF=turn} )
+00069     // 0005B %SubY         %yloc         imm        \ push address of yloc     ( %yloc )
+20000     // 0005C                             @          \ fetch yloc               ( yloc )
+0FFF6     // 0005D               $ysub         imm        \ push ysub                ( ysub,yloc )
+16203     // 0005E                             +          \                          ( yloc+ysub )
+00069     // 0005F               %yloc         imm        \ push address of yloc     ( %yloc,yloc+ysub )
+16133     // 00060                             !ad        \ write new yloc to yloc   ( yloc+ysub )
+16900     // 00061                             2/         \ shift right              ( yloc+ysub >> 1 )
+16900     // 00062                             2/         \ shift right              ( yloc+ysub >> 2 )
+001F1     // 00063               $vyloc_addr   imm        \ push VGA y loc address   ( yloc_add,yloc+ysub )
+16143     // 00064                             io!ad      \ write new yloc to VGA    ( yloc+ysub >> 2 )
+00000     // 00065               $ymin         imm        \ push ymin                ( ymin,new yloc )
+16803     // 00066                             <          \ turn if ymin < yloc      ( 0xFFFF(lt)/0x0000(gt) )
+1608C     // 00067                             exit       \ return                   ( TurnStat )
+          //      
+00000     // 00068 %xloc         0x0000        <dword>    \ xloc variable  signed 14.2 value
+00000     // 00069 %yloc         0x0000        <dword>    \ yloc variable  signed 14.2 value
