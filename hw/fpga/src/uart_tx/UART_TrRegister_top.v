@@ -35,7 +35,9 @@ always @(posedge clk or posedge reset)begin
           TSR[9] <= 1;
        end
        if(Clear_Valid)  TBR_Valid <= 1'b0;
-       else             TBR_Valid <= TBR_en;
+       else  begin
+        if(TBR_en) TBR_Valid <= 1'b1;
+       end
      end
    
 end

@@ -31,6 +31,7 @@ module Eightb_shft_register_top (
 	     if(load_buffer) begin
 		buffer_reg <= shft_reg;
 		if(Rd_en) rx_data_out <= buffer_reg;
+        else rx_data_out <= 8'b0;
 	     end
 	  end	
      end // always @ (posedge CLOCK or posedge reset)
